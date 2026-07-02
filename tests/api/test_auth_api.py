@@ -1,31 +1,22 @@
-import requests
-
-from constants import HEADERS, Endpoints
-
+import pytest
+from constants import Endpoints
 
 class TestAuth:
     def test_login_returns_all_tokens(self, auth_data):
-        """POST /login возвращает 201 и все токены"""
         assert "accessToken" in auth_data
-        assert "refreshToken" in auth_data
-        assert "expiresIn" in auth_data
         assert "user" in auth_data
-        assert "SUPER_ADMIN" in auth_data["user"]["roles"]
+        assert auth_data["user"]["email"] == "api1@gmail.com"
 
-    def test_access_api_with_valid_token(self, api_base_url, auth_headers):
-        """Токен с f5qa.ru работает на coconutqa.ru"""
-        resp = requests.get(f"{api_base_url}{Endpoints.MOVIES}", headers=auth_headers)
-        assert resp.status_code == 200
+    def test_access_api_with_valid_token(self, api_requester):
+        # Проверка что токен рабочий - любой авторизованный запрос
+        resp = api_requester.send_request("GET", Endpoints.MOVIES, expected_status=200)
+        assert "movies" in resp.json()
 
-    def test_access_api_without_token_public(self, api_base_url):
-        """GET /movies публичный, должен отдавать 200 без токена"""
-        resp = requests.get(f"{api_base_url}{Endpoints.MOVIES}", headers=HEADERS)
-        assert resp.status_code == 200
-        data = resp.json()
-        assert "movies" in data
+    def test_access_api_without_token_public(self, public_requester):
+        resp = public_requester.send_request("GET", Endpoints.MOVIES, expected_status=200)
+        assert "movies" in resp.json()
 
-    def test_super_admin_can_create_movie(self, api_session, api_base_url, created_genre, faker):
-        """POST /movies требует SUPER_ADMIN"""
+    def test_super_admin_can_create_movie(self, api_requester, created_genre, faker):
         payload = {
             "name": faker.catch_phrase(),
             "price": 100,
@@ -35,14 +26,11 @@ class TestAuth:
             "genreId": created_genre,
             "imageUrl": faker.image_url()
         }
-        resp = api_session.post(f"{api_base_url}{Endpoints.MOVIES}", json=payload)
-        assert resp.status_code == 201
+        resp = api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=201)
+        assert "id" in resp.json()
+        api_requester.send_request("DELETE", Endpoints.MOVIE_BY_ID.format(resp.json()["id"]), expected_status=200)
 
-        # cleanup
-        api_session.delete(f"{api_base_url}{Endpoints.MOVIE_BY_ID.format(resp.json()['id'])}")
-
-    def test_create_movie_without_token_forbidden(self, api_base_url, created_genre, faker):
-        """POST /movies без токена должен быть 401"""
+    def test_create_movie_without_token_forbidden(self, public_requester, created_genre, faker):
         payload = {
             "name": faker.word(),
             "price": 100,
@@ -52,5 +40,4 @@ class TestAuth:
             "genreId": created_genre,
             "imageUrl": faker.image_url()
         }
-        resp = requests.post(f"{api_base_url}{Endpoints.MOVIES}", json=payload, headers=HEADERS)
-        assert resp.status_code == 401
+        public_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=401)

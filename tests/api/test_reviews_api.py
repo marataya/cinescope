@@ -1,150 +1,122 @@
-import pytest
-import requests
-from constants import API_BASE_URL, HEADERS, Endpoints
+import random
+
+from constants import Endpoints
+from utils.data_generator import DataGenerator
 
 
-class TestReviewsPublic:
-    """GET /movies/{id}/reviews - PUBLIC доступ"""
-
-    def test_get_reviews_by_movie_id(self, api_base_url, created_movie):
-        resp = requests.get(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            headers=HEADERS
+class TestMoviesPublic:
+    def test_get_movie_by_id(self, public_requester, created_movie):
+        resp = public_requester.send_request(
+            "GET",
+            Endpoints.MOVIE_BY_ID.format(created_movie),
+            expected_status=200
         )
-        assert resp.status_code == 200
-        assert isinstance(resp.json(), list)
+        assert resp.json()["id"] == created_movie
 
-    def test_get_reviews_movie_not_found(self, api_base_url, faker):
-        fake_movie_id = faker.random_int(min=99999, max=999999)
-        resp = requests.get(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(fake_movie_id)}",
-            headers=HEADERS
-        )
-        assert resp.status_code == 404
-
-
-class TestReviewsUser:
-    """POST /movies/{id}/reviews - требует USER роль"""
-
-    def test_create_review_success(self, api_session, api_base_url, created_movie, faker):
-        payload = {
-            "rating": faker.random_int(min=1, max=5),
-            "text": faker.paragraph(nb_sentences=2)
-        }
-        resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload
-        )
-        assert resp.status_code == 201
-        review = resp.json()
-        assert review["text"] == payload["text"]
-        assert review["rating"] == payload["rating"]
-        assert "userId" in review
-        assert "createdAt" in review
-        assert review["user"]["fullName"] == "Жмышенко Валерий Альбертович"
-
-    def test_create_review_rating_boundary_min(self, api_session, api_base_url, created_movie, faker):
-        payload = {"rating": 1, "text": faker.sentence()}
-        resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload
-        )
-        assert resp.status_code == 201
-
-    def test_create_review_rating_boundary_max(self, api_session, api_base_url, created_movie, faker):
-        payload = {"rating": 5, "text": faker.sentence()}
-        resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload
-        )
-        assert resp.status_code == 201
-
-    def test_create_review_any_rating_accepted(self, api_session, api_base_url, created_movie, faker):
-        """API принимает любой rating без валидации"""
-        payload = {"rating": 0, "text": faker.word()}
-        resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload
-        )
-        assert resp.status_code == 201
-        assert resp.json()["rating"] == 0
-
-    def test_create_review_without_text_accepted(self, api_session, api_base_url, created_movie, faker):
-        """API создает отзыв без text"""
-        payload = {"rating": faker.random_int(min=1, max=5)}
-        resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload
-        )
-        assert resp.status_code == 201
-        review = resp.json()
-        assert review["rating"] == payload["rating"]
-        assert review.get("text") is None or review.get("text") == ""
-
-    def test_create_review_unauthorized(self, api_base_url, created_movie, faker):
-        payload = {
-            "rating": faker.random_int(min=1, max=5),
-            "text": faker.sentence()
-        }
-        resp = requests.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json=payload,
-            headers=HEADERS
-        )
-        assert resp.status_code == 401
-
-
-class TestReviewsAdmin:
-    """PATCH hide/show - требует ADMIN роль"""
-
-    def test_hide_review_by_user_id(self, api_session, api_base_url, created_movie, faker):
-        review_resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json={"rating": 2, "text": faker.sentence()}
-        )
-        assert review_resp.status_code == 201
-        user_id = review_resp.json()["userId"]
-
-        resp = api_session.patch(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id)}"
-        )
-        assert resp.status_code == 200
+    def test_get_movies_list_default(self, public_requester):
+        resp = public_requester.send_request("GET", Endpoints.MOVIES, expected_status=200)
         data = resp.json()
-        assert data["userId"] == user_id
-        # hidden может отсутствовать в ответе
-        if "hidden" in data:
-            assert data["hidden"] is True
+        assert "movies" in data
+        assert data["pageSize"] <= 20
 
-    def test_show_review_by_user_id(self, api_session, api_base_url, created_movie, faker):
-        review_resp = api_session.post(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEWS.format(created_movie)}",
-            json={"rating": 2, "text": faker.word()}
-        )
-        user_id = review_resp.json()["userId"]
+    def test_get_movies_list_filters(self, public_requester):
+        params = {
+            "pageSize": random.randint(1, 20),
+            "page": 1,
+            "minPrice": 1,
+            "maxPrice": 1000,
+            "locations": ["MSK", "SPB"],
+            "published": True
+        }
+        resp = public_requester.send_request("GET", Endpoints.MOVIES, params=params, expected_status=200)
+        assert len(resp.json()["movies"]) <= params["pageSize"]
 
-        api_session.patch(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id)}"
+    def test_get_movie_not_found(self, public_requester):
+        public_requester.send_request("GET", Endpoints.MOVIE_BY_ID.format(999999), expected_status=404)
+
+    def test_get_movies_invalid_page_size(self, public_requester):
+        public_requester.send_request("GET", Endpoints.MOVIES, params={"pageSize": 21}, expected_status=400)
+
+class TestMoviesSuperAdmin:
+    def test_create_movie_success(self, api_requester, created_genre):
+        payload = {
+            "name": DataGenerator.generate_random_name(),
+            "price": random.randint(50, 500),
+            "description": DataGenerator.generate_random_name(),
+            "location": "MSK",
+            "published": True,
+            "genreId": created_genre,
+            "imageUrl": f"https://picsum.photos/{random.randint(200,800)}/{random.randint(200,800)}"
+        }
+        resp = api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=201)
+        movie_id = resp.json()["id"]
+        api_requester.send_request("DELETE", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=200)
+
+    def test_patch_movie(self, api_requester, created_movie):
+        payload = {"price": random.randint(100, 999), "published": False}
+        resp = api_requester.send_request(
+            "PATCH", Endpoints.MOVIE_BY_ID.format(created_movie), data=payload, expected_status=200
+        )
+        assert resp.json()["price"] == payload["price"]
+
+    def test_delete_movie(self, api_requester, public_requester, created_genre):
+        payload = {
+            "name": "To Delete",
+            "price": 100,
+            "description": DataGenerator.generate_random_name(),
+            "location": "MSK",
+            "published": True,
+            "genreId": created_genre,
+            "imageUrl": "https://picsum.photos/300/300"
+        }
+        movie_id = api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=201).json()["id"]
+        api_requester.send_request("DELETE", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=200)
+        public_requester.send_request("GET", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=404)
+
+class TestMoviesValidation:
+    def test_create_movie_missing_required_field(self, api_requester, created_genre):
+        payload = {
+            "price": 100,
+            "description": "no name",
+            "location": "MSK",
+            "published": True,
+            "genreId": created_genre,
+            "imageUrl": "https://test.com/img.jpg"
+        }
+        api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=400)
+
+    def test_create_movie_invalid_genre(self, api_requester):
+        payload = {
+            "name": DataGenerator.generate_random_name(),
+            "price": 100,
+            "description": DataGenerator.generate_random_name(),
+            "location": "MSK",
+            "published": True,
+            "genreId": 999999,  # число, но не существует
+            "imageUrl": "https://picsum.photos/300/300"
+        }
+        api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=400)
+
+class TestMoviesAuth:
+    def test_create_movie_without_token_unauthorized(self, public_requester, created_genre):
+        payload = {
+            "name": DataGenerator.generate_random_name(),
+            "price": 100,
+            "description": DataGenerator.generate_random_name(),
+            "location": "MSK",
+            "published": True,
+            "genreId": created_genre,
+            "imageUrl": "https://picsum.photos/300"
+        }
+        public_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=401)
+
+    def test_patch_movie_without_token_unauthorized(self, public_requester, created_movie):
+        public_requester.send_request(
+            "PATCH", Endpoints.MOVIE_BY_ID.format(created_movie),
+            data={"price": 777}, expected_status=401
         )
 
-        resp = api_session.patch(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, user_id)}"
+    def test_delete_movie_without_token_unauthorized(self, public_requester, created_movie):
+        public_requester.send_request(
+            "DELETE", Endpoints.MOVIE_BY_ID.format(created_movie), expected_status=401
         )
-        assert resp.status_code == 200
-        data = resp.json()
-        assert data["userId"] == user_id
-        if "hidden" in data:
-            assert data["hidden"] is False
-
-    def test_hide_review_unauthorized(self, api_base_url, created_movie, current_user):
-        resp = requests.patch(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, current_user['id'])}",
-            headers=HEADERS
-        )
-        assert resp.status_code == 401
-
-    def test_show_review_unauthorized(self, api_base_url, created_movie, current_user):
-        resp = requests.patch(
-            f"{api_base_url}{Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, current_user['id'])}",
-            headers=HEADERS
-        )
-        assert resp.status_code == 401
