@@ -3,6 +3,7 @@ API_BASE_URL = "https://api.dev-cinescope.coconutqa.ru"  # вот тут все 
 
 HEADERS = {"Content-Type": "application/json", "Accept": "application/json"}
 
+REGISTER_ENDPOINT = "/register"
 LOGIN_ENDPOINT = "/login"
 
 class Endpoints:

@@ -1,18 +1,23 @@
 import pytest
 import requests
 import logging
-from custom_requester.custom_requester import CustomRequester
-from constants import AUTH_BASE_URL, API_BASE_URL, LOGIN_ENDPOINT
+from faker import Faker
+from api.api_manager import ApiManager
+from constants import AUTH_BASE_URL, API_BASE_URL
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 @pytest.fixture(scope="session")
-def api_base_url():
-    return API_BASE_URL
+def session():
+    """HTTP-сессия для всех запросов"""
+    http_session = requests.Session()
+    yield http_session
+    http_session.close()
 
 @pytest.fixture(scope="session")
-def auth_base_url():
-    return AUTH_BASE_URL
+def api_manager(session):
+    """Менеджер всех API классов"""
+    return ApiManager(session)
 
 @pytest.fixture(scope="session")
 def valid_credentials():
@@ -22,10 +27,9 @@ def valid_credentials():
     }
 
 @pytest.fixture(scope="session")
-def auth_data(auth_base_url, valid_credentials):
-    session = requests.Session()
-    requester = CustomRequester(session, auth_base_url)
-    resp = requester.send_request("POST", LOGIN_ENDPOINT, data=valid_credentials, expected_status=201)
+def auth_data(api_manager, valid_credentials):
+    """Логинимся 1 раз на сессию"""
+    resp = api_manager.auth_api.login_user(valid_credentials, expected_status=201)
     return resp.json()
 
 @pytest.fixture(scope="session")
@@ -38,6 +42,8 @@ def current_user(auth_data):
 
 @pytest.fixture
 def api_requester(bearer_token):
+    """Реквестер для API с токеном"""
+    from custom_requester.custom_requester import CustomRequester
     session = requests.Session()
     requester = CustomRequester(session, API_BASE_URL)
     requester.update_session_headers(Authorization=f"Bearer {bearer_token}")
@@ -45,6 +51,8 @@ def api_requester(bearer_token):
 
 @pytest.fixture
 def public_requester():
+    """Реквестер для публичных ручек"""
+    from custom_requester.custom_requester import CustomRequester
     session = requests.Session()
     return CustomRequester(session, API_BASE_URL)
 

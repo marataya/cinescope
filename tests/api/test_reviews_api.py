@@ -1,122 +1,182 @@
-import random
-
+import pytest
 from constants import Endpoints
 from utils.data_generator import DataGenerator
 
 
-class TestMoviesPublic:
-    def test_get_movie_by_id(self, public_requester, created_movie):
+class TestReviewsPublic:
+    def test_get_reviews_by_movie_id(self, public_requester, created_movie):
         resp = public_requester.send_request(
             "GET",
-            Endpoints.MOVIE_BY_ID.format(created_movie),
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
             expected_status=200
         )
-        assert resp.json()["id"] == created_movie
+        assert isinstance(resp.json(), list)
 
-    def test_get_movies_list_default(self, public_requester):
-        resp = public_requester.send_request("GET", Endpoints.MOVIES, expected_status=200)
-        data = resp.json()
-        assert "movies" in data
-        assert data["pageSize"] <= 20
+    def test_get_reviews_movie_not_found(self, public_requester, faker):
+        fake_movie_id = faker.random_int(min=99999, max=999999)
+        public_requester.send_request(
+            "GET",
+            Endpoints.MOVIE_REVIEWS.format(fake_movie_id),
+            expected_status=404
+        )
 
-    def test_get_movies_list_filters(self, public_requester):
-        params = {
-            "pageSize": random.randint(1, 20),
-            "page": 1,
-            "minPrice": 1,
-            "maxPrice": 1000,
-            "locations": ["MSK", "SPB"],
-            "published": True
-        }
-        resp = public_requester.send_request("GET", Endpoints.MOVIES, params=params, expected_status=200)
-        assert len(resp.json()["movies"]) <= params["pageSize"]
 
-    def test_get_movie_not_found(self, public_requester):
-        public_requester.send_request("GET", Endpoints.MOVIE_BY_ID.format(999999), expected_status=404)
-
-    def test_get_movies_invalid_page_size(self, public_requester):
-        public_requester.send_request("GET", Endpoints.MOVIES, params={"pageSize": 21}, expected_status=400)
-
-class TestMoviesSuperAdmin:
-    def test_create_movie_success(self, api_requester, created_genre):
+class TestReviewsUser:
+    def test_create_review_success(self, api_requester, created_movie, faker):
         payload = {
-            "name": DataGenerator.generate_random_name(),
-            "price": random.randint(50, 500),
-            "description": DataGenerator.generate_random_name(),
-            "location": "MSK",
-            "published": True,
-            "genreId": created_genre,
-            "imageUrl": f"https://picsum.photos/{random.randint(200,800)}/{random.randint(200,800)}"
+            "rating": faker.random_int(min=1, max=5),
+            "text": DataGenerator.generate_random_name()
         }
-        resp = api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=201)
-        movie_id = resp.json()["id"]
-        api_requester.send_request("DELETE", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=200)
-
-    def test_patch_movie(self, api_requester, created_movie):
-        payload = {"price": random.randint(100, 999), "published": False}
         resp = api_requester.send_request(
-            "PATCH", Endpoints.MOVIE_BY_ID.format(created_movie), data=payload, expected_status=200
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=201
         )
-        assert resp.json()["price"] == payload["price"]
+        review = resp.json()
+        assert review["rating"] == payload["rating"]
+        assert review["text"] == payload["text"]
+        assert "userId" in review
+        assert "user" in review
+        assert "createdAt" in review
 
-    def test_delete_movie(self, api_requester, public_requester, created_genre):
-        payload = {
-            "name": "To Delete",
-            "price": 100,
-            "description": DataGenerator.generate_random_name(),
-            "location": "MSK",
-            "published": True,
-            "genreId": created_genre,
-            "imageUrl": "https://picsum.photos/300/300"
-        }
-        movie_id = api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=201).json()["id"]
-        api_requester.send_request("DELETE", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=200)
-        public_requester.send_request("GET", Endpoints.MOVIE_BY_ID.format(movie_id), expected_status=404)
+    def test_create_review_rating_zero_accepted(self, api_requester, created_movie):
+        payload = {"rating": 0, "text": DataGenerator.generate_random_name()}
+        resp = api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=201
+        )
+        assert resp.json()["rating"] == 0
 
-class TestMoviesValidation:
-    def test_create_movie_missing_required_field(self, api_requester, created_genre):
-        payload = {
-            "price": 100,
-            "description": "no name",
-            "location": "MSK",
-            "published": True,
-            "genreId": created_genre,
-            "imageUrl": "https://test.com/img.jpg"
-        }
-        api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=400)
+    def test_create_review_rating_above_max_accepted(self, api_requester, created_movie):
+        payload = {"rating": 6, "text": DataGenerator.generate_random_name()}
+        resp = api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=201
+        )
+        assert resp.json()["rating"] == 6
 
-    def test_create_movie_invalid_genre(self, api_requester):
-        payload = {
-            "name": DataGenerator.generate_random_name(),
-            "price": 100,
-            "description": DataGenerator.generate_random_name(),
-            "location": "MSK",
-            "published": True,
-            "genreId": 999999,  # число, но не существует
-            "imageUrl": "https://picsum.photos/300/300"
-        }
-        api_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=400)
+    def test_create_review_without_text_accepted(self, api_requester, created_movie, faker):
+        payload = {"rating": faker.random_int(min=1, max=5)}
+        resp = api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=201
+        )
+        assert resp.json()["text"] is None
 
-class TestMoviesAuth:
-    def test_create_movie_without_token_unauthorized(self, public_requester, created_genre):
-        payload = {
-            "name": DataGenerator.generate_random_name(),
-            "price": 100,
-            "description": DataGenerator.generate_random_name(),
-            "location": "MSK",
-            "published": True,
-            "genreId": created_genre,
-            "imageUrl": "https://picsum.photos/300"
-        }
-        public_requester.send_request("POST", Endpoints.MOVIES, data=payload, expected_status=401)
-
-    def test_patch_movie_without_token_unauthorized(self, public_requester, created_movie):
-        public_requester.send_request(
-            "PATCH", Endpoints.MOVIE_BY_ID.format(created_movie),
-            data={"price": 777}, expected_status=401
+    def test_create_review_duplicate_conflict(self, api_requester, created_movie):
+        payload = {"rating": 5, "text": "First"}
+        api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=201
+        )
+        api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data={"rating": 1, "text": "Second"},
+            expected_status=409
         )
 
-    def test_delete_movie_without_token_unauthorized(self, public_requester, created_movie):
+    def test_edit_review(self, api_requester, created_movie):
+        api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data={"rating": 3, "text": "Old"},
+            expected_status=201
+        )
+
+        payload = {"rating": 5, "text": "Updated"}
+        resp = api_requester.send_request(
+            "PUT",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=200
+        )
+        assert resp.json()["rating"] == 5
+        assert resp.json()["text"] == "Updated"
+
+    def test_delete_review(self, api_requester, created_movie, current_user):
+        api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data={"rating": 3, "text": "To delete"},
+            expected_status=201
+        )
+
+        resp = api_requester.send_request(
+            "DELETE",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            expected_status=200
+        )
+        assert resp.json()["userId"] == current_user["id"]
+
+    def test_create_review_unauthorized(self, public_requester, created_movie):
+        payload = {"rating": 5, "text": DataGenerator.generate_random_name()}
         public_requester.send_request(
-            "DELETE", Endpoints.MOVIE_BY_ID.format(created_movie), expected_status=401
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=payload,
+            expected_status=401
+        )
+
+
+class TestReviewsAdmin:
+    def test_hide_review_returns_200(self, api_requester, created_movie):
+        """PATCH /hide возвращает 200, поле hidden не возвращается в POST/GET"""
+        review_resp = api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data={"rating": 2, "text": DataGenerator.generate_random_name()},
+            expected_status=201
+        )
+        user_id = review_resp.json()["userId"]
+
+        resp = api_requester.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id),
+            expected_status=200
+        )
+        assert resp.json()["userId"] == user_id
+
+    def test_show_review_returns_200(self, api_requester, created_movie):
+        review_resp = api_requester.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data={"rating": 2, "text": DataGenerator.generate_random_name()},
+            expected_status=201
+        )
+        user_id = review_resp.json()["userId"]
+
+        api_requester.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id),
+            expected_status=200
+        )
+        resp = api_requester.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, user_id),
+            expected_status=200
+        )
+        assert resp.json()["userId"] == user_id
+
+    def test_hide_review_unauthorized(self, public_requester, created_movie, current_user):
+        public_requester.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, current_user['id']),
+            expected_status=401
+        )
+
+    def test_show_review_unauthorized(self, public_requester, created_movie, current_user):
+        public_requester.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, current_user['id']),
+            expected_status=401
         )
