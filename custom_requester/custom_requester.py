@@ -1,7 +1,9 @@
 import json
 import logging
 import os
+
 import requests
+
 
 class CustomRequester:
     """
@@ -79,3 +81,7 @@ class CustomRequester:
             self.logger.info(f"{'=' * 80}\n")
         except Exception as e:
             self.logger.error(f"\nLogging failed: {type(e)} - {e}")
+
+
+class ApiManager:
+    pass

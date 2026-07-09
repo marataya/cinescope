@@ -1,23 +1,13 @@
+from constants import AUTH_BASE_URL, Endpoints
 from custom_requester.custom_requester import CustomRequester
 
+
 class UserAPI(CustomRequester):
-    """Класс для работы с API пользователей."""
-
     def __init__(self, session):
-        super().__init__(session=session, base_url="https://api.dev-cinescope.coconutqa.ru")  # без / в конце
+        super().__init__(session=session, base_url=AUTH_BASE_URL)
 
-    def get_user_info(self, user_id, expected_status=200):
-        """Получение информации о пользователе."""
-        return self.send_request(
-            method="GET",
-            endpoint=f"/user/{user_id}",
-            expected_status=expected_status
-        )
+    def get_users(self, expected_status=200, **kwargs):
+        return self.send_request("GET", Endpoints.USERS, expected_status=expected_status, **kwargs)
 
-    def delete_user(self, user_id, expected_status=204):
-        """Удаление пользователя."""
-        return self.send_request(
-            method="DELETE",
-            endpoint=f"/user/{user_id}",
-            expected_status=expected_status
-        )
+    def get_user(self, user_id, expected_status=200, **kwargs):
+        return self.send_request("GET", Endpoints.USER_BY_ID.format(user_id), expected_status=expected_status, **kwargs)
