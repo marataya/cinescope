@@ -22,11 +22,8 @@ class TestReviewsPublic:
 
 
 class TestReviewsUser:
-    def test_create_review_success(self, authorized_api_manager, created_movie, faker):
-        payload = {
-            "rating": faker.random_int(min=1, max=5),
-            "text": DataGenerator.generate_random_name()
-        }
+    def test_create_review_success(self, authorized_api_manager, created_movie):
+        payload = DataGenerator.generate_review_payload()
         resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -40,7 +37,7 @@ class TestReviewsUser:
         assert "user" in review
 
     def test_create_review_rating_zero_accepted(self, authorized_api_manager, created_movie):
-        payload = {"rating": 0, "text": DataGenerator.generate_random_name()}
+        payload = DataGenerator.generate_review_payload(rating=0)
         resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -50,7 +47,7 @@ class TestReviewsUser:
         assert resp.json()["rating"] == 0
 
     def test_create_review_rating_above_max_accepted(self, authorized_api_manager, created_movie):
-        payload = {"rating": 6, "text": DataGenerator.generate_random_name()}
+        payload = DataGenerator.generate_review_payload(rating=6)
         resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -59,8 +56,9 @@ class TestReviewsUser:
         )
         assert resp.json()["rating"] == 6
 
-    def test_create_review_without_text_accepted(self, authorized_api_manager, created_movie, faker):
-        payload = {"rating": faker.random_int(min=1, max=5)}
+    def test_create_review_without_text_accepted(self, authorized_api_manager, created_movie):
+        payload = DataGenerator.generate_review_payload()
+        payload.pop("text")
         resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -70,7 +68,7 @@ class TestReviewsUser:
         assert resp.json()["text"] is None
 
     def test_create_review_duplicate_conflict(self, authorized_api_manager, created_movie):
-        payload = {"rating": 5, "text": "First"}
+        payload = DataGenerator.generate_review_payload(rating=5, text="First")
         authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -80,7 +78,7 @@ class TestReviewsUser:
         authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
-            data={"rating": 1, "text": "Second"},
+            data=DataGenerator.generate_review_payload(rating=1, text="Second"),
             expected_status=409
         )
 
@@ -88,11 +86,11 @@ class TestReviewsUser:
         authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
-            data={"rating": 3, "text": "Old"},
+            data=DataGenerator.generate_review_payload(rating=3, text="Old"),
             expected_status=201
         )
 
-        payload = {"rating": 5, "text": "Updated"}
+        payload = DataGenerator.generate_review_payload(rating=5, text="Updated")
         resp = authorized_api_manager.movies_api.send_request(
             "PUT",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -106,7 +104,7 @@ class TestReviewsUser:
         authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
-            data={"rating": 3, "text": "To delete"},
+            data=DataGenerator.generate_review_payload(rating=3, text="To delete"),
             expected_status=201
         )
 
@@ -118,7 +116,7 @@ class TestReviewsUser:
         assert resp.json()["userId"] == current_user["id"]
 
     def test_create_review_unauthorized(self, api_manager, created_movie):
-        payload = {"rating": 5, "text": DataGenerator.generate_random_name()}
+        payload = DataGenerator.generate_review_payload(rating=5)
         api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
@@ -132,7 +130,7 @@ class TestReviewsAdmin:
         review_resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
-            data={"rating": 2, "text": DataGenerator.generate_random_name()},
+            data=DataGenerator.generate_review_payload(rating=2),
             expected_status=201
         )
         user_id = review_resp.json()["userId"]
@@ -148,7 +146,7 @@ class TestReviewsAdmin:
         review_resp = authorized_api_manager.movies_api.send_request(
             "POST",
             Endpoints.MOVIE_REVIEWS.format(created_movie),
-            data={"rating": 2, "text": DataGenerator.generate_random_name()},
+            data=DataGenerator.generate_review_payload(rating=2),
             expected_status=201
         )
         user_id = review_resp.json()["userId"]
@@ -165,16 +163,40 @@ class TestReviewsAdmin:
         )
         assert resp.json()["userId"] == user_id
 
-    def test_hide_review_unauthorized(self, api_manager, created_movie, current_user):
+    def test_hide_review_unauthorized(self, authorized_api_manager, api_manager, created_movie):
+        # Сначала создаем отзыв чтобы был валидный userId
+        review_resp = authorized_api_manager.movies_api.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=DataGenerator.generate_review_payload(),
+            expected_status=201
+        )
+        user_id = review_resp.json()["userId"]
+
+        # Пытаемся скрыть без токена - должен быть 401, а не 404
         api_manager.movies_api.send_request(
             "PATCH",
-            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, current_user['id']),
+            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id),
             expected_status=401
         )
 
-    def test_show_review_unauthorized(self, api_manager, created_movie, current_user):
+    def test_show_review_unauthorized(self, authorized_api_manager, api_manager, created_movie):
+        review_resp = authorized_api_manager.movies_api.send_request(
+            "POST",
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=DataGenerator.generate_review_payload(),
+            expected_status=201
+        )
+        user_id = review_resp.json()["userId"]
+
+        authorized_api_manager.movies_api.send_request(
+            "PATCH",
+            Endpoints.MOVIE_REVIEW_HIDE.format(created_movie, user_id),
+            expected_status=200
+        )
+
         api_manager.movies_api.send_request(
             "PATCH",
-            Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, current_user['id']),
+            Endpoints.MOVIE_REVIEW_SHOW.format(created_movie, user_id),
             expected_status=401
         )

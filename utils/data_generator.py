@@ -28,3 +28,27 @@ class DataGenerator:
         password = list(letters + digits + remaining_chars)
         random.shuffle(password)
         return ''.join(password)
+
+    @staticmethod
+    def generate_movie_payload(genre_id, **overrides):
+        payload = {
+            "name": DataGenerator.generate_random_name(),
+            "price": faker.random_int(min=100, max=1000),
+            "description": faker.text(max_nb_chars=200),
+            "location": faker.random_element(["MSK", "SPB"]),
+            "published": True,
+            "genreId": genre_id,
+            "imageUrl": faker.image_url()
+        }
+        payload.update(overrides)
+        return payload
+
+    @staticmethod
+    def generate_review_payload(**overrides):
+        """Генератор тела отзыва. По дефолту rating=5, text=рандом"""
+        payload = {
+            "rating": faker.random_int(min=1, max=5),
+            "text": faker.text(max_nb_chars=100)
+        }
+        payload.update(overrides)
+        return payload
