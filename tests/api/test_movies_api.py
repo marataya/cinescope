@@ -2,12 +2,13 @@ import allure
 import pytest
 
 from constants import Endpoints
+from models.movie import MovieResponse
 from utils.data_generator import DataGenerator, fake
 
 
 @allure.epic("Movies API")
 class TestMoviesPublic:
-    @allure.title("Получение списка фильмов с пагинацией")
+    @allure.title("Получение списка фильмов с пагинацией по умолчанию")
     def test_get_movies_default_pagination(self, api_manager):
         resp = api_manager.movies_api.send_request(
             "GET",
@@ -83,13 +84,14 @@ class TestMoviesPublic:
 class TestMoviesSuperAdmin:
     @allure.title("Удаление фильма")
     def test_delete_movie(self, super_admin_api_manager):
-        # Создаем фильм вручную, а не через фикстуру created_movie
+        # Создаем жанр
         genre_payload = DataGenerator.generate_genre_payload()
         genre_resp = super_admin_api_manager.movies_api.send_request(
             "POST", "/genres", data=genre_payload, expected_status=201
         )
         genre_id = genre_resp.json()["id"]
 
+        # Создаем фильм
         movie_payload = DataGenerator.generate_movie_payload(genre_id=genre_id)
         movie_resp = super_admin_api_manager.movies_api.send_request(
             "POST", "/movies", data=movie_payload, expected_status=201
@@ -101,7 +103,7 @@ class TestMoviesSuperAdmin:
             "DELETE", f"/movies/{movie_id}", expected_status=200
         )
 
-        # Проверяем
+        # Проверяем что удален
         super_admin_api_manager.movies_api.send_request(
             "GET", f"/movies/{movie_id}", expected_status=404
         )
@@ -113,6 +115,7 @@ class TestMoviesSuperAdmin:
 
     @allure.title("Обновление фильма")
     def test_patch_movie(self, super_admin_api_manager, created_movie):
+        # created_movie можно использовать, т.к. мы не удаляем в тесте
         new_price = fake.random_int(min=100, max=1000)
         resp = super_admin_api_manager.movies_api.send_request(
             "PATCH",
@@ -122,11 +125,23 @@ class TestMoviesSuperAdmin:
         )
         assert resp.json()["price"] == new_price
 
-    @allure.title("Создание фильма без авторизации")
-    def test_create_movie_unauthorized(self, api_manager, created_genre):
+    @allure.title("Создание фильма")
+    def test_create_movie(self, super_admin_api_manager, created_genre):
         payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
-        api_manager.movies_api.send_request(
-            "POST", "/movies", data=payload, expected_status=401
+        resp = super_admin_api_manager.movies_api.send_request(
+            "POST", "/movies", data=payload, expected_status=201
+        )
+
+        # Валидирует типы, наличие полей и парсит дату
+        movie = MovieResponse(**resp.json())
+
+        assert movie.name == payload["name"]
+        assert movie.price == payload["price"]
+        assert movie.genreId == created_genre
+        assert movie.rating == 0
+
+        super_admin_api_manager.movies_api.send_request(
+            "DELETE", f"/movies/{movie.id}", expected_status=200
         )
 
     @allure.title("Создание фильма дубликат")
@@ -135,10 +150,10 @@ class TestMoviesSuperAdmin:
         resp = super_admin_api_manager.movies_api.send_request(
             "GET", f"/movies/{created_movie}", expected_status=200
         )
-        existing_movie = resp.json()
+        existing = resp.json()
 
-        payload = DataGenerator.generate_movie_payload(genre_id=existing_movie["genreId"])
-        payload["name"] = existing_movie["name"]  # дублируем имя
+        payload = DataGenerator.generate_movie_payload(genre_id=existing["genreId"])
+        payload["name"] = existing["name"]
 
         super_admin_api_manager.movies_api.send_request(
             "POST", "/movies", data=payload, expected_status=409
@@ -266,10 +281,9 @@ class TestReviewsUser:
 
     @allure.title("Создание отзыва без авторизации")
     def test_create_review_unauthorized(self, api_manager, created_movie):
-        payload = DataGenerator.generate_review_payload()
         api_manager.movies_api.send_request(
             "POST",
-            f"/movies/{created_movie}/reviews",
-            data=payload,
+            Endpoints.MOVIE_REVIEWS.format(created_movie),
+            data=DataGenerator.generate_review_payload(),
             expected_status=401
         )
