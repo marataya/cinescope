@@ -2,7 +2,7 @@ from constants import AUTH_BASE_URL, Endpoints
 from custom_requester.custom_requester import CustomRequester
 
 
-class AuthAPI(CustomRequester):
+class AuthApi(CustomRequester):
     def __init__(self, session):
         super().__init__(session=session, base_url=AUTH_BASE_URL)
 
