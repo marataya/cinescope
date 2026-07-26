@@ -2,6 +2,9 @@ import pytest
 import requests
 
 from api.api_manager import ApiManager
+from constants.roles import Roles
+from entities.user import User
+from resources.user_creds import SuperAdminCreds
 from utils.data_generator import DataGenerator
 
 
@@ -17,7 +20,7 @@ def super_admin_api_manager():
     """Отдельная сессия с токеном админа"""
     session = requests.Session()
     manager = ApiManager(session=session)
-    resp = manager.auth_api.login_user(
+    resp = manager.auth_api.login(
         credentials={"email": "api1@gmail.com", "password": "asdqwe123Q"},
         expected_status=201
     )
@@ -36,7 +39,7 @@ def registered_user(api_manager):
 
 @pytest.fixture
 def logged_in_user(api_manager, registered_user):
-    resp = api_manager.auth_api.login_user(
+    resp = api_manager.auth_api.login(
         credentials={
             "email": registered_user["email"],
             "password": registered_user["password"]
@@ -75,3 +78,57 @@ def created_movie(super_admin_api_manager, created_genre):
     super_admin_api_manager.movies_api.send_request(
         "DELETE", f"/movies/{movie_id}", expected_status=200
     )
+
+@pytest.fixture
+def user_session():
+    user_pool: list[ApiManager] = []
+
+    def _create_user_session():
+        session = requests.Session()
+        user_session = ApiManager(session=session)
+        user_pool.append(user_session)
+        return user_session
+
+    yield _create_user_session
+
+    for user in user_pool:
+        user.close_session()
+
+@pytest.fixture
+def super_admin(user_session):
+    new_session = user_session()
+
+    super_admin = User(
+        SuperAdminCreds.USERNAME,
+        SuperAdminCreds.PASSWORD,
+        [Roles.SUPER_ADMIN.value],
+        new_session)
+
+    super_admin.api.auth_api.authenticate(super_admin.creds)
+    return super_admin
+
+@pytest.fixture
+def common_user(user_session, super_admin, creation_user_data):
+    new_session = user_session()
+
+    common_user = User(
+        creation_user_data['email'],
+        creation_user_data['password'],
+        list(Roles.USER.value),
+        new_session)
+
+    super_admin.api.user_api.create_user(creation_user_data)
+    common_user.api.auth_api.authenticate(common_user.creds)
+    return common_user
+
+@pytest.fixture
+def test_user():
+    return DataGenerator.generate_user_payload(is_admin_create=False)
+
+@pytest.fixture(scope="function")
+def creation_user_data(test_user):
+    # теперь test_user существует
+    test_user["verified"] = True
+    test_user["banned"] = False
+    test_user["roles"] = ["USER"]
+    return test_user
