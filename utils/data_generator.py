@@ -4,21 +4,18 @@ import uuid
 
 from faker import Faker
 
-fake = Faker("ru_RU")
-
+fake = Faker("ru_RU") # <- у тебя fake
 
 class DataGenerator:
     @staticmethod
     def generate_valid_password():
-        # Regex: /^(?=.*[a-zA-Zа-яА-Я])(?=.*\d)[a-zA-Zа-яА-Я\d?@#$%^&*_+\-()\[\]{}><\\\/|"'.,:;]{8,20}$/
-        # Важно: ё и Ё НЕ входят в а-яА-Я
         letters = string.ascii_letters
         digits = string.digits
         special = "?@#$%^&*_+-()[]{}><\\|\"'.,:;"
 
         password = [
-            random.choice(letters),  # минимум 1 буква
-            random.choice(digits)  # минимум 1 цифра
+            random.choice(letters),
+            random.choice(digits)
         ]
         length = random.randint(8, 12)
         all_chars = letters + digits + special
@@ -27,14 +24,25 @@ class DataGenerator:
         return ''.join(password)
 
     @staticmethod
-    def generate_user_payload():
-        password = DataGenerator.generate_valid_password()
-        return {
-            "email": f"test_{uuid.uuid4().hex[:8]}@test.com",
-            "password": password,
-            "passwordRepeat": password,
-            "fullName": fake.name()
+    def generate_user_payload(is_admin_create=False):
+        pwd = DataGenerator.generate_valid_password()
+        # используем fake а не faker
+        payload = {
+            "email": fake.email(),
+            "password": pwd,
+            "passwordRepeat": pwd,
+            "fullName": fake.name(),
+            "verified": True,
+            "banned": False,
+            "roles": ["USER"]
         }
+        # для /register бэк не принимает verified/banned/roles
+        if not is_admin_create:
+            payload.pop("verified", None)
+            payload.pop("banned", None)
+            payload.pop("roles", None)
+
+        return payload
 
     @staticmethod
     def generate_genre_payload():
