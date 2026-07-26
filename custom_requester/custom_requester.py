@@ -1,28 +1,24 @@
 import json
 import logging
 import os
-
 import requests
-
+from utils.data import HEADERS  # <-- берем отсюда
 
 class CustomRequester:
-    """
-    Кастомный реквестер для стандартизации и упрощения отправки HTTP-запросов.
-    """
-    base_headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    }
-
     def __init__(self, session: requests.Session, base_url: str):
         self.session = session
         self.base_url = base_url
-        self.headers = self.base_headers.copy()
+        self.headers = HEADERS.copy()  # <-- из data.py
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
+        self.session.headers.update(self.headers)
 
     def send_request(self, method, endpoint, data=None, params=None, expected_status=200, need_logging=True):
         url = f"{self.base_url}{endpoint}"
+
+        if endpoint in ["/login", "/register"]:
+            self.session.headers.pop("Authorization", None)
+
         response = self.session.request(method, url, json=data, params=params)
 
         if need_logging:
@@ -33,12 +29,20 @@ class CustomRequester:
                 f"Unexpected status code: {response.status_code}. Expected: {expected_status}. "
                 f"Response: {response.text}"
             )
+
+        if endpoint == "/login" and response.status_code in [200, 201]:
+            try:
+                token = response.json().get("accessToken")
+                if token:
+                    self.update_session_headers(Authorization=f"Bearer {token}")
+            except:
+                pass
+
         return response
 
     def update_session_headers(self, **kwargs):
-        """Обновление заголовков сессии."""
         self.headers.update(kwargs)
-        self.session.headers.update(self.headers)
+        self.session.headers.update(kwargs)
 
     def log_request_and_response(self, response):
         try:
@@ -81,7 +85,3 @@ class CustomRequester:
             self.logger.info(f"{'=' * 80}\n")
         except Exception as e:
             self.logger.error(f"\nLogging failed: {type(e)} - {e}")
-
-
-class ApiManager:
-    pass

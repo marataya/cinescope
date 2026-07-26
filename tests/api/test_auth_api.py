@@ -60,7 +60,7 @@ class TestAuthRegister:
 class TestAuthLogin:
     @allure.title("Успешный логин")
     def test_login_success(self, api_manager, registered_user):
-        resp = api_manager.auth_api.login_user(
+        resp = api_manager.auth_api.login(
             credentials={
                 "email": registered_user["email"],
                 "password": registered_user["password"]
@@ -74,7 +74,7 @@ class TestAuthLogin:
 
     @allure.title("Логин с неверным паролем")
     def test_login_wrong_password(self, api_manager, registered_user):
-        api_manager.auth_api.login_user(
+        api_manager.auth_api.login(
             credentials={
                 "email": registered_user["email"],
                 "password": "wrong_password123"
@@ -84,7 +84,7 @@ class TestAuthLogin:
 
     @allure.title("Логин несуществующего пользователя")
     def test_login_user_not_found(self, api_manager):
-        api_manager.auth_api.login_user(
+        api_manager.auth_api.login(
             credentials={
                 "email": "notexist@test.com",
                 "password": "password123"
@@ -94,13 +94,14 @@ class TestAuthLogin:
 
     @allure.title("Логин с невалидным email")
     def test_login_invalid_email_format(self, api_manager):
-        api_manager.auth_api.login_user(
+        api_manager.auth_api.login(
             credentials={
                 "email": "invalid_email",
                 "password": "password123"
             },
             expected_status=401
         )
+
 
 @allure.epic("Auth API")
 class TestAuthRefresh:

@@ -2,14 +2,16 @@
 OK = 200
 BAD_REQUEST = 400
 UNAUTHORIZED = 401
-NOT_FOUND = 404
 
 # Authentication
 USERNAME = 'api1@gmail.com'
 PASSWORD = 'asdqwe123Q'
 
 # Headers
-HEADERS = {'content-type': 'application/json'}
+HEADERS = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+}
 
 # test_GetBookingIds
 all_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

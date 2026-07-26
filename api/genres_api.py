@@ -1,4 +1,4 @@
-from constants import Endpoints
+from constants.endpoints import Endpoints
 from custom_requester.custom_requester import CustomRequester
 
 
