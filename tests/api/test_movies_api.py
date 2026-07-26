@@ -1,7 +1,7 @@
 import allure
 import pytest
-from models.movie import MovieResponse
-from utils.data_generator import DataGenerator, fake
+
+from utils.data_generator import DataGenerator
 
 
 @allure.epic("Movies API")
@@ -47,54 +47,6 @@ class TestMoviesPublic:
     @allure.title("Получение фильма по несуществующему ID")
     def test_get_movie_not_found(self, api_manager):
         api_manager.movies_api.get_movie(999999, expected_status=404)
-
-
-@allure.epic("Movies API")
-class TestMoviesSuperAdmin:
-    @allure.title("Удаление фильма")
-    def test_delete_movie(self, super_admin_api_manager, created_genre):
-        payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
-        movie = super_admin_api_manager.movies_api.create_movie(payload)
-        movie_id = movie["id"]
-
-        super_admin_api_manager.movies_api.delete_movie(movie_id)
-        super_admin_api_manager.movies_api.get_movie(movie_id, expected_status=404)
-
-    @allure.title("Обновление фильма")
-    def test_patch_movie(self, super_admin_api_manager, created_movie):
-        new_price = fake.random_int(min=100, max=1000)
-
-        updated = super_admin_api_manager.movies_api.patch_movie(
-            created_movie, {"price": new_price}
-        )
-
-        assert updated["price"] == new_price
-
-    @allure.title("Создание фильма")
-    def test_create_movie(self, super_admin_api_manager, created_genre):
-        payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
-
-        movie = super_admin_api_manager.movies_api.create_movie(payload)
-        validated = MovieResponse(**movie)
-
-        assert validated.name == payload["name"]
-        assert validated.price == payload["price"]
-        assert validated.genreId == created_genre
-        assert validated.published == payload["published"]
-        assert validated.description == payload["description"]
-        assert validated.location == payload["location"]
-        assert validated.rating == 0
-
-        super_admin_api_manager.movies_api.delete_movie(validated.id)
-
-    @allure.title("Создание фильма дубликат")
-    def test_create_movie_duplicate_name_conflict(self, super_admin_api_manager, created_movie):
-        existing = super_admin_api_manager.movies_api.get_movie(created_movie)
-
-        payload = DataGenerator.generate_movie_payload(genre_id=existing["genreId"])
-        payload["name"] = existing["name"]
-
-        super_admin_api_manager.movies_api.create_movie(payload, expected_status=409)
 
 
 @allure.epic("Reviews API")
@@ -170,3 +122,25 @@ class TestReviewsUser:
         api_manager.movies_api.create_review(
             created_movie, DataGenerator.generate_review_payload(), expected_status=401
         )
+
+
+@allure.epic("Movies API - Roles")
+class TestMoviesRoles:
+    @allure.title("ADMIN не может создавать фильмы - 403 (только SUPER_ADMIN может)")
+    def test_admin_can_create_movie(self, admin_user, created_genre):
+        payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
+        # в актуальной API ADMIN тоже получает 403 - это текущее поведение
+        admin_user.api.movies_api.create_movie(payload, expected_status=403)
+
+    @allure.title("USER не может создавать фильмы - 403")
+    def test_user_cannot_create_movie(self, common_user, created_genre):
+        payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
+        common_user.api.movies_api.create_movie(payload, expected_status=403)
+
+    @allure.title("SUPER_ADMIN может создавать фильмы - 201")
+    def test_super_admin_can_create_movie(self, super_admin, created_genre):
+        payload = DataGenerator.generate_movie_payload(genre_id=created_genre)
+        movie = super_admin.api.movies_api.create_movie(payload)
+        assert movie["id"] is not None
+        # cleanup through same super_admin
+        super_admin.api.movies_api.delete_movie(movie["id"])

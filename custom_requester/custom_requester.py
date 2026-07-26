@@ -1,8 +1,11 @@
 import json
 import logging
 import os
+
 import requests
+
 from utils.data import HEADERS  # <-- берем отсюда
+
 
 class CustomRequester:
     def __init__(self, session: requests.Session, base_url: str):

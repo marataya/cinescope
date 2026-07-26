@@ -1,6 +1,6 @@
 from api.auth_api import AuthApi
-from api.movies_api import MoviesApi
 from api.genres_api import GenresApi
+from api.movies_api import MoviesApi
 from api.user_api import UserApi
 
 
