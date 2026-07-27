@@ -144,3 +144,52 @@ class TestMoviesRoles:
         assert movie["id"] is not None
         # cleanup through same super_admin
         super_admin.api.movies_api.delete_movie(movie["id"])
+
+@allure.epic("Movies API - Filters")
+class TestMoviesFilters:
+
+    @pytest.mark.parametrize("min_price, max_price", [
+        (1, 100), (100, 500), (500, 1000),
+    ], ids=["price_1-100", "price_100-500", "price_500-1000"])
+    def test_filter_by_price_range(self, api_manager, min_price, max_price):
+        data = api_manager.movies_api.get_movies(
+            params={"minPrice": min_price, "maxPrice": max_price, "pageSize": 10, "page": 1}
+        )
+        for movie in data["movies"]:
+            assert min_price <= movie["price"] <= max_price
+
+    @pytest.mark.parametrize("location", ["MSK", "SPB"], ids=["location_MSK", "location_SPB"])
+    def test_filter_by_locations(self, api_manager, location):
+        data = api_manager.movies_api.get_movies(
+            params={"locations": location, "pageSize": 10, "page": 1}
+        )
+        for movie in data["movies"]:
+            movie_loc = movie.get("location") or movie.get("locations") or []
+            if isinstance(movie_loc, str):
+                movie_loc = [movie_loc]
+            assert location in movie_loc
+
+    def test_filter_by_genreId(self, api_manager, super_admin):
+        genre_payload = DataGenerator.generate_genre_payload()
+        genre_resp = super_admin.api.movies_api.send_request("POST", "/genres", data=genre_payload, expected_status=201)
+        genre_id = genre_resp.json()["id"]
+        movie_payload = DataGenerator.generate_movie_payload(genre_id=genre_id)
+        movie_resp = super_admin.api.movies_api.send_request("POST", "/movies", data=movie_payload, expected_status=201)
+        movie_id = movie_resp.json()["id"]
+        try:
+            data = api_manager.movies_api.get_movies(params={"genreId": genre_id, "pageSize": 10, "page": 1})
+            assert len(data["movies"]) >= 1
+        finally:
+            super_admin.api.movies_api.send_request("DELETE", f"/movies/{movie_id}", expected_status=200)
+            super_admin.api.movies_api.send_request("DELETE", f"/genres/{genre_id}", expected_status=200)
+
+    @pytest.mark.parametrize("params", [
+        {"minPrice": 1, "maxPrice": 1000, "locations": "MSK", "genreId": 1},
+        {"minPrice": 1, "maxPrice": 200, "locations": "SPB"},
+        {"locations": "MSK", "genreId": 1},
+    ], ids=["all_filters", "price+location", "location+genre"])
+    def test_filter_combined_parametrized(self, api_manager, created_genre, params):
+        if params.get("genreId") == 1:
+            params["genreId"] = created_genre
+        data = api_manager.movies_api.get_movies(params={**params, "pageSize": 10, "page": 1})
+        assert "movies" in data

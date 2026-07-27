@@ -6,8 +6,16 @@ class MoviesApi(CustomRequester):
     def __init__(self, session):
         super().__init__(session=session, base_url="https://api.dev-cinescope.coconutqa.ru")
 
+    # def get_movies(self, params=None, expected_status=200):
+    #     return self.send_request("GET", Endpoints.MOVIES, params=params, expected_status=expected_status).json()
+
     def get_movies(self, params=None, expected_status=200):
-        return self.send_request("GET", Endpoints.MOVIES, params=params, expected_status=expected_status).json()
+        return self.send_request(
+            "GET",
+            Endpoints.MOVIES,
+            params=params,  # <-- добавь
+            expected_status=expected_status
+        ).json()
 
     def get_movie(self, movie_id, expected_status=200):
         return self.send_request("GET", f"{Endpoints.MOVIES}/{movie_id}", expected_status=expected_status).json()
