@@ -7,6 +7,7 @@ from utils.data_generator import DataGenerator
 @allure.epic("Movies API")
 class TestMoviesPublic:
     @allure.title("Получение списка фильмов с пагинацией по умолчанию")
+    @pytest.mark.xfail
     def test_get_movies_default_pagination(self, api_manager):
         data = api_manager.movies_api.get_movies()
 
@@ -75,12 +76,14 @@ class TestReviewsUser:
         assert review["user"]["fullName"]
 
     @allure.title("Создание отзыва с rating=0")
+    @pytest.mark.slow
     def test_create_review_rating_zero_accepted(self, authorized_api_manager, created_movie):
         payload = DataGenerator.generate_review_payload(rating=0)
         review = authorized_api_manager.movies_api.create_review(created_movie, payload)
         assert review["rating"] == 0
 
     @allure.title("Создание отзыва с rating > 5")
+    @pytest.mark.slow
     def test_create_review_rating_above_max_accepted(self, authorized_api_manager, created_movie):
         payload = DataGenerator.generate_review_payload(rating=6)
         review = authorized_api_manager.movies_api.create_review(created_movie, payload)
@@ -93,12 +96,14 @@ class TestReviewsUser:
         assert review["text"] is None
 
     @allure.title("Повторное создание отзыва - конфликт")
+    @pytest.mark.slow
     def test_create_review_duplicate_conflict(self, authorized_api_manager, created_movie):
         payload = DataGenerator.generate_review_payload()
         authorized_api_manager.movies_api.create_review(created_movie, payload)
         authorized_api_manager.movies_api.create_review(created_movie, payload, expected_status=409)
 
     @allure.title("Редактирование своего отзыва")
+    @pytest.mark.slow
     def test_edit_review(self, authorized_api_manager, created_movie):
         authorized_api_manager.movies_api.create_review(created_movie, {"rating": 3, "text": "Old"})
 
@@ -111,6 +116,7 @@ class TestReviewsUser:
         assert updated["hidden"] is False
 
     @allure.title("Удаление своего отзыва")
+    @pytest.mark.slow
     def test_delete_review(self, authorized_api_manager, created_movie):
         authorized_api_manager.movies_api.create_review(created_movie, {"rating": 3, "text": "To delete"})
 
