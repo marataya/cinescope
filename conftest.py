@@ -75,16 +75,24 @@ def creation_user_data(test_user: TestUser):
     data["banned"] = False
     return data
 
+
 @pytest.fixture
-def registered_user(api_manager, test_user: TestUser):
+def registration_user_data(test_user: TestUser) -> TestUser:
+    return test_user
+
+@pytest.fixture
+def registered_user(api_manager: ApiManager, test_user: TestUser):
     """Регистрирует test_user через /auth/register"""
-    resp = api_manager.auth_api.register_user(
-        user_data=test_user.to_api_dict(),
-        expected_status=201
-    )
-    user_data = resp.json()
-    user_data["password"] = test_user.password
-    yield user_data
+    payload = test_user.to_api_dict()
+    api_manager.auth_api.register_user(user_data=payload, expected_status=201)
+
+    # возвращаем dict для совместимости со старыми тестами
+    # которые делают registered_user["email"]
+    result = payload.copy()
+    result["email"] = test_user.email
+    result["password"] = test_user.password
+    result["fullName"] = test_user.fullName
+    return result
 
 @pytest.fixture
 def logged_in_user(api_manager, registered_user):
@@ -98,6 +106,7 @@ def logged_in_user(api_manager, registered_user):
     tokens = resp.json()
     tokens["user"] = registered_user
     yield tokens
+
 
 @pytest.fixture
 def authorized_api_manager(api_manager, logged_in_user):

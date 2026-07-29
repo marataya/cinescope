@@ -16,6 +16,12 @@ class AuthApi(CustomRequester):
         super().__init__(session=session, base_url=AUTH_BASE_URL)
 
     def register_user(self, user_data, expected_status=201, **kwargs):
+        # Добавь конвертацию TestUser -> dict
+        if hasattr(user_data, "to_api_dict"):
+            user_data = user_data.to_api_dict()
+        elif hasattr(user_data, "model_dump"):
+            user_data = user_data.model_dump()
+
         return self.send_request(
             method="POST",
             endpoint=Endpoints.REGISTER,

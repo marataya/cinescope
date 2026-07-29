@@ -1,18 +1,20 @@
 import datetime
-from typing import Annotated
-
-from pydantic import BaseModel, Field, field_validator, EmailStr
-from constants.roles import Roles
+from pydantic import BaseModel, Field, field_validator, EmailStr, ConfigDict
 
 
 class RegisterUserResponse(BaseModel):
+    model_config = ConfigDict(extra='allow')
+
     id: str
-    email: Annotated[EmailStr, Field(description="Email пользователя")]
-    fullName: Annotated[str, Field(min_length=1, max_length=100, description="Полное имя пользователя")]
+    email: str
+    fullName: str
     verified: bool
-    banned: bool
-    roles: list[Roles]
-    createdAt: Annotated[str, Field(description="Дата и время создания пользователя в формате ISO 8601")]
+    roles: list[str]
+
+    # optional
+    banned: bool | None = None
+    createdAt: str | None = None
+    updatedAt: str | None = None
 
     @field_validator("createdAt")
     @classmethod
