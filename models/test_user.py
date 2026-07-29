@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Annotated
 
 from pydantic import BaseModel, Field, field_validator, EmailStr
 
@@ -7,12 +7,12 @@ from constants.roles import Roles
 
 class TestUser(BaseModel):
     email: EmailStr
-    fullName: str = Field(min_length=2, max_length=100)
-    password: str = Field(min_length=8, max_length=20)
-    passwordRepeat: str = Field(min_length=8, max_length=20, description="Пароли должны совпадать")
-    roles: list[Roles] = Field(default_factory=lambda: [Roles.USER])
-    verified: Optional[bool] = None
-    banned: Optional[bool] = None
+    fullName: Annotated[str, Field(min_length=2, max_length=100)]
+    password: Annotated[str, Field(min_length=8, max_length=20)]
+    passwordRepeat: Annotated[str, Field(min_length=8, max_length=20, description="Пароли должны совпадать")]
+    roles: Annotated[list[Roles], Field(default_factory=lambda: [Roles.USER])]
+    verified: bool | None = None
+    banned: bool | None = None
 
     @field_validator("passwordRepeat")
     @classmethod
