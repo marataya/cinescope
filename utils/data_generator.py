@@ -1,12 +1,12 @@
 import random
 import string
 import uuid
-
 from faker import Faker
 
-fake = Faker("ru_RU") # <- у тебя fake
+fake = Faker("ru_RU")
 
 class DataGenerator:
+
     @staticmethod
     def generate_valid_password():
         letters = string.ascii_letters
@@ -23,20 +23,41 @@ class DataGenerator:
         random.shuffle(password)
         return ''.join(password)
 
+    # ========== NEW METHODS FOR TestUser model ==========
+
+    @staticmethod
+    def generate_random_email():
+        # уникальность через uuid
+        return f"{uuid.uuid4().hex[:8]}_{fake.email()}"
+
+    @staticmethod
+    def generate_random_name():
+        return fake.name()
+
+    @staticmethod
+    def generate_random_fullName():
+        # alias для совместимости
+        return DataGenerator.generate_random_name()
+
+    # alias который ты использовал раньше
+    @staticmethod
+    def generate_random_password():
+        return DataGenerator.generate_valid_password()
+
+    # ========== EXISTING METHODS ==========
+
     @staticmethod
     def generate_user_payload(is_admin_create=False):
         pwd = DataGenerator.generate_valid_password()
-        # используем fake а не faker
         payload = {
-            "email": fake.email(),
+            "email": DataGenerator.generate_random_email(),
             "password": pwd,
             "passwordRepeat": pwd,
-            "fullName": fake.name(),
+            "fullName": DataGenerator.generate_random_name(),
             "verified": True,
             "banned": False,
             "roles": ["USER"]
         }
-        # для /register бэк не принимает verified/banned/roles
         if not is_admin_create:
             payload.pop("verified", None)
             payload.pop("banned", None)
@@ -54,7 +75,7 @@ class DataGenerator:
             "name": f"{fake.word().capitalize()} {uuid.uuid4().hex[:6]}",
             "price": fake.random_int(min=100, max=1000),
             "description": fake.text(max_nb_chars=200),
-            "location": fake.random_element(["MSK", "SPB"]),
+            "location": fake.random_element(elements=["MSK", "SPB"]),
             "published": True,
             "genreId": genre_id,
             "imageUrl": fake.image_url()
@@ -65,4 +86,16 @@ class DataGenerator:
         return {
             "rating": rating if rating is not None else fake.random_int(min=0, max=5),
             "text": fake.text(max_nb_chars=100)
+        }
+
+    @staticmethod
+    def generate_movie_filter_payload():
+        """Для параметризованных тестов фильтров"""
+        return {
+            "minPrice": fake.random_int(min=1, max=400),
+            "maxPrice": fake.random_int(min=500, max=1000),
+            "locations": fake.random_element(elements=["MSK", "SPB"]),
+            "genreId": 1,
+            "pageSize": 10,
+            "page": 1
         }

@@ -7,7 +7,6 @@ from utils.data_generator import DataGenerator
 @allure.epic("Movies API")
 class TestMoviesPublic:
     @allure.title("Получение списка фильмов с пагинацией по умолчанию")
-    @pytest.mark.xfail
     def test_get_movies_default_pagination(self, api_manager):
         data = api_manager.movies_api.get_movies()
 
