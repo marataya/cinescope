@@ -7,6 +7,8 @@ from entities.user import User
 from models.test_user import TestUser
 from resources.user_creds import SuperAdminCreds
 from utils.data_generator import DataGenerator
+from utils.db_client import DBClient
+
 
 @pytest.fixture
 def user_session():
@@ -183,3 +185,9 @@ def admin_user(user_session, super_admin, test_admin_user: TestUser):
                 break
     except Exception as e:
         print(f"admin_user cleanup failed: {e}")
+        
+@pytest.fixture
+def db_client():
+    client = DBClient()
+    yield client
+    client.close()
