@@ -3,11 +3,12 @@ import requests
 
 from api.api_manager import ApiManager
 from constants.roles import Roles
+from db_requester.db_client import get_db_session
+from db_requester.db_helper import DBHelper
 from entities.user import User
 from models.test_user import TestUser
 from resources.user_creds import SuperAdminCreds
 from utils.data_generator import DataGenerator
-from utils.db_client import DBClient
 
 
 @pytest.fixture
@@ -186,8 +187,22 @@ def admin_user(user_session, super_admin, test_admin_user: TestUser):
     except Exception as e:
         print(f"admin_user cleanup failed: {e}")
         
+# @pytest.fixture
+# def db_client():
+#     client = DBClient()
+#     yield client
+#     client.close()
+
 @pytest.fixture
-def db_client():
-    client = DBClient()
-    yield client
-    client.close()
+def db_session():
+    session = get_db_session()
+    yield session
+    session.close()
+
+@pytest.fixture(scope="function")
+def db_helper(db_session) -> DBHelper:
+    """
+    Фикстура для экземпляра хелпера
+    """
+    db_helper = DBHelper(db_session)
+    return db_helper

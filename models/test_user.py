@@ -3,6 +3,7 @@ from typing import Annotated
 from pydantic import BaseModel, Field, field_validator, EmailStr
 
 from constants.roles import Roles
+from utils.data_generator import DataGenerator
 
 
 class TestUser(BaseModel):
@@ -26,16 +27,6 @@ class TestUser(BaseModel):
     #     if self.password!= self.passwordRepeat:
     #         raise ValueError("password!= passwordRepeat")
 
-    # @classmethod
-    # def random(cls) -> "TestUser":
-    #     pwd = DataGenerator.generate_random_password()
-    #     return cls(
-    #         email=DataGenerator.generate_random_email(),
-    #         fullName=DataGenerator.generate_random_name(),
-    #         password=pwd,
-    #         passwordRepeat=pwd,
-    #         roles=[Roles.USER.value]
-    #     )
 
     @property
     def creds(self) -> dict:
@@ -48,6 +39,18 @@ class TestUser(BaseModel):
         if "roles" in data:
             data["roles"] = [r.value if isinstance(r, Roles) else r for r in self.roles]
         return data
+
+    def to_db_dict(self) -> dict:
+        """Для прямой вставки через DBHelper -> UserDBModel"""
+        return {
+            "id": DataGenerator.generate_uuid() if hasattr(self, 'id') else None, # если у тебя id генерит БД - убери
+            "email": str(self.email),
+            "full_name": self.fullName,
+            "password": self.password, # тут должен быть хеш, если вставляешь напрямую
+            "verified": self.verified if self.verified is not None else True,
+            "banned": self.banned if self.banned is not None else False,
+            "roles": [r.value for r in self.roles],
+        }
 
     def model_dump_for_admin(self) -> dict:
         """Для POST /user через super_admin"""

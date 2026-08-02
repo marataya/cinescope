@@ -1,6 +1,7 @@
 import random
 import string
 import uuid
+
 from faker import Faker
 
 fake = Faker("ru_RU")
@@ -33,11 +34,6 @@ class DataGenerator:
     @staticmethod
     def generate_random_name():
         return fake.name()
-
-    @staticmethod
-    def generate_random_fullName():
-        # alias для совместимости
-        return DataGenerator.generate_random_name()
 
     # alias который ты использовал раньше
     @staticmethod
@@ -99,3 +95,12 @@ class DataGenerator:
             "pageSize": 10,
             "page": 1
         }
+
+    # ======== TRANSACTIONAL TESTS ===============
+    @staticmethod
+    def generate_random_int(max_val: int = 10000):
+        return random.randint(1, max_val)
+
+    @staticmethod
+    def generate_uuid():
+        return str(uuid.uuid4())

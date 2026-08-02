@@ -1,5 +1,6 @@
 import datetime
-from pydantic import BaseModel, Field, field_validator, EmailStr, ConfigDict
+
+from pydantic import BaseModel, field_validator, ConfigDict
 
 
 class RegisterUserResponse(BaseModel):
