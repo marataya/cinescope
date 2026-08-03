@@ -1,0 +1,19 @@
+2026-08-04 00:25:26 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_missing_required_field[email][0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 242' \
+-d '{"password": "k<)F[H00?NvS", "passwordRepeat": "k<)F[H00?NvS", "fullName": "\u041d\u0435\u0441\u0442\u0435\u0440\u043e\u0432\u0430 \u041f\u0440\u0430\u0441\u043a\u043e\u0432\u044c\u044f \u0418\u043b\u044c\u0438\u043d\u0438\u0447\u043d\u0430"}' 
+
+2026-08-04 00:25:26 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{
+    "message": [
+        "Некорректный email",
+        "Максимальная длина email 32 символа",
+        "Минимальная длина email 3 символа",
+        "Поле email должно быть строкой"
+    ],
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m

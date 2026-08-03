@@ -1,0 +1,187 @@
+2026-08-04 00:59:46 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 228' \
+-d '{"email": "09ba1e89_ybobrov@example.net", "fullName": "\u0410\u043d\u043d\u0430 \u042e\u043b\u044c\u0435\u0432\u043d\u0430 \u0417\u0443\u0435\u0432\u0430", "password": "pgKY4O)e", "passwordRepeat": "pgKY4O)e", "roles": ["USER"]}' 
+
+2026-08-04 00:59:46 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:46 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "042e41bb-1187-4049-ba7f-4d5b2883ebec",
+    "email": "09ba1e89_ybobrov@example.net",
+    "fullName": "Анна Юльевна Зуева",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:46.332Z"
+}
+2026-08-04 00:59:46 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 65' \
+-d '{"email": "09ba1e89_ybobrov@example.net", "password": "pgKY4O)e"}' 
+
+2026-08-04 00:59:46 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:46 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "042e41bb-1187-4049-ba7f-4d5b2883ebec",
+        "email": "09ba1e89_ybobrov@example.net",
+        "fullName": "Анна Юльевна Зуева",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0MmU0MWJiLTExODctNDA0OS1iYTdmLTRkNWIyODgzZWJlYyIsImVtYWlsIjoiMDliYTFlODlfeWJvYnJvdkBleGFtcGxlLm5ldCIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NzE4NiwiZXhwIjoxNzg1Nzg4OTg2fQ.ZWn1lfFoqzTNy6xEWz1RjCS9PAATpbgcyiPx7eWhxMU",
+    "refreshToken": "132c7d4b-6600-42f8-b0e1-ccc12f4d0ad4",
+    "expiresIn": 1785788986631
+}
+2026-08-04 00:59:47 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:47 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:47 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg3LCJleHAiOjE3ODU3ODg5ODd9.DW-gc4FUjSBmzNZZ6XhNBKl5EjdAerNYa38whmucEvg",
+    "refreshToken": "84e02fa2-eaaf-4fa2-b539-60bac829031c",
+    "expiresIn": 1785788987127
+}
+2026-08-04 00:59:47 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg3LCJleHAiOjE3ODU3ODg5ODd9.DW-gc4FUjSBmzNZZ6XhNBKl5EjdAerNYa38whmucEvg' \
+-H 'Content-Length: 49' \
+-d '{"name": "\u0411\u043e\u043b\u0435\u0435 6be7c6"}' 
+
+2026-08-04 00:59:47 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:47 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4357,
+    "name": "Более 6be7c6"
+}
+2026-08-04 00:59:47 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg3LCJleHAiOjE3ODU3ODg5ODd9.DW-gc4FUjSBmzNZZ6XhNBKl5EjdAerNYa38whmucEvg' \
+-H 'Content-Length: 1169' \
+-d '{"name": "\u0413\u043e\u0441\u043f\u043e\u0434\u044c a44ac7", "price": 839, "description": "\u0412\u0438\u0441\u0435\u0442\u044c \u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0435\u043d\u0438\u0435 \u0441\u043f\u043e\u0440\u0442 \u043f\u0440\u0438\u044f\u0442\u0435\u043b\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u0430\u0442\u044c.\n\u0413\u0443\u043b\u044f\u0442\u044c \u0437\u0430\u043f\u0435\u0442\u044c \u043c\u044f\u0433\u043a\u0438\u0439 \u043c\u043e\u043d\u0435\u0442\u0430 \u0440\u0435\u0448\u0435\u0442\u043a\u0430 \u043d\u0435\u0440\u0432\u043d\u043e. \u041f\u043b\u0430\u0432\u043d\u043e \u0434\u0440\u0443\u0436\u043d\u043e \u043a\u0430\u0440\u043c\u0430\u043d \u0437\u0430\u0434\u0435\u0440\u0436\u0430\u0442\u044c \u043f\u0440\u0438\u0441\u0435\u0441\u0442\u044c \u0448\u043a\u043e\u043b\u044c\u043d\u044b\u0439. \u041f\u043e\u0445\u043e\u0440\u043e\u043d\u044b \u0434\u043e\u0441\u0442\u043e\u0438\u043d\u0441\u0442\u0432\u043e \u044f\u0440\u043a\u043e \u043f\u043e\u0439\u043c\u0430\u0442\u044c \u043f\u0435\u0441\u043d\u044f \u0440\u0438\u0441.", "location": "MSK", "published": true, "genreId": 4357, "imageUrl": "https://picsum.photos/526/241"}' 
+
+2026-08-04 00:59:47 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:47 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66555,
+    "name": "Господь a44ac7",
+    "price": 839,
+    "description": "Висеть освобождение спорт приятель доставать.\nГулять запеть мягкий монета решетка нервно. Плавно дружно карман задержать присесть школьный. Похороны достоинство ярко поймать песня рис.",
+    "imageUrl": "https://picsum.photos/526/241",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4357,
+    "createdAt": "2026-08-03T19:59:47.589Z",
+    "genre": {
+        "name": "Более 6be7c6"
+    }
+}
+2026-08-04 00:59:47 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66555/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0MmU0MWJiLTExODctNDA0OS1iYTdmLTRkNWIyODgzZWJlYyIsImVtYWlsIjoiMDliYTFlODlfeWJvYnJvdkBleGFtcGxlLm5ldCIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NzE4NiwiZXhwIjoxNzg1Nzg4OTg2fQ.ZWn1lfFoqzTNy6xEWz1RjCS9PAATpbgcyiPx7eWhxMU' \
+-H 'Content-Length: 352' \
+-d '{"rating": 5, "text": "\u0413\u043e\u043b\u043e\u0432\u043a\u0430 \u0442\u0435\u0440\u0430\u043f\u0438\u044f \u0441\u044b\u043d\u043e\u043a. \u0421\u043e\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043a\u0443\u0437\u043d\u0435\u0446 \u0432\u0440\u044f\u0434 \u043d\u044b\u043d\u0435 \u0437\u0430\u0442\u043e."}' 
+
+2026-08-04 00:59:47 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:47 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "042e41bb-1187-4049-ba7f-4d5b2883ebec",
+    "text": "Головка терапия сынок. Социалистический кузнец вряд ныне зато.",
+    "rating": 5,
+    "createdAt": "2026-08-03T19:59:47.871Z",
+    "user": {
+        "fullName": "Анна Юльевна Зуева"
+    }
+}
+2026-08-04 00:59:47 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66555' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg3LCJleHAiOjE3ODU3ODg5ODd9.DW-gc4FUjSBmzNZZ6XhNBKl5EjdAerNYa38whmucEvg' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:47 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:47 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66555,
+    "name": "Господь a44ac7",
+    "price": 839,
+    "description": "Висеть освобождение спорт приятель доставать.\nГулять запеть мягкий монета решетка нервно. Плавно дружно карман задержать присесть школьный. Похороны достоинство ярко поймать песня рис.",
+    "imageUrl": "https://picsum.photos/526/241",
+    "location": "MSK",
+    "published": true,
+    "rating": 5,
+    "genreId": 4357,
+    "createdAt": "2026-08-03T19:59:47.589Z",
+    "reviews": [
+        {
+            "userId": "042e41bb-1187-4049-ba7f-4d5b2883ebec",
+            "text": "Головка терапия сынок. Социалистический кузнец вряд ныне зато.",
+            "rating": 5,
+            "createdAt": "2026-08-03T19:59:47.871Z",
+            "user": {
+                "fullName": "Анна Юльевна Зуева"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Более 6be7c6"
+    }
+}
+2026-08-04 00:59:48 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4357' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg3LCJleHAiOjE3ODU3ODg5ODd9.DW-gc4FUjSBmzNZZ6XhNBKl5EjdAerNYa38whmucEvg' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:48 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:48 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4357,
+    "name": "Более 6be7c6"
+}

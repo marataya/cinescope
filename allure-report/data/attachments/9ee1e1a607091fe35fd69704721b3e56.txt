@@ -1,0 +1,167 @@
+2026-08-04 00:25:58 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_by_locations[location_SPB][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?locations=SPB&pageSize=10&page=1' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:25:58 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:58 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 110,
+            "name": "Network soon.",
+            "description": "Kind good stuff case shake dream scientist small. Bad simple sea inside five.",
+            "genreId": 9,
+            "imageUrl": "https://placekitten.com/716/584",
+            "price": 130,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-08T11:17:38.758Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 589,
+            "name": "Movie another name",
+            "description": "Movie description",
+            "genreId": 1,
+            "imageUrl": "https://image.url",
+            "price": 100,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-20T20:59:56.997Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 836,
+            "name": "Виртуальная и многозадачная возможность",
+            "description": "Означать тюрьма тута магазин адвокат. Задержать песенка порядок чувство легко бок.",
+            "genreId": 7,
+            "imageUrl": "https://www.oao.biz/",
+            "price": 468,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-22T15:40:55.013Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 885,
+            "name": "Information course.",
+            "description": "How product able. Today perhaps product however onto PM anything.\nGun result per. Who affect feel once per away. Easy second something who.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/905/911",
+            "price": 713,
+            "rating": 1,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T11:38:15.515Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 897,
+            "name": "Автономный и логистический интерфейс",
+            "description": "Тесно дружно мелочь солнце функция задержать. Пропаганда подземный мальчишка решение провинция боец.\nПодземный снимать основание успокоиться. Какой металл миллиард советовать.",
+            "genreId": 10,
+            "imageUrl": "https://oktoblu.com/",
+            "price": 746,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T12:31:07.292Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 995,
+            "name": "Фильм jkzqaqqvmm",
+            "description": "Описание mqdsqccdhbiatwmafisziyhgwxkozl",
+            "genreId": 7,
+            "imageUrl": "https://www.walker.org/tagmain.htm",
+            "price": 445,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T20:31:06.323Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 997,
+            "name": "Фильм xinaamufkf",
+            "description": "Описание vycdjiyusamgozhqpgdlczngtwpoby",
+            "genreId": 7,
+            "imageUrl": "https://munoz-williams.info/postsabout.jsp",
+            "price": 685,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T20:33:39.566Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1026,
+            "name": "Say.",
+            "description": "Return join himself quickly rate support ask society. Free property ok. Course no purpose ago address myself. Project institution strategy.\nTerm condition child no. Time section different drug full.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/450/543",
+            "price": 276,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-24T04:28:23.404Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1095,
+            "name": "Theory apply.",
+            "description": "Charge news mention eat computer show. Government imagine lose interest attack loss. Product painting accept best sister continue.\nBlood operation look seek growth. President fill you north do.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/808/445",
+            "price": 170,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-26T11:22:29.489Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1115,
+            "name": "Article.",
+            "description": "Later whole second able likely admit only. Trouble phone age way.\nLearn early become name. Shoulder start just service information magazine.",
+            "genreId": 1,
+            "imageUrl": "https://dummyimage.com/718x781",
+            "price": 325,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-26T11:27:32.798Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        }
+    ],
+    "count": 2058,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 206
+}

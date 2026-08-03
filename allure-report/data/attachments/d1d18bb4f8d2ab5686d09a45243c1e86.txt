@@ -1,0 +1,13 @@
+2026-08-04 00:25:29 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthLogin::test_login_user_not_found[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 57' \
+-d '{"email": "notexist@test.com", "password": "password123"}' 
+
+2026-08-04 00:25:29 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m500[0m
+DATA: [31m{
+    "statusCode": 500,
+    "message": "Internal server error"
+}[0m

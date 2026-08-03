@@ -1,0 +1,1 @@
+{"id":"adaeac632f89069081205bcf3e9b8ca6","fullName":"tests.api.test_movies_api.TestMoviesPublic#test_get_movie_by_id","name":"Получение фильма по ID","status":"passed","testResultsByEnv":{"default":"963131023c03aa9af5d0382e174ba120"}}

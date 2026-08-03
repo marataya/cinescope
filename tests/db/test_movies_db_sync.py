@@ -1,7 +1,11 @@
+import allure
+
 from utils.data_generator import DataGenerator
 
+@allure.epic("Movies DB Sync")
 class TestMovieDbSync:
 
+    @allure.title("Жизненный цикл фильма: создание через API -> проверка в БД -> удаление через API -> проверка удаления из БД")
     def test_movie_lifecycle_db_sync(self, super_admin, db_helper, created_genre):
         # Генерим уникальные данные
         payload = DataGenerator.generate_movie_payload(genre_id=created_genre)

@@ -1,0 +1,224 @@
+2026-08-04 01:00:14 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[price+location] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:14 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:14 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE0LCJleHAiOjE3ODU3ODkwMTR9.llRxhDP88OnuSXX8oVoImZdBpMn9758P815gGHAFCuQ",
+    "refreshToken": "d1224572-23cb-4f8e-b7c6-d7b6f011c61a",
+    "expiresIn": 1785789014750
+}
+2026-08-04 01:00:15 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[price+location] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE0LCJleHAiOjE3ODU3ODkwMTR9.llRxhDP88OnuSXX8oVoImZdBpMn9758P815gGHAFCuQ' \
+-H 'Content-Length: 43' \
+-d '{"name": "\u041f\u043e\u0440\u0442 631216"}' 
+
+2026-08-04 01:00:15 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:15 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4370,
+    "name": "Порт 631216"
+}
+2026-08-04 01:00:15 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[price+location][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=1&maxPrice=200&locations=SPB&pageSize=10&page=1' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 01:00:15 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:15 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 110,
+            "name": "Network soon.",
+            "description": "Kind good stuff case shake dream scientist small. Bad simple sea inside five.",
+            "genreId": 9,
+            "imageUrl": "https://placekitten.com/716/584",
+            "price": 130,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-08T11:17:38.758Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 589,
+            "name": "Movie another name",
+            "description": "Movie description",
+            "genreId": 1,
+            "imageUrl": "https://image.url",
+            "price": 100,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-20T20:59:56.997Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1095,
+            "name": "Theory apply.",
+            "description": "Charge news mention eat computer show. Government imagine lose interest attack loss. Product painting accept best sister continue.\nBlood operation look seek growth. President fill you north do.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/808/445",
+            "price": 170,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-26T11:22:29.489Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1533,
+            "name": "Фильм yfktjvgnls",
+            "description": "Описание sayspmbocamxuacvfsenwnnjgafarz",
+            "genreId": 8,
+            "imageUrl": "https://www.hardy.com/wp-contentpost.asp",
+            "price": 133,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-28T12:17:14.118Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1576,
+            "name": "College fact contain draw.",
+            "description": "Collection true or ball reflect. Worry central land.\nDoctor several east network TV. Man animal firm center security. Catch enjoy entire its another.",
+            "genreId": 10,
+            "imageUrl": "https://placekitten.com/116/679",
+            "price": 192,
+            "rating": 7,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-28T15:01:44.354Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 1721,
+            "name": "Eddie",
+            "description": "Описание фильма",
+            "genreId": 9,
+            "imageUrl": "https://example.com/image.png",
+            "price": 28,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T07:18:41.697Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 1731,
+            "name": "Seth",
+            "description": "8wiubbw5",
+            "genreId": 1,
+            "imageUrl": "https://example.com/image.png",
+            "price": 4,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T07:38:38.852Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1742,
+            "name": "Ruth",
+            "description": "btvg9q8o",
+            "genreId": 8,
+            "imageUrl": "https://example.com/image.png",
+            "price": 46,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T09:01:39.227Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1743,
+            "name": "Jonathan",
+            "description": "jhxmjm1n",
+            "genreId": 1,
+            "imageUrl": "https://example.com/image.png",
+            "price": 50,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T09:01:47.738Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3374,
+            "name": "Return forward.",
+            "description": "Very there social realize herself mean. Decide responsibility sort traditional might almost section. Up region page bring.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/713/688",
+            "price": 196,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-14T19:24:00.742Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        }
+    ],
+    "count": 639,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 64
+}
+2026-08-04 01:00:15 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[price+location] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4370' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE0LCJleHAiOjE3ODU3ODkwMTR9.llRxhDP88OnuSXX8oVoImZdBpMn9758P815gGHAFCuQ' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:15 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:15 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4370,
+    "name": "Порт 631216"
+}

@@ -1,0 +1,45 @@
+2026-08-04 00:59:38 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthLogin::test_login_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 285' \
+-d '{"email": "2c8c28c0_agafon2014@example.net", "fullName": "\u041f\u0430\u0445\u043e\u043c\u043e\u0432 \u0412\u0430\u043b\u0435\u043d\u0442\u0438\u043d \u0422\u0438\u043c\u0443\u0440\u043e\u0432\u0438\u0447", "password": "@F(#*3t%5&C", "passwordRepeat": "@F(#*3t%5&C", "roles": ["USER"]}' 
+
+2026-08-04 00:59:38 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:38 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "ede82c9a-fe7f-470f-9d20-5ff0b8fd6b82",
+    "email": "2c8c28c0_agafon2014@example.net",
+    "fullName": "Пахомов Валентин Тимурович",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:38.922Z"
+}
+2026-08-04 00:59:39 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthLogin::test_login_success[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 71' \
+-d '{"email": "2c8c28c0_agafon2014@example.net", "password": "@F(#*3t%5&C"}' 
+
+2026-08-04 00:59:39 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:39 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "ede82c9a-fe7f-470f-9d20-5ff0b8fd6b82",
+        "email": "2c8c28c0_agafon2014@example.net",
+        "fullName": "Пахомов Валентин Тимурович",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVkZTgyYzlhLWZlN2YtNDcwZi05ZDIwLTVmZjBiOGZkNmI4MiIsImVtYWlsIjoiMmM4YzI4YzBfYWdhZm9uMjAxNEBleGFtcGxlLm5ldCIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NzE3OSwiZXhwIjoxNzg1Nzg4OTc5fQ.d4jQbBEZmC0LIPrcy9PuefK077yZUrKhHN3PL-wD6xM",
+    "refreshToken": "693cee1f-f027-472b-afa8-f79fe796faca",
+    "expiresIn": 1785788979236
+}

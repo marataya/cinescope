@@ -1,0 +1,1 @@
+{"id":"645cae27560f9af46e53c09323fc3277","fullName":"tests.api.test_auth_api.TestAuthLogin#test_login_invalid_email_format","name":"Логин с невалидным email","status":"passed","testResultsByEnv":{"default":"0c71a720cb60d0399192c7d3224b52d7"}}

@@ -1,0 +1,1 @@
+{"id":"c2f3410df9216e65b6fbde059eb71b9b","fullName":"tests.db.test_transaction.TestTransaction#test_movie_delete_db_sync","name":"Удаление фильма: проверка в БД, создание через session.add() если нет, удаление через API","status":"passed","testResultsByEnv":{"default":"83998f2d037407ac74913389bf71285d"}}

@@ -1,0 +1,1 @@
+{"id":"d5fc224184af8d30d7e7b7b68afcec6c","fullName":"tests.db.test_transaction.TestTransaction#test_accounts_transaction_insufficient_funds_keeps_original_balance","name":"test_accounts_transaction_insufficient_funds_keeps_original_balance","status":"passed","testResultsByEnv":{"default":"e1a410e1847ba17293573fe4ad1beeac"}}

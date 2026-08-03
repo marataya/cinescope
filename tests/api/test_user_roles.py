@@ -1,8 +1,11 @@
+import allure
+
 from utils.data_generator import DataGenerator
 
-
+@allure.epic("Test User Roles")
 class TestUserRoles:
 
+    @allure.title("Создание пользователя через SUPER_ADMIN - проверка полей")
     def test_create_user(self, super_admin, creation_user_data):
         response = super_admin.api.user_api.create_user(creation_user_data)
 
@@ -12,6 +15,7 @@ class TestUserRoles:
         assert response.get('roles', []) == creation_user_data['roles']
         assert response.get('verified') is True
 
+    @allure.title("SUPER_ADMIN создает и удаляет пользователя")
     def test_super_admin(self, super_admin):
         payload = DataGenerator.generate_user_payload(is_admin_create=True)
         user_resp = super_admin.api.user_api.create_user(payload)
@@ -20,6 +24,7 @@ class TestUserRoles:
         print(f"Created user: {user_resp}")
         super_admin.api.user_api.delete_user(user_id)
 
+    @allure.title("Получение пользователя по ID и по email - ответы идентичны")
     def test_get_user_by_locator(self, super_admin, creation_user_data):
         created_user_response = super_admin.api.user_api.create_user(creation_user_data)
         response_by_id = super_admin.api.user_api.get_user(created_user_response['id'])
@@ -32,6 +37,7 @@ class TestUserRoles:
         assert response_by_id.get('roles', []) == creation_user_data['roles']
         assert response_by_id.get('verified') is True
 
+    @allure.title("USER не может получать других пользователей - 403")
     def test_get_user_by_id_common_user(self, common_user):
         common_user.api.user_api.get_user(common_user.email, expected_status=403)
 

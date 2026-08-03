@@ -1,0 +1,1 @@
+{"id":"50e3c95b8e93947e1c5fe3311ffe7e19","fullName":"tests.api.test_movies_api.TestMoviesRoles#test_admin_can_create_movie","name":"ADMIN не может создавать фильмы - 403 (только SUPER_ADMIN может)","status":"passed","testResultsByEnv":{"default":"d08644d73e2831c2edc18d475c4954e8"}}

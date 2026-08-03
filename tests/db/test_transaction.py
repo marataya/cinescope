@@ -1,3 +1,4 @@
+import allure
 import pytest
 from sqlalchemy.orm import Session
 from datetime import datetime
@@ -18,9 +19,10 @@ def transfer_money(session: Session, from_user: str, to_user: str, amount: int):
     to_acc.balance += amount
     # commit делает вызывающий код, а не функция
 
-
+@allure.epic("Database Transactions")
 class TestTransaction:
 
+    @allure.title("Успешный перевод денег между аккаунтами")
     def test_accounts_transaction_success(self, db_session: Session):
         # === Подготовка ===k
         stan_name = f"Stan_{DataGenerator.generate_random_int(10000)}"
@@ -53,6 +55,7 @@ class TestTransaction:
             db_session.delete(bob)
             db_session.commit()
 
+    @allure.title("Откат транзакции при недостатке средств - атомарность")
     def test_accounts_transaction_rollback_on_error(self, db_session: Session):
         # === Проверка атомарности: деньги не должны пропасть ===
         stan_name = f"Stan_{DataGenerator.generate_random_int(10000)}"
@@ -85,6 +88,7 @@ class TestTransaction:
             ).delete()
             db_session.commit()
 
+    @allure.title("Недостаточно средств - балансы остаются исходными")
     def test_accounts_transaction_insufficient_funds_keeps_original_balance(self, db_session: Session):
         """Когда у Stan недостаточно денег - балансы должны остаться исходными"""
         # === Подготовка ===
@@ -125,6 +129,7 @@ class TestTransaction:
             ).delete()
             db_session.commit()
 
+    @allure.title("Удаление фильма: проверка в БД, создание через session.add() если нет, удаление через API")
     def test_movie_delete_db_sync(self, super_admin, db_session, db_helper, created_genre):
         """
         Проверяет удаление фильма:

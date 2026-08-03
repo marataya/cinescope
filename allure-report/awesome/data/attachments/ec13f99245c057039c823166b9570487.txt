@@ -1,0 +1,84 @@
+2026-08-04 01:00:29 [32mINFO[0m [32mpytest tests/db/test_transaction.py::TestTransaction::test_movie_delete_db_sync (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:29 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:29 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI5LCJleHAiOjE3ODU3ODkwMjl9.KQV5OiBUFapL785cBO3PuVHOqgJaRmsl1vDe3gHH8gI",
+    "refreshToken": "7dd03a4f-d71b-4e84-85aa-ee0b3a5d8a58",
+    "expiresIn": 1785789029832
+}
+2026-08-04 01:00:30 [32mINFO[0m [32mpytest tests/db/test_transaction.py::TestTransaction::test_movie_delete_db_sync (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI5LCJleHAiOjE3ODU3ODkwMjl9.KQV5OiBUFapL785cBO3PuVHOqgJaRmsl1vDe3gHH8gI' \
+-H 'Content-Length: 49' \
+-d '{"name": "\u0421\u0430\u043b\u043e\u043d 599602"}' 
+
+2026-08-04 01:00:30 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:30 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4373,
+    "name": "Салон 599602"
+}
+2026-08-04 01:00:30 [32mINFO[0m [32mpytest tests/db/test_transaction.py::TestTransaction::test_movie_delete_db_sync[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66566' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI5LCJleHAiOjE3ODU3ODkwMjl9.KQV5OiBUFapL785cBO3PuVHOqgJaRmsl1vDe3gHH8gI' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:30 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:30 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66566,
+    "name": "Рот 7ea617",
+    "price": 441,
+    "description": "Посвятить отметить упорно ремень собеседник. Гулять лететь беспомощный дьявол грустный райком табак.\nОбида функция полюбить. Цель пропасть господь необычный.",
+    "imageUrl": "https://dummyimage.com/108x633",
+    "location": "MSK",
+    "published": true,
+    "rating": 5,
+    "genreId": 4373,
+    "createdAt": "2026-08-03T20:00:30.330Z",
+    "reviews": [],
+    "genre": {
+        "name": "Салон 599602"
+    }
+}
+2026-08-04 01:00:31 [32mINFO[0m [32mpytest tests/db/test_transaction.py::TestTransaction::test_movie_delete_db_sync (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4373' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI5LCJleHAiOjE3ODU3ODkwMjl9.KQV5OiBUFapL785cBO3PuVHOqgJaRmsl1vDe3gHH8gI' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:31 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:31 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4373,
+    "name": "Салон 599602"
+}

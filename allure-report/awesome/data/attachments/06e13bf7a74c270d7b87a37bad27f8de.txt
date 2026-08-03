@@ -1,0 +1,35 @@
+2026-08-04 00:59:35 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_duplicate_email_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 297' \
+-d '{"email": "c832e813_fomichevadarja@example.com", "fullName": "\u041a\u0430\u043b\u0430\u0448\u043d\u0438\u043a\u043e\u0432 \u0418\u0433\u043e\u0440\u044c \u0410\u0444\u0430\u043d\u0430\u0441\u044c\u0435\u0432\u0438\u0447", "password": "I7Hl2NJwI", "passwordRepeat": "I7Hl2NJwI", "roles": ["USER"]}' 
+
+2026-08-04 00:59:35 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:35 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "2334eefa-8719-4df5-89af-f359d2cab78d",
+    "email": "c832e813_fomichevadarja@example.com",
+    "fullName": "Калашников Игорь Афанасьевич",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:35.434Z"
+}
+2026-08-04 00:59:35 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_duplicate_email_conflict[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 270' \
+-d '{"email": "c832e813_fomichevadarja@example.com", "password": "NJnUTXHR4(", "passwordRepeat": "NJnUTXHR4(", "fullName": "\u0433-\u043d \u041e\u0440\u0435\u0445\u043e\u0432 \u0411\u043e\u0433\u0434\u0430\u043d \u0414\u0435\u043c\u044c\u044f\u043d\u043e\u0432\u0438\u0447"}' 
+
+2026-08-04 00:59:35 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m409[0m
+DATA: [31m{
+    "message": "Пользователь с таким email уже зарегистрирован",
+    "error": "Conflict",
+    "statusCode": 409
+}[0m

@@ -1,0 +1,21 @@
+2026-08-04 00:25:23 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 274' \
+-d '{"email": "f4532d3e_angelinamedvedeva@example.com", "fullName": "\u0427\u0435\u0440\u043d\u043e\u0432 \u0410\u043d\u0430\u043d\u0438\u0439 \u0424\u0435\u0434\u043e\u0442\u043e\u0432\u0438\u0447", "password": "?<'jh>[3JkP", "passwordRepeat": "?<'jh>[3JkP", "roles": ["USER"]}' 
+
+2026-08-04 00:25:23 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:23 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "156c0f61-54af-4925-aea9-338d82e5f058",
+    "email": "f4532d3e_angelinamedvedeva@example.com",
+    "fullName": "Чернов Ананий Федотович",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:23.229Z"
+}

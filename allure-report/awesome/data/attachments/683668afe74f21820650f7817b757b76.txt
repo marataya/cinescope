@@ -1,0 +1,187 @@
+2026-08-04 00:59:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 300' \
+-d '{"email": "54efd84f_ponomarevkasjan@example.org", "fullName": "\u0413\u043e\u0440\u0431\u0443\u043d\u043e\u0432\u0430 \u041d\u0438\u043d\u0435\u043b\u044c \u0425\u0430\u0440\u0438\u0442\u043e\u043d\u043e\u0432\u043d\u0430", "password": "xuXF6dM68O", "passwordRepeat": "xuXF6dM68O", "roles": ["USER"]}' 
+
+2026-08-04 00:59:53 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:53 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "ebd7cb47-deb6-4bc8-975d-dfa79fa13400",
+    "email": "54efd84f_ponomarevkasjan@example.org",
+    "fullName": "Горбунова Нинель Харитоновна",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:53.128Z"
+}
+2026-08-04 00:59:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 75' \
+-d '{"email": "54efd84f_ponomarevkasjan@example.org", "password": "xuXF6dM68O"}' 
+
+2026-08-04 00:59:53 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:53 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "ebd7cb47-deb6-4bc8-975d-dfa79fa13400",
+        "email": "54efd84f_ponomarevkasjan@example.org",
+        "fullName": "Горбунова Нинель Харитоновна",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViZDdjYjQ3LWRlYjYtNGJjOC05NzVkLWRmYTc5ZmExMzQwMCIsImVtYWlsIjoiNTRlZmQ4NGZfcG9ub21hcmV2a2FzamFuQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkzLCJleHAiOjE3ODU3ODg5OTN9.9BqrVHE2__rCnxZd8AHw2aGCAhOk7Qs1r3hMCwiJLeI",
+    "refreshToken": "e9c79c46-4462-4c76-98a4-28a9871b577f",
+    "expiresIn": 1785788993518
+}
+2026-08-04 00:59:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:54 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk0LCJleHAiOjE3ODU3ODg5OTR9.oa-Jz1tpHRMyCeTtF3DM0mRa2XpqlphR_U0N6v6ZlB0",
+    "refreshToken": "82cbdde1-acd9-44bc-af9d-a5b056a7cc42",
+    "expiresIn": 1785788994123
+}
+2026-08-04 00:59:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk0LCJleHAiOjE3ODU3ODg5OTR9.oa-Jz1tpHRMyCeTtF3DM0mRa2XpqlphR_U0N6v6ZlB0' \
+-H 'Content-Length: 73' \
+-d '{"name": "\u041e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435 1df215"}' 
+
+2026-08-04 00:59:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:54 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4360,
+    "name": "Основание 1df215"
+}
+2026-08-04 00:59:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk0LCJleHAiOjE3ODU3ODg5OTR9.oa-Jz1tpHRMyCeTtF3DM0mRa2XpqlphR_U0N6v6ZlB0' \
+-H 'Content-Length: 572' \
+-d '{"name": "\u0421\u043a\u043e\u043b\u044c\u0437\u0438\u0442\u044c f80204", "price": 846, "description": "\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442 \u043a\u0430\u043a\u043e\u0439 \u0432\u0441\u0442\u0430\u0442\u044c. \u041f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e \u0440\u0435\u043c\u0435\u043d\u044c \u043e\u043a\u043e\u043b\u043e \u043f\u043e\u043a\u0438\u0434\u0430\u0442\u044c.", "location": "MSK", "published": true, "genreId": 4360, "imageUrl": "https://placekittens.com/419/553"}' 
+
+2026-08-04 00:59:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:54 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66558,
+    "name": "Скользить f80204",
+    "price": 846,
+    "description": "Изменение интернет какой встать. Пространство ремень около покидать.",
+    "imageUrl": "https://placekittens.com/419/553",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4360,
+    "createdAt": "2026-08-03T19:59:54.553Z",
+    "genre": {
+        "name": "Основание 1df215"
+    }
+}
+2026-08-04 00:59:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66558/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViZDdjYjQ3LWRlYjYtNGJjOC05NzVkLWRmYTc5ZmExMzQwMCIsImVtYWlsIjoiNTRlZmQ4NGZfcG9ub21hcmV2a2FzamFuQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkzLCJleHAiOjE3ODU3ODg5OTN9.9BqrVHE2__rCnxZd8AHw2aGCAhOk7Qs1r3hMCwiJLeI' \
+-H 'Content-Length: 13' \
+-d '{"rating": 3}' 
+
+2026-08-04 00:59:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:54 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "ebd7cb47-deb6-4bc8-975d-dfa79fa13400",
+    "text": null,
+    "rating": 3,
+    "createdAt": "2026-08-03T19:59:54.846Z",
+    "user": {
+        "fullName": "Горбунова Нинель Харитоновна"
+    }
+}
+2026-08-04 00:59:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66558' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk0LCJleHAiOjE3ODU3ODg5OTR9.oa-Jz1tpHRMyCeTtF3DM0mRa2XpqlphR_U0N6v6ZlB0' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:54 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66558,
+    "name": "Скользить f80204",
+    "price": 846,
+    "description": "Изменение интернет какой встать. Пространство ремень около покидать.",
+    "imageUrl": "https://placekittens.com/419/553",
+    "location": "MSK",
+    "published": true,
+    "rating": 3,
+    "genreId": 4360,
+    "createdAt": "2026-08-03T19:59:54.553Z",
+    "reviews": [
+        {
+            "userId": "ebd7cb47-deb6-4bc8-975d-dfa79fa13400",
+            "text": null,
+            "rating": 3,
+            "createdAt": "2026-08-03T19:59:54.846Z",
+            "user": {
+                "fullName": "Горбунова Нинель Харитоновна"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Основание 1df215"
+    }
+}
+2026-08-04 00:59:55 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4360' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk0LCJleHAiOjE3ODU3ODg5OTR9.oa-Jz1tpHRMyCeTtF3DM0mRa2XpqlphR_U0N6v6ZlB0' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:55 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:55 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4360,
+    "name": "Основание 1df215"
+}

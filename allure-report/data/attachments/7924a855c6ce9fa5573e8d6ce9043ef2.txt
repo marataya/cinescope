@@ -1,0 +1,268 @@
+2026-08-04 00:25:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:52 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTUyLCJleHAiOjE3ODU3ODY5NTJ9.w4NiYTyozCkVL8CBk0R0I-FDbcDAFItUa8yytlT0Qo4",
+    "refreshToken": "c6458c05-4d42-4c96-80b7-c312116bd727",
+    "expiresIn": 1785786952326
+}
+2026-08-04 00:25:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTUyLCJleHAiOjE3ODU3ODY5NTJ9.w4NiYTyozCkVL8CBk0R0I-FDbcDAFItUa8yytlT0Qo4' \
+-H 'Cookie: refresh_token=c6458c05-4d42-4c96-80b7-c312116bd727' \
+-H 'Content-Length: 331' \
+-d '{"email": "7c3d5043_grigorimerkushev@example.org", "fullName": "\u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432 \u042e\u0440\u0438\u0439 \u0424\u0435\u043e\u043a\u0442\u0438\u0441\u0442\u043e\u0432\u0438\u0447", "password": "bZ77-oxw\\^Qk", "passwordRepeat": "bZ77-oxw\\^Qk", "roles": ["ADMIN"], "verified": true, "banned": false}' 
+
+2026-08-04 00:25:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:52 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "d7c4d9ca-33a9-411a-8ece-35a4603c5e3b",
+    "email": "7c3d5043_grigorimerkushev@example.org",
+    "fullName": "Дмитриев Юрий Феоктистович",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:52.618Z"
+}
+2026-08-04 00:25:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 79' \
+-d '{"email": "7c3d5043_grigorimerkushev@example.org", "password": "bZ77-oxw\\^Qk"}' 
+
+2026-08-04 00:25:53 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:53 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "d7c4d9ca-33a9-411a-8ece-35a4603c5e3b",
+        "email": "7c3d5043_grigorimerkushev@example.org",
+        "fullName": "Дмитриев Юрий Феоктистович",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ3YzRkOWNhLTMzYTktNDExYS04ZWNlLTM1YTQ2MDNjNWUzYiIsImVtYWlsIjoiN2MzZDUwNDNfZ3JpZ29yaW1lcmt1c2hldkBleGFtcGxlLm9yZyIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NTE1MywiZXhwIjoxNzg1Nzg2OTUzfQ.M-Wrf0rR3CiGf0Snv7WI_fb87v5Pt3D79zRZ5qnLMW8",
+    "refreshToken": "f03be4db-d5d1-4623-b561-182b2ccea9eb",
+    "expiresIn": 1785786953130
+}
+2026-08-04 00:25:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTUyLCJleHAiOjE3ODU3ODY5NTJ9.w4NiYTyozCkVL8CBk0R0I-FDbcDAFItUa8yytlT0Qo4' \
+-H 'Content-Length: 49' \
+-d '{"name": "\u041f\u0430\u0441\u0442\u044c 450342"}' 
+
+2026-08-04 00:25:53 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:53 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4346,
+    "name": "Пасть 450342"
+}
+2026-08-04 00:25:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ3YzRkOWNhLTMzYTktNDExYS04ZWNlLTM1YTQ2MDNjNWUzYiIsImVtYWlsIjoiN2MzZDUwNDNfZ3JpZ29yaW1lcmt1c2hldkBleGFtcGxlLm9yZyIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NTE1MywiZXhwIjoxNzg1Nzg2OTUzfQ.M-Wrf0rR3CiGf0Snv7WI_fb87v5Pt3D79zRZ5qnLMW8' \
+-H 'Content-Length: 955' \
+-d '{"name": "\u041e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c f467f3", "price": 777, "description": "\u0421\u0432\u0435\u0440\u043a\u0430\u0442\u044c \u0431\u0440\u043e\u0432\u044c \u0438\u0437\u0440\u0435\u0434\u043a\u0430 \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043f\u0440\u043e\u0449\u0435\u043d\u0438\u0435 \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u0440\u0430\u0441\u0441\u0442\u0435\u0433\u043d\u0443\u0442\u044c. \u041f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043a\u0443\u0437\u043d\u0435\u0446 \u0442\u0435\u043c\u043d\u0435\u0442\u044c \u0442\u0435\u0440\u043c\u0438\u043d \u043f\u0440\u0438\u0440\u043e\u0434\u0430 \u0440\u0430\u0439\u043e\u043d \u0437\u0430\u0441\u0443\u043d\u0443\u0442\u044c \u043f\u0440\u0438\u043c\u0435\u043d\u044f\u0442\u044c\u0441\u044f.", "location": "MSK", "published": true, "genreId": 4346, "imageUrl": "https://dummyimage.com/757x752"}' 
+
+2026-08-04 00:25:53 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m403[0m
+DATA: [31m{
+    "message": "Forbidden resource",
+    "error": "Forbidden",
+    "statusCode": 403
+}[0m
+2026-08-04 00:25:53 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4346' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTUyLCJleHAiOjE3ODU3ODY5NTJ9.w4NiYTyozCkVL8CBk0R0I-FDbcDAFItUa8yytlT0Qo4' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:53 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:53 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4346,
+    "name": "Пасть 450342"
+}
+2026-08-04 00:25:54 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_admin_can_create_movie (teardown)[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTUyLCJleHAiOjE3ODU3ODY5NTJ9.w4NiYTyozCkVL8CBk0R0I-FDbcDAFItUa8yytlT0Qo4' \
+-H 'Cookie: refresh_token=c6458c05-4d42-4c96-80b7-c312116bd727' \
+
+2026-08-04 00:25:54 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:54 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "users": [
+        {
+            "id": "d7c4d9ca-33a9-411a-8ece-35a4603c5e3b",
+            "email": "7c3d5043_grigorimerkushev@example.org",
+            "fullName": "Дмитриев Юрий Феоктистович",
+            "password": "$2b$10$iPUgzTmQ8.P5LNEGOX0nsu6J1BzuwsYFc4f2vpTKlH8jfAtNf.952",
+            "createdAt": "2026-08-03T19:25:52.618Z",
+            "updatedAt": "2026-08-03T19:25:52.618Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "0ee8410a-e809-4be5-baac-9b81d6d4e41a",
+            "email": "8b2536d9_belozerovsavva@example.net",
+            "fullName": "Владлен Григорьевич Соболев",
+            "password": "$2b$10$rNO15lXDKjJWuS0TZh9meOe3iyE1IYub4hnYqZmVJnAet9PUZAcUG",
+            "createdAt": "2026-08-03T19:25:48.617Z",
+            "updatedAt": "2026-08-03T19:25:48.617Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "4b8e4cb0-cba7-4562-a669-f2a02916e3db",
+            "email": "35da82d9_evdokijaodintsova@example.org",
+            "fullName": "Носов Фирс Валерианович",
+            "password": "$2b$10$jCP19kUOVQk.NfxbxSNKT.WHo.7NrTGSKLfckzCKtw0wAQJlsoFRG",
+            "createdAt": "2026-08-03T19:25:46.315Z",
+            "updatedAt": "2026-08-03T19:25:46.315Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "e96c8e87-6b3b-4d22-8d1b-dffc609ce51e",
+            "email": "858b16de_frol33@example.org",
+            "fullName": "Меркушева Маргарита Юльевна",
+            "password": "$2b$10$n4omloD9GRRSL.AxnUwy6OgANJb9kJenMJJfS5xTJommUQL/EM3JS",
+            "createdAt": "2026-08-03T19:25:43.932Z",
+            "updatedAt": "2026-08-03T19:25:43.932Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "9c0b5fa3-9c6d-428c-90ac-c8037563dba1",
+            "email": "5a8e4a8c_vissarionribakov@example.org",
+            "fullName": "Лобанов Емельян Алексеевич",
+            "password": "$2b$10$pTaxwdJxhVY/7kzDBLIfKOdJBRdHFzJ1qt02TeJlXHGyh6Khj6Ze6",
+            "createdAt": "2026-08-03T19:25:41.620Z",
+            "updatedAt": "2026-08-03T19:25:41.620Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "87bb9f3d-18e7-4876-8ac5-08f1e32a22a8",
+            "email": "c7920458_sorokinaakulina@example.org",
+            "fullName": "Нонна Захаровна Ситникова",
+            "password": "$2b$10$Kbn.lJAMF.Zaoqrwk.KMAeCAh3aMVflU.IwK5gueD6fScR5h28e2G",
+            "createdAt": "2026-08-03T19:25:39.317Z",
+            "updatedAt": "2026-08-03T19:25:39.317Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "d78e9922-03d2-4e5f-bff9-fcb0c8899772",
+            "email": "89f9edaa_wshilov@example.org",
+            "fullName": "Павлова Раиса Антоновна",
+            "password": "$2b$10$8eGUP4KKZWpXa9G9V0rq2OAdRUP8zdkzN6BP7By2b.uSgx6TT7XrS",
+            "createdAt": "2026-08-03T19:25:37.113Z",
+            "updatedAt": "2026-08-03T19:25:37.113Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "908a8b5b-547b-4d12-bbfa-725b05bcc252",
+            "email": "a0a860c9_vadim2024@example.net",
+            "fullName": "Глеб Елисеевич Кондратьев",
+            "password": "$2b$10$Fjl0VFs5fCmr2FcQgnQE4OOsjb6q7ZigEcdij9nxZ2UTU23LaL7Ka",
+            "createdAt": "2026-08-03T19:25:34.912Z",
+            "updatedAt": "2026-08-03T19:25:34.912Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "70b92798-56ac-44eb-9fdd-d2b5516fceef",
+            "email": "6cbd4f40_aggekonstantinov@example.org",
+            "fullName": "Бирюков Данила Авдеевич",
+            "password": "$2b$10$JdekRuB5lIC2r1LTlrYUK.eSiDoYM/sE9CsA8ppoqn8DLoXXoPgP6",
+            "createdAt": "2026-08-03T19:25:28.523Z",
+            "updatedAt": "2026-08-03T19:25:28.523Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "id": "881b51d0-e70f-4502-8340-db5be4d1eab1",
+            "email": "11cd53c4_haritonkuznetsov@example.com",
+            "fullName": "Ермаков Фока Виленович",
+            "password": "$2b$10$w0pFqBCgAnthiRQdIUSxbulhzNPvF.SdSCAsytINfGX512fTmwtwS",
+            "createdAt": "2026-08-03T19:25:27.634Z",
+            "updatedAt": "2026-08-03T19:25:27.634Z",
+            "verified": true,
+            "banned": false,
+            "roles": [
+                "USER"
+            ]
+        }
+    ],
+    "count": 58793,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 5880
+}

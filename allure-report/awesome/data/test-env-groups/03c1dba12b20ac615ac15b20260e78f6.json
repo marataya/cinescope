@@ -1,0 +1,1 @@
+{"id":"03c1dba12b20ac615ac15b20260e78f6","fullName":"tests.api.test_movies_api.TestMoviesRoles#test_user_cannot_create_movie","name":"USER не может создавать фильмы - 403","status":"passed","testResultsByEnv":{"default":"b31753d3090eac90f0a2efcb780bade4"}}

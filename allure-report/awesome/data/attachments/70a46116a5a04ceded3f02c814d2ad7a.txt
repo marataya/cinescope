@@ -1,0 +1,1 @@
+Created user: {'id': '5505885b-ff9d-4f7a-a300-206da7c3fb95', 'email': '888489a3_valerjan1981@example.org', 'fullName': 'Вишняков Вячеслав Фомич', 'verified': True, 'roles': ['USER'], 'createdAt': '2026-08-03T19:26:05.320Z'}

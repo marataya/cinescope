@@ -1,0 +1,1 @@
+{"id":"1c0adb5a303bc2964a3cd1420fbb4389","fullName":"tests.api.test_movies_api.TestReviewsUser#test_create_review_rating_zero_accepted","name":"Создание отзыва с rating=0","status":"passed","testResultsByEnv":{"default":"a3dfbe4cf8e2fc041284d32b44ee90b4"}}

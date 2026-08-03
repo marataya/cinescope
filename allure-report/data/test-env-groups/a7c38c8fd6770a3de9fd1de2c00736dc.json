@@ -1,0 +1,1 @@
+{"id":"a7c38c8fd6770a3de9fd1de2c00736dc","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_invalid_email","name":"Регистрация с невалидным email","status":"passed","testResultsByEnv":{"default":"7b5cad9f4e870774be1493896b10fc0c"}}

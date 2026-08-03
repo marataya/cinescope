@@ -1,0 +1,317 @@
+2026-08-04 00:25:30 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movies_by_filter[200-500-locations1][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=200&maxPrice=500&locations=SPB&pageSize=20' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:25:30 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:30 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 836,
+            "name": "Виртуальная и многозадачная возможность",
+            "description": "Означать тюрьма тута магазин адвокат. Задержать песенка порядок чувство легко бок.",
+            "genreId": 7,
+            "imageUrl": "https://www.oao.biz/",
+            "price": 468,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-22T15:40:55.013Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 995,
+            "name": "Фильм jkzqaqqvmm",
+            "description": "Описание mqdsqccdhbiatwmafisziyhgwxkozl",
+            "genreId": 7,
+            "imageUrl": "https://www.walker.org/tagmain.htm",
+            "price": 445,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T20:31:06.323Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1026,
+            "name": "Say.",
+            "description": "Return join himself quickly rate support ask society. Free property ok. Course no purpose ago address myself. Project institution strategy.\nTerm condition child no. Time section different drug full.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/450/543",
+            "price": 276,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-24T04:28:23.404Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1115,
+            "name": "Article.",
+            "description": "Later whole second able likely admit only. Trouble phone age way.\nLearn early become name. Shoulder start just service information magazine.",
+            "genreId": 1,
+            "imageUrl": "https://dummyimage.com/718x781",
+            "price": 325,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-26T11:27:32.798Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1308,
+            "name": "The last Geochemist",
+            "description": "Film The last Geochemist description",
+            "genreId": 7,
+            "imageUrl": null,
+            "price": 478,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-27T17:18:16.876Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1357,
+            "name": "Century entire.",
+            "description": "Everything same one several write. Really heart well stay. Result deep save truth feeling knowledge.\nTreatment note usually away gun three.",
+            "genreId": 10,
+            "imageUrl": "https://placekitten.com/947/536",
+            "price": 214,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-27T19:12:00.900Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 1560,
+            "name": "Фильм rzugqwuida",
+            "description": "Описание lphnftrvgxdpqqartqgnahrcqqgjda",
+            "genreId": 10,
+            "imageUrl": "https://ramirez-campos.biz/wp-contentauthor.html",
+            "price": 336,
+            "rating": 5,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-28T12:39:48.295Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 1910,
+            "name": "Cup.",
+            "description": "End food two beyond deep. During option I civil long. Democrat idea social say skin relate.\nCall help radio consider career society wide claim. Respond mean group trip.",
+            "genreId": 10,
+            "imageUrl": "https://picsum.photos/737/742",
+            "price": 357,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T13:47:35.429Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 2063,
+            "name": "Hold or.",
+            "description": "Entire its green between commercial close. Ahead policy religious major include concern. Southern past from standard expect special need total.",
+            "genreId": 7,
+            "imageUrl": "https://dummyimage.com/560x767",
+            "price": 352,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-06-21T23:07:44.983Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 2144,
+            "name": "Расширенная и раздвоенная прошивка Синий",
+            "description": "Вздрогнуть встать провинция угол.",
+            "genreId": 1,
+            "imageUrl": null,
+            "price": 438,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-06-22T22:43:53.071Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 2429,
+            "name": "Build.",
+            "description": "Within level challenge. Court outside wall determine suggest. No too fund article later story. Early lot article.\nCharacter laugh kid box company hair role by. According property growth can theory.",
+            "genreId": 1,
+            "imageUrl": "https://picsum.photos/391/103",
+            "price": 215,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-10-28T16:27:07.091Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3001,
+            "name": "Тестовое кино - Sharable actuating time-frame",
+            "description": "For fire price deal.\nTruth other mission. Short free radio too before information. Discussion plan development easy send.",
+            "genreId": 9,
+            "imageUrl": "https://picsum.photos/57/450",
+            "price": 405,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-09T14:40:18.839Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 3007,
+            "name": "Тестовое кино - Cross-group non-volatile data-warehouse",
+            "description": "Same that involve herself positive late kid. Front effort open office travel realize parent.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/924x651",
+            "price": 431,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-09T14:40:52.843Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 3008,
+            "name": "Тестовое кино - Managed 6thgeneration solution",
+            "description": "For person nice hard magazine natural.\nThat nice again win attention.\nCentury onto sing avoid prevent. Thing member book fish sound.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/849/344",
+            "price": 430,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-09T14:40:58.827Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 3028,
+            "name": "Тестовое кино - Organic real-time system engine",
+            "description": "Much recent rest fast year charge. Describe when region letter some sport he charge.",
+            "genreId": 10,
+            "imageUrl": "https://dummyimage.com/421x289",
+            "price": 269,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-09T16:24:44.641Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 3041,
+            "name": "Тестовое кино - Phased 4thgeneration secured line",
+            "description": "Side new country method another herself. Store may term election. Better life senior rather card person.",
+            "genreId": 1,
+            "imageUrl": "https://placekitten.com/182/479",
+            "price": 340,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-09T16:25:55.769Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3351,
+            "name": "Тестовое кино - Implemented dedicated access",
+            "description": "Last collection wife probably national. Add mean raise identify sound. Report mouth minute garden case could. Charge ok offer minute see.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/45x731",
+            "price": 432,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-14T19:20:17.155Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 3358,
+            "name": "Тестовое кино - Upgradable empowering collaboration",
+            "description": "East skin appear before.\nRegion ready mention modern. Identify various party force grow challenge property. Difference move action.",
+            "genreId": 7,
+            "imageUrl": "https://picsum.photos/92/1022",
+            "price": 279,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-14T19:20:50.562Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 3729,
+            "name": "Тестовое кино - Proactive background interface",
+            "description": "Nice fact pick safe then order those data. Bed soon clearly hand yes gun discuss court. Opportunity wait around hard.",
+            "genreId": 1,
+            "imageUrl": "https://placekitten.com/680/241",
+            "price": 345,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-21T09:38:39.457Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3735,
+            "name": "Тестовое кино - Exclusive multi-tasking productivity",
+            "description": "Have local consumer wide career. Subject start baby who southern fear cup. Item model learn always everything. Price five more.",
+            "genreId": 10,
+            "imageUrl": "https://placekitten.com/53/577",
+            "price": 493,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-11-21T09:39:12.801Z",
+            "genre": {
+                "name": "Военный"
+            }
+        }
+    ],
+    "count": 947,
+    "page": 1,
+    "pageSize": 20,
+    "pageCount": 48
+}

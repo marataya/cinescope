@@ -1,0 +1,12 @@
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_movie_not_found[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/985439/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:59:45 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m404[0m
+DATA: [31m{
+    "message": "Фильм не найден",
+    "error": "Not Found",
+    "statusCode": 404
+}[0m

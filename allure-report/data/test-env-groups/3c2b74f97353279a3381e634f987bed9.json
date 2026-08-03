@@ -1,0 +1,1 @@
+{"id":"3c2b74f97353279a3381e634f987bed9","fullName":"tests.api.test_movies_api.TestMoviesPublic#test_get_movies_by_filter","name":"Фильтрация фильмов по цене и локации","status":"passed","testResultsByEnv":{"default":"74e7a8fe6b87cb04ba8a76e9c6a8ca9e"}}

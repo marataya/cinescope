@@ -1,0 +1,202 @@
+2026-08-04 00:59:55 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 300' \
+-d '{"email": "2ad967db_mignateva@example.com", "fullName": "\u041d\u043e\u0432\u0438\u043a\u043e\u0432 \u042e\u0432\u0435\u043d\u0430\u043b\u0438\u0439 \u0425\u0430\u0440\u0438\u0442\u043e\u043d\u043e\u0432\u0438\u0447", "password": "bZ1I$@\\M$ZX}", "passwordRepeat": "bZ1I$@\\M$ZX}", "roles": ["USER"]}' 
+
+2026-08-04 00:59:55 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:55 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "2bbea9db-4676-4bdd-9970-99fd82d02261",
+    "email": "2ad967db_mignateva@example.com",
+    "fullName": "Новиков Ювеналий Харитонович",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:55.727Z"
+}
+2026-08-04 00:59:56 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 72' \
+-d '{"email": "2ad967db_mignateva@example.com", "password": "bZ1I$@\\M$ZX}"}' 
+
+2026-08-04 00:59:56 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:56 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "2bbea9db-4676-4bdd-9970-99fd82d02261",
+        "email": "2ad967db_mignateva@example.com",
+        "fullName": "Новиков Ювеналий Харитонович",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYmVhOWRiLTQ2NzYtNGJkZC05OTcwLTk5ZmQ4MmQwMjI2MSIsImVtYWlsIjoiMmFkOTY3ZGJfbWlnbmF0ZXZhQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.S2sLftjLBRpx3UPy3sWgmVN6DQL78XG0BI4SfvfrvhQ",
+    "refreshToken": "2ddacef8-74bc-43c2-9190-0db2f311ce21",
+    "expiresIn": 1785788996032
+}
+2026-08-04 00:59:56 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:56 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:56 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.8zg79llptCuNNho5wr6zs7cIKnWcrQoZOobrwCts3nA",
+    "refreshToken": "814f605d-ecf0-4171-8236-8fc96c69b33c",
+    "expiresIn": 1785788996531
+}
+2026-08-04 00:59:56 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.8zg79llptCuNNho5wr6zs7cIKnWcrQoZOobrwCts3nA' \
+-H 'Content-Length: 67' \
+-d '{"name": "\u041d\u0435\u0443\u0434\u043e\u0431\u043d\u043e 3faaf4"}' 
+
+2026-08-04 00:59:56 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:56 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4361,
+    "name": "Неудобно 3faaf4"
+}
+2026-08-04 00:59:56 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.8zg79llptCuNNho5wr6zs7cIKnWcrQoZOobrwCts3nA' \
+-H 'Content-Length: 1113' \
+-d '{"name": "\u041f\u0440\u043e\u0431\u043e\u0432\u0430\u0442\u044c e44732", "price": 756, "description": "\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c \u043e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u043c\u0435\u0440\u0442\u0435\u043b\u044c\u043d\u044b\u0439.\n\u0423\u0447\u0435\u043d\u044b\u0439 \u0441\u0432\u0435\u0440\u043a\u0430\u044e\u0449\u0438\u0439 \u0440\u0435\u043c\u0435\u043d\u044c \u043d\u0430\u043b\u0435\u0432\u043e. \u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0443\u0447\u0435\u043d\u044b\u0439 \u0447\u0438\u0441\u043b\u043e \u0437\u0430\u043f\u0435\u0442\u044c \u043c\u043e\u043d\u0435\u0442\u0430 \u0430\u043a\u0442\u0440\u0438\u0441\u0430 \u043b\u0438\u043b\u043e\u0432\u044b\u0439 \u043c\u0433\u043d\u043e\u0432\u0435\u043d\u0438\u0435. \u0412\u043e\u043b\u043a \u043f\u0440\u0438\u0437\u044b\u0432 \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432 \u043f\u0440\u0435\u0436\u043d\u0438\u0439 \u0438\u0437\u0434\u0430\u043b\u0438.", "location": "SPB", "published": true, "genreId": 4361, "imageUrl": "https://picsum.photos/729/539"}' 
+
+2026-08-04 00:59:56 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:56 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66559,
+    "name": "Пробовать e44732",
+    "price": 756,
+    "description": "Заработать даль основание смертельный.\nУченый сверкающий ремень налево. Магазин ученый число запеть монета актриса лиловый мгновение. Волк призыв коллектив прежний издали.",
+    "imageUrl": "https://picsum.photos/729/539",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4361,
+    "createdAt": "2026-08-03T19:59:56.982Z",
+    "genre": {
+        "name": "Неудобно 3faaf4"
+    }
+}
+2026-08-04 00:59:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66559/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYmVhOWRiLTQ2NzYtNGJkZC05OTcwLTk5ZmQ4MmQwMjI2MSIsImVtYWlsIjoiMmFkOTY3ZGJfbWlnbmF0ZXZhQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.S2sLftjLBRpx3UPy3sWgmVN6DQL78XG0BI4SfvfrvhQ' \
+-H 'Content-Length: 463' \
+-d '{"rating": 3, "text": "\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u043e \u0441\u043a\u043e\u043b\u044c\u0437\u0438\u0442\u044c \u043f\u0430\u0440\u0435\u043d\u044c \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e.\n\u041f\u0440\u043e\u0432\u0430\u043b \u0438\u043d\u043e\u0439 \u0431\u043e\u043a \u043d\u0430\u043f\u0440\u0430\u0432\u043e \u043c\u043e\u043d\u0435\u0442\u0430 \u0432\u044b\u0433\u043d\u0430\u0442\u044c."}' 
+
+2026-08-04 00:59:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:57 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "2bbea9db-4676-4bdd-9970-99fd82d02261",
+    "text": "Неожиданно скользить парень следовательно.\nПровал иной бок направо монета выгнать.",
+    "rating": 3,
+    "createdAt": "2026-08-03T19:59:57.276Z",
+    "user": {
+        "fullName": "Новиков Ювеналий Харитонович"
+    }
+}
+2026-08-04 00:59:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66559/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYmVhOWRiLTQ2NzYtNGJkZC05OTcwLTk5ZmQ4MmQwMjI2MSIsImVtYWlsIjoiMmFkOTY3ZGJfbWlnbmF0ZXZhQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.S2sLftjLBRpx3UPy3sWgmVN6DQL78XG0BI4SfvfrvhQ' \
+-H 'Content-Length: 463' \
+-d '{"rating": 3, "text": "\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u043e \u0441\u043a\u043e\u043b\u044c\u0437\u0438\u0442\u044c \u043f\u0430\u0440\u0435\u043d\u044c \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e.\n\u041f\u0440\u043e\u0432\u0430\u043b \u0438\u043d\u043e\u0439 \u0431\u043e\u043a \u043d\u0430\u043f\u0440\u0430\u0432\u043e \u043c\u043e\u043d\u0435\u0442\u0430 \u0432\u044b\u0433\u043d\u0430\u0442\u044c."}' 
+
+2026-08-04 00:59:57 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m409[0m
+DATA: [31m{
+    "message": "Вы уже оставляли отзыв к этому фильму",
+    "error": "Conflict",
+    "statusCode": 409
+}[0m
+2026-08-04 00:59:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66559' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.8zg79llptCuNNho5wr6zs7cIKnWcrQoZOobrwCts3nA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:57 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66559,
+    "name": "Пробовать e44732",
+    "price": 756,
+    "description": "Заработать даль основание смертельный.\nУченый сверкающий ремень налево. Магазин ученый число запеть монета актриса лиловый мгновение. Волк призыв коллектив прежний издали.",
+    "imageUrl": "https://picsum.photos/729/539",
+    "location": "SPB",
+    "published": true,
+    "rating": 3,
+    "genreId": 4361,
+    "createdAt": "2026-08-03T19:59:56.982Z",
+    "reviews": [
+        {
+            "userId": "2bbea9db-4676-4bdd-9970-99fd82d02261",
+            "text": "Неожиданно скользить парень следовательно.\nПровал иной бок направо монета выгнать.",
+            "rating": 3,
+            "createdAt": "2026-08-03T19:59:57.276Z",
+            "user": {
+                "fullName": "Новиков Ювеналий Харитонович"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Неудобно 3faaf4"
+    }
+}
+2026-08-04 00:59:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4361' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk2LCJleHAiOjE3ODU3ODg5OTZ9.8zg79llptCuNNho5wr6zs7cIKnWcrQoZOobrwCts3nA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:57 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4361,
+    "name": "Неудобно 3faaf4"
+}

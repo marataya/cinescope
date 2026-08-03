@@ -1,0 +1,93 @@
+2026-08-04 00:26:06 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_get_user_by_locator (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:26:06 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:26:06 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTY1LCJleHAiOjE3ODU3ODY5NjV9.mMMK1u86pLcvFHzKoTXyI1d9rD1tzrXCqQSJGWedYLs",
+    "refreshToken": "8d56a90c-f3e5-4cd0-820b-424cc266380d",
+    "expiresIn": 1785786965932
+}
+2026-08-04 00:26:06 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_get_user_by_locator[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTY1LCJleHAiOjE3ODU3ODY5NjV9.mMMK1u86pLcvFHzKoTXyI1d9rD1tzrXCqQSJGWedYLs' \
+-H 'Cookie: refresh_token=8d56a90c-f3e5-4cd0-820b-424cc266380d' \
+-H 'Content-Length: 337' \
+-d '{"email": "73e51e90_larisa_2019@example.com", "fullName": "\u0422\u0438\u0445\u043e\u043d\u043e\u0432\u0430 \u041c\u0430\u0440\u0433\u0430\u0440\u0438\u0442\u0430 \u0410\u0440\u043a\u0430\u0434\u044c\u0435\u0432\u043d\u0430", "password": "1()$ZPbn{V", "passwordRepeat": "1()$ZPbn{V", "roles": ["USER"], "verified": true, "banned": false}' 
+
+2026-08-04 00:26:06 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:26:06 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "5648b20f-8da6-41b0-8538-dc44979f3463",
+    "email": "73e51e90_larisa_2019@example.com",
+    "fullName": "Тихонова Маргарита Аркадьевна",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:26:06.219Z"
+}
+2026-08-04 00:26:06 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_get_user_by_locator[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user/5648b20f-8da6-41b0-8538-dc44979f3463' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTY1LCJleHAiOjE3ODU3ODY5NjV9.mMMK1u86pLcvFHzKoTXyI1d9rD1tzrXCqQSJGWedYLs' \
+-H 'Cookie: refresh_token=8d56a90c-f3e5-4cd0-820b-424cc266380d' \
+
+2026-08-04 00:26:06 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:26:06 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": "5648b20f-8da6-41b0-8538-dc44979f3463",
+    "email": "73e51e90_larisa_2019@example.com",
+    "fullName": "Тихонова Маргарита Аркадьевна",
+    "createdAt": "2026-08-03T19:26:06.219Z",
+    "verified": true,
+    "banned": false,
+    "roles": [
+        "USER"
+    ]
+}
+2026-08-04 00:26:06 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_get_user_by_locator[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user/73e51e90_larisa_2019@example.com' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTY1LCJleHAiOjE3ODU3ODY5NjV9.mMMK1u86pLcvFHzKoTXyI1d9rD1tzrXCqQSJGWedYLs' \
+-H 'Cookie: refresh_token=8d56a90c-f3e5-4cd0-820b-424cc266380d' \
+
+2026-08-04 00:26:06 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:26:06 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": "5648b20f-8da6-41b0-8538-dc44979f3463",
+    "email": "73e51e90_larisa_2019@example.com",
+    "fullName": "Тихонова Маргарита Аркадьевна",
+    "createdAt": "2026-08-03T19:26:06.219Z",
+    "verified": true,
+    "banned": false,
+    "roles": [
+        "USER"
+    ]
+}

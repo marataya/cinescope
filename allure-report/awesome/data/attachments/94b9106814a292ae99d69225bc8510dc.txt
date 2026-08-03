@@ -1,0 +1,121 @@
+2026-08-04 00:59:44 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:44 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:44 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg0LCJleHAiOjE3ODU3ODg5ODR9.hHW74B_-0j8HKrZLyzfeSnWr37GNiiNWlI07D62tC7c",
+    "refreshToken": "1bd9dec7-7fdb-4625-8c57-516a5989f6e9",
+    "expiresIn": 1785788984630
+}
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg0LCJleHAiOjE3ODU3ODg5ODR9.hHW74B_-0j8HKrZLyzfeSnWr37GNiiNWlI07D62tC7c' \
+-H 'Content-Length: 85' \
+-d '{"name": "\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u044c 2b946a"}' 
+
+2026-08-04 00:59:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:45 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4356,
+    "name": "Подробность 2b946a"
+}
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg0LCJleHAiOjE3ODU3ODg5ODR9.hHW74B_-0j8HKrZLyzfeSnWr37GNiiNWlI07D62tC7c' \
+-H 'Content-Length: 922' \
+-d '{"name": "\u041a\u0430\u0437\u043d\u044c a87946", "price": 683, "description": "\u0412\u0438\u0434\u0438\u043c\u043e \u0441\u0430\u043b\u043e\u043d \u0447\u0442\u043e \u0432\u0437\u0434\u0440\u0430\u0433\u0438\u0432\u0430\u0442\u044c \u043f\u043e\u0440\u043e\u0434\u0430 \u0431\u0430\u043d\u0434\u0430 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c. \u041b\u0435\u0432\u044b\u0439 \u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u043e\u0439\u0442\u0438 \u0437\u0430\u043f\u043b\u0430\u043a\u0430\u0442\u044c \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u0445\u043e\u043b\u043e\u0434\u043d\u043e \u0432\u044b\u0442\u0430\u0441\u043a\u0438\u0432\u0430\u0442\u044c. \u0421\u043b\u0430\u0432\u043d\u044b\u0439 \u0431\u043b\u0438\u043d \u0442\u0440\u0435\u0432\u043e\u0433\u0430.", "location": "SPB", "published": true, "genreId": 4356, "imageUrl": "https://picsum.photos/600/1005"}' 
+
+2026-08-04 00:59:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:45 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66554,
+    "name": "Казнь a87946",
+    "price": 683,
+    "description": "Видимо салон что вздрагивать порода банда остановить. Левый правление войти заплакать инструкция холодно вытаскивать. Славный блин тревога.",
+    "imageUrl": "https://picsum.photos/600/1005",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4356,
+    "createdAt": "2026-08-03T19:59:45.102Z",
+    "genre": {
+        "name": "Подробность 2b946a"
+    }
+}
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/66554/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:59:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:45 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+[]
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66554' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg0LCJleHAiOjE3ODU3ODg5ODR9.hHW74B_-0j8HKrZLyzfeSnWr37GNiiNWlI07D62tC7c' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:45 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66554,
+    "name": "Казнь a87946",
+    "price": 683,
+    "description": "Видимо салон что вздрагивать порода банда остановить. Левый правление войти заплакать инструкция холодно вытаскивать. Славный блин тревога.",
+    "imageUrl": "https://picsum.photos/600/1005",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4356,
+    "createdAt": "2026-08-03T19:59:45.102Z",
+    "reviews": [],
+    "genre": {
+        "name": "Подробность 2b946a"
+    }
+}
+2026-08-04 00:59:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsPublic::test_get_reviews_by_movie_id (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4356' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTg0LCJleHAiOjE3ODU3ODg5ODR9.hHW74B_-0j8HKrZLyzfeSnWr37GNiiNWlI07D62tC7c' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:45 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4356,
+    "name": "Подробность 2b946a"
+}

@@ -1,0 +1,317 @@
+2026-08-04 00:25:30 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movies_by_filter[100-300-locations0][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=100&maxPrice=300&locations=MSK&pageSize=20' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:25:30 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:30 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 791,
+            "name": "Kind.",
+            "description": "Or military president society walk power claim. Throw attorney win. Most girl for tonight buy.\nNew theory minute experience red seat.",
+            "genreId": 1,
+            "imageUrl": "https://dummyimage.com/1018x633",
+            "price": 137,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-22T08:41:03.618Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1484,
+            "name": "Herself.",
+            "description": "Without stop weight positive. Meeting at suggest work instead allow leader how.\nClearly particularly or team than.\nSomething agency guy local laugh medical reach. And that than capital.",
+            "genreId": 1,
+            "imageUrl": "https://dummyimage.com/915x310",
+            "price": 218,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-28T07:56:18.537Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 2378,
+            "name": "Ориентированная и веб-ориентированная парадигма",
+            "description": "Подробность упорно поезд спешить очутиться спичка багровый. Свежий мягкий куча подземный горький премьера.",
+            "genreId": 10,
+            "imageUrl": "http://www.zhuravleva.biz/",
+            "price": 200,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-10-28T12:31:30.116Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 3352,
+            "name": "Тестовое кино - Multi-channeled 24/7 orchestration",
+            "description": "Owner state task these field customer black. Perform middle politics campaign city car many.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/558/33",
+            "price": 145,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-14T19:20:20.703Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 3381,
+            "name": "Тестовое кино - Cloned composite moratorium",
+            "description": "Size practice sport message list red late. Address catch hope.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/100/245",
+            "price": 186,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-14T19:24:36.207Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 3924,
+            "name": "Optional cohesive structure",
+            "description": "Fire natural sure big center writer image. Reality safe edge.\nPlayer pay whose move sing. Magazine effort start.",
+            "genreId": 1,
+            "imageUrl": "https://placekitten.com/738/556",
+            "price": 274,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-23T13:40:16.912Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3952,
+            "name": "Бетонный смелый провинция.",
+            "description": "Второй возмутиться солнце счастье. Ягода исполнять развернуться спешить провал. Пробовать торговля сбросить ложиться счастье подземный академик товар.",
+            "genreId": 1,
+            "imageUrl": "https://placekitten.com/225/443",
+            "price": 288,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-23T14:18:23.243Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 3956,
+            "name": "Participant box remember.",
+            "description": "She miss system before event operation. Here coach goal position television. Yes child buy. Charge western top cost service treat blue market.",
+            "genreId": 10,
+            "imageUrl": "https://dummyimage.com/528x536",
+            "price": 174,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-23T14:18:31.073Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 4012,
+            "name": "Chance political.",
+            "description": "Maybe author guy play public whom green. Local behind trouble population wife especially. Quite somebody story training.\nStar exist cut. Either try arm.",
+            "genreId": 1,
+            "imageUrl": "https://picsum.photos/912/728",
+            "price": 245,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T09:01:47.421Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 4019,
+            "name": "Position body.",
+            "description": "Administration write all across chair TV soon. Close surface work out stock decide quickly.\nBoard boy than future know. Check show machine century beautiful go.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/107/30",
+            "price": 128,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T09:05:04.522Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 4079,
+            "name": "Capital accept bank",
+            "description": "Front relate run activity international. Nearly six religious and. Send movie clearly yes.",
+            "genreId": 1,
+            "imageUrl": "https://picsum.photos/25/219",
+            "price": 263,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T11:06:15.918Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 4123,
+            "name": "Really oil.",
+            "description": "Himself training space skin side game. Wonder role technology something. Small method black.\nThe office executive into.",
+            "genreId": 9,
+            "imageUrl": "https://placekitten.com/691/337",
+            "price": 210,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T11:34:32.883Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 4190,
+            "name": "American read.",
+            "description": "Life tonight way. Question record arm discuss.\nThey wait through anything. He single stock pretty vote.",
+            "genreId": 10,
+            "imageUrl": "https://picsum.photos/491/711",
+            "price": 188,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T13:30:52.590Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 4246,
+            "name": "Chance south form school.",
+            "description": "Skin main billion. Stand expert around. Just born well serious their.\nYour present amount language. Sure bill that far.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/885/838",
+            "price": 236,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-24T13:53:00.900Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 4852,
+            "name": "Including.",
+            "description": "Space big letter research cut evidence newspaper. Really hold suggest available save heavy weight. Affect what rich project until government surface member.\nCold draw concern lay remember those.",
+            "genreId": 1,
+            "imageUrl": "https://picsum.photos/565/797",
+            "price": 178,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T16:53:44.806Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 4886,
+            "name": "Section public.",
+            "description": "Draw to prove quickly participant. Daughter agent cup make place local. Responsibility growth side.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/20x1001",
+            "price": 121,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T16:56:01.324Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 4976,
+            "name": "Must.",
+            "description": "Condition buy prepare message. Light capital sign education chance. Lose raise work language country listen experience since.",
+            "genreId": 1,
+            "imageUrl": "https://dummyimage.com/86x4",
+            "price": 246,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T17:57:48.001Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 4988,
+            "name": "Material.",
+            "description": "Spend environmental wide consider visit. Financial interesting number could recognize ten. Sometimes effect cost particularly me organization skin economy.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/937x861",
+            "price": 120,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T18:01:35.889Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 5006,
+            "name": "Middle.",
+            "description": "Bill live own office from increase set. Notice name must person own agent free soldier. Will probably interview prove measure purpose trade lead.",
+            "genreId": 1,
+            "imageUrl": "https://placekitten.com/599/628",
+            "price": 194,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T18:04:36.204Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 5020,
+            "name": "Their.",
+            "description": "Give mouth me believe store west hear. Hope what artist a.\nTraditional among safe fight and show. Someone reveal former field realize.",
+            "genreId": 8,
+            "imageUrl": "https://picsum.photos/789/344",
+            "price": 279,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-11-25T18:13:25.141Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        }
+    ],
+    "count": 293,
+    "page": 1,
+    "pageSize": 20,
+    "pageCount": 15
+}

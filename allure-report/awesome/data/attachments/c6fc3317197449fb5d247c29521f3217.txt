@@ -1,0 +1,16 @@
+2026-08-04 00:59:35 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_invalid_email[invalid][0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 216' \
+-d '{"email": "invalid", "password": "[4\"IpQE6<", "passwordRepeat": "[4\"IpQE6<", "fullName": "\u0413\u0443\u0441\u0435\u0432 \u0421\u0442\u0435\u043f\u0430\u043d \u042d\u0434\u0433\u0430\u0440\u043e\u0432\u0438\u0447"}' 
+
+2026-08-04 00:59:35 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{
+    "message": [
+        "Некорректный email"
+    ],
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m

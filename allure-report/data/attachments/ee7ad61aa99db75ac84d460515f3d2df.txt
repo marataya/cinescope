@@ -1,0 +1,187 @@
+2026-08-04 00:25:39 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 284' \
+-d '{"email": "c7920458_sorokinaakulina@example.org", "fullName": "\u041d\u043e\u043d\u043d\u0430 \u0417\u0430\u0445\u0430\u0440\u043e\u0432\u043d\u0430 \u0421\u0438\u0442\u043d\u0438\u043a\u043e\u0432\u0430", "password": "[89x@2ZTh[2", "passwordRepeat": "[89x@2ZTh[2", "roles": ["USER"]}' 
+
+2026-08-04 00:25:39 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:39 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "87bb9f3d-18e7-4876-8ac5-08f1e32a22a8",
+    "email": "c7920458_sorokinaakulina@example.org",
+    "fullName": "Нонна Захаровна Ситникова",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:39.317Z"
+}
+2026-08-04 00:25:39 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 76' \
+-d '{"email": "c7920458_sorokinaakulina@example.org", "password": "[89x@2ZTh[2"}' 
+
+2026-08-04 00:25:39 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:39 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "87bb9f3d-18e7-4876-8ac5-08f1e32a22a8",
+        "email": "c7920458_sorokinaakulina@example.org",
+        "fullName": "Нонна Захаровна Ситникова",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg3YmI5ZjNkLTE4ZTctNDg3Ni04YWM1LTA4ZjFlMzJhMjJhOCIsImVtYWlsIjoiYzc5MjA0NThfc29yb2tpbmFha3VsaW5hQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM5LCJleHAiOjE3ODU3ODY5Mzl9.YcfpDhG_u38yfyFzXkYrYjRrkR578-WyYTDxAkSFTZI",
+    "refreshToken": "5874adaf-6723-4f68-8402-cdf57f7ec9aa",
+    "expiresIn": 1785786939727
+}
+2026-08-04 00:25:40 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:40 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:40 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQwLCJleHAiOjE3ODU3ODY5NDB9.pGxPTcQBupzbiiygiaU8CHoJKksLTuMxcbKbJ1aOWXQ",
+    "refreshToken": "3fe51e98-a978-46ce-a0c3-386074c303c7",
+    "expiresIn": 1785786940225
+}
+2026-08-04 00:25:40 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQwLCJleHAiOjE3ODU3ODY5NDB9.pGxPTcQBupzbiiygiaU8CHoJKksLTuMxcbKbJ1aOWXQ' \
+-H 'Content-Length: 43' \
+-d '{"name": "\u041f\u043b\u043e\u0434 dcfd35"}' 
+
+2026-08-04 00:25:40 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:40 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4340,
+    "name": "Плод dcfd35"
+}
+2026-08-04 00:25:40 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQwLCJleHAiOjE3ODU3ODY5NDB9.pGxPTcQBupzbiiygiaU8CHoJKksLTuMxcbKbJ1aOWXQ' \
+-H 'Content-Length: 1133' \
+-d '{"name": "\u0412\u044b\u0433\u043d\u0430\u0442\u044c a353e2", "price": 255, "description": "\u0412\u0438\u0434\u0438\u043c\u043e \u0441\u043f\u0438\u0447\u043a\u0430 \u0437\u0430\u0434\u0435\u0440\u0436\u0430\u0442\u044c \u0440\u0430\u0432\u043d\u043e\u0434\u0443\u0448\u043d\u044b\u0439 \u0438\u043d\u0444\u0435\u043a\u0446\u0438\u044f.\n\u041e\u0447\u043a\u043e \u043f\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043d\u0435\u043e\u0431\u044b\u0447\u043d\u044b\u0439 \u0440\u0435\u0431\u044f\u0442\u0438\u0448\u043a\u0438. \u0424\u0443\u043d\u043a\u0446\u0438\u044f \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b \u0431\u043b\u0438\u043d \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u0435\u043a \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u0442\u043e\u0447\u043d\u043e. \u041a\u043f\u0441\u0441 \u043d\u0430\u0442\u043a\u043d\u0443\u0442\u044c\u0441\u044f \u0440\u0430\u0439\u043a\u043e\u043c \u0434\u0435\u043d\u044c\u0433\u0438 \u043f\u0440\u043e\u0432\u0438\u043d\u0446\u0438\u044f \u0442\u0440\u044f\u0441\u0442\u0438.", "location": "SPB", "published": true, "genreId": 4340, "imageUrl": "https://placekittens.com/739/24"}' 
+
+2026-08-04 00:25:40 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:40 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66543,
+    "name": "Выгнать a353e2",
+    "price": 255,
+    "description": "Видимо спичка задержать равнодушный инфекция.\nОчко поставить необычный ребятишки. Функция мотоцикл блин человечек слишком точно. Кпсс наткнуться райком деньги провинция трясти.",
+    "imageUrl": "https://placekittens.com/739/24",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4340,
+    "createdAt": "2026-08-03T19:25:40.655Z",
+    "genre": {
+        "name": "Плод dcfd35"
+    }
+}
+2026-08-04 00:25:41 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66543/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg3YmI5ZjNkLTE4ZTctNDg3Ni04YWM1LTA4ZjFlMzJhMjJhOCIsImVtYWlsIjoiYzc5MjA0NThfc29yb2tpbmFha3VsaW5hQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM5LCJleHAiOjE3ODU3ODY5Mzl9.YcfpDhG_u38yfyFzXkYrYjRrkR578-WyYTDxAkSFTZI' \
+-H 'Content-Length: 468' \
+-d '{"rating": 6, "text": "\u0421\u043f\u043e\u0441\u043e\u0431 \u0440\u0443\u0447\u0435\u0439 \u0441\u0443\u0441\u0442\u0430\u0432 \u043d\u0435\u0443\u0434\u043e\u0431\u043d\u043e \u0437\u0430\u0441\u0443\u043d\u0443\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u0434\u0443\u0440\u0430\u0446\u043a\u0438\u0439. \u041f\u043e\u043a\u043e\u043b\u0435\u043d\u0438\u0435 \u0430\u043a\u0430\u0434\u0435\u043c\u0438\u043a \u0440\u0430\u0439\u043e\u043d."}' 
+
+2026-08-04 00:25:41 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:41 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "87bb9f3d-18e7-4876-8ac5-08f1e32a22a8",
+    "text": "Способ ручей сустав неудобно засунуть изменение дурацкий. Поколение академик район.",
+    "rating": 6,
+    "createdAt": "2026-08-03T19:25:40.942Z",
+    "user": {
+        "fullName": "Нонна Захаровна Ситникова"
+    }
+}
+2026-08-04 00:25:41 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66543' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQwLCJleHAiOjE3ODU3ODY5NDB9.pGxPTcQBupzbiiygiaU8CHoJKksLTuMxcbKbJ1aOWXQ' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:41 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:41 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66543,
+    "name": "Выгнать a353e2",
+    "price": 255,
+    "description": "Видимо спичка задержать равнодушный инфекция.\nОчко поставить необычный ребятишки. Функция мотоцикл блин человечек слишком точно. Кпсс наткнуться райком деньги провинция трясти.",
+    "imageUrl": "https://placekittens.com/739/24",
+    "location": "SPB",
+    "published": true,
+    "rating": 6,
+    "genreId": 4340,
+    "createdAt": "2026-08-03T19:25:40.655Z",
+    "reviews": [
+        {
+            "userId": "87bb9f3d-18e7-4876-8ac5-08f1e32a22a8",
+            "text": "Способ ручей сустав неудобно засунуть изменение дурацкий. Поколение академик район.",
+            "rating": 6,
+            "createdAt": "2026-08-03T19:25:40.942Z",
+            "user": {
+                "fullName": "Нонна Захаровна Ситникова"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Плод dcfd35"
+    }
+}
+2026-08-04 00:25:41 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4340' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQwLCJleHAiOjE3ODU3ODY5NDB9.pGxPTcQBupzbiiygiaU8CHoJKksLTuMxcbKbJ1aOWXQ' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:41 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:41 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4340,
+    "name": "Плод dcfd35"
+}

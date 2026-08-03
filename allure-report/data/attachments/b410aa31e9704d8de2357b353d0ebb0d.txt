@@ -1,0 +1,35 @@
+2026-08-04 00:25:24 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_duplicate_email_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 298' \
+-d '{"email": "cf24882a_ljubim_1973@example.net", "fullName": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440\u043e\u0432 \u0420\u0430\u0434\u043e\u0432\u0430\u043d \u0414\u0430\u0432\u044b\u0434\u043e\u0432\u0438\u0447", "password": ";j\"txyp3D7", "passwordRepeat": ";j\"txyp3D7", "roles": ["USER"]}' 
+
+2026-08-04 00:25:24 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:24 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "8d26f299-fe0d-418b-9b09-9db22a2a7987",
+    "email": "cf24882a_ljubim_1973@example.net",
+    "fullName": "Владимиров Радован Давыдович",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:24.222Z"
+}
+2026-08-04 00:25:24 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_duplicate_email_conflict[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 239' \
+-d '{"email": "cf24882a_ljubim_1973@example.net", "password": "t0>QI:.+f", "passwordRepeat": "t0>QI:.+f", "fullName": "\u0411\u0430\u0436\u0435\u043d \u041c\u0430\u0440\u0441\u043e\u0432\u0438\u0447 \u0414\u0430\u043d\u0438\u043b\u043e\u0432"}' 
+
+2026-08-04 00:25:24 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m409[0m
+DATA: [31m{
+    "message": "Пользователь с таким email уже зарегистрирован",
+    "error": "Conflict",
+    "statusCode": 409
+}[0m

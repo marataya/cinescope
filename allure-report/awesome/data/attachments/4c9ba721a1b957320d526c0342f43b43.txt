@@ -1,0 +1,202 @@
+2026-08-04 00:25:43 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 285' \
+-d '{"email": "858b16de_frol33@example.org", "fullName": "\u041c\u0435\u0440\u043a\u0443\u0448\u0435\u0432\u0430 \u041c\u0430\u0440\u0433\u0430\u0440\u0438\u0442\u0430 \u042e\u043b\u044c\u0435\u0432\u043d\u0430", "password": "W*Im32uN&S", "passwordRepeat": "W*Im32uN&S", "roles": ["USER"]}' 
+
+2026-08-04 00:25:43 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:43 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "e96c8e87-6b3b-4d22-8d1b-dffc609ce51e",
+    "email": "858b16de_frol33@example.org",
+    "fullName": "Меркушева Маргарита Юльевна",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:43.932Z"
+}
+2026-08-04 00:25:44 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 66' \
+-d '{"email": "858b16de_frol33@example.org", "password": "W*Im32uN&S"}' 
+
+2026-08-04 00:25:44 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:44 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "e96c8e87-6b3b-4d22-8d1b-dffc609ce51e",
+        "email": "858b16de_frol33@example.org",
+        "fullName": "Меркушева Маргарита Юльевна",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5NmM4ZTg3LTZiM2ItNGQyMi04ZDFiLWRmZmM2MDljZTUxZSIsImVtYWlsIjoiODU4YjE2ZGVfZnJvbDMzQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.ejx7jHwyU_NEypCK7SoETupO8SG8mWktJ9YTGqX9qJw",
+    "refreshToken": "f0eddba6-8ada-4277-b0a4-8ac9eafac94c",
+    "expiresIn": 1785786944229
+}
+2026-08-04 00:25:44 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:44 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:44 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.lGn2Nm8erZ56gMaK3mqh-4NEQ8WdcRkWdLq-fFB6JAw",
+    "refreshToken": "cd1cd10d-8edf-4c1d-b7de-6e0225801417",
+    "expiresIn": 1785786944730
+}
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.lGn2Nm8erZ56gMaK3mqh-4NEQ8WdcRkWdLq-fFB6JAw' \
+-H 'Content-Length: 61' \
+-d '{"name": "\u0421\u043a\u0440\u044b\u0442\u044b\u0439 ffeb18"}' 
+
+2026-08-04 00:25:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:45 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4342,
+    "name": "Скрытый ffeb18"
+}
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.lGn2Nm8erZ56gMaK3mqh-4NEQ8WdcRkWdLq-fFB6JAw' \
+-H 'Content-Length: 718' \
+-d '{"name": "\u041f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e d2225b", "price": 748, "description": "\u0410\u0440\u043c\u0435\u0439\u0441\u043a\u0438\u0439 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0432\u0438\u0442\u0440\u0438\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u043e \u0437\u0430\u0441\u0443\u043d\u0443\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u0435\u043a \u0441\u043a\u0440\u044b\u0442\u044b\u0439. \u041f\u043e\u0434\u0437\u0435\u043c\u043d\u044b\u0439 \u0447\u0442\u043e \u0441\u043c\u0435\u043b\u044b\u0439 \u0432\u0438\u0434\u0438\u043c\u043e \u043f\u043b\u043e\u0434.", "location": "SPB", "published": true, "genreId": 4342, "imageUrl": "https://dummyimage.com/899x532"}' 
+
+2026-08-04 00:25:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:45 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66545,
+    "name": "Полностью d2225b",
+    "price": 748,
+    "description": "Армейский выражение витрина передо засунуть человечек скрытый. Подземный что смелый видимо плод.",
+    "imageUrl": "https://dummyimage.com/899x532",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4342,
+    "createdAt": "2026-08-03T19:25:45.264Z",
+    "genre": {
+        "name": "Скрытый ffeb18"
+    }
+}
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66545/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5NmM4ZTg3LTZiM2ItNGQyMi04ZDFiLWRmZmM2MDljZTUxZSIsImVtYWlsIjoiODU4YjE2ZGVfZnJvbDMzQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.ejx7jHwyU_NEypCK7SoETupO8SG8mWktJ9YTGqX9qJw' \
+-H 'Content-Length: 394' \
+-d '{"rating": 3, "text": "\u041c\u043e\u043d\u0435\u0442\u0430 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0432\u0442\u043e\u0440\u043e\u0439 \u0441\u043e\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0435\u043a\u0443\u043d\u0434\u0430. \u0410\u0436 \u043d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043a\u043e\u043b\u044c\u0446\u043e."}' 
+
+2026-08-04 00:25:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:45 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "e96c8e87-6b3b-4d22-8d1b-dffc609ce51e",
+    "text": "Монета порядок второй социалистический секунда. Аж невозможно кольцо.",
+    "rating": 3,
+    "createdAt": "2026-08-03T19:25:45.548Z",
+    "user": {
+        "fullName": "Меркушева Маргарита Юльевна"
+    }
+}
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66545/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5NmM4ZTg3LTZiM2ItNGQyMi04ZDFiLWRmZmM2MDljZTUxZSIsImVtYWlsIjoiODU4YjE2ZGVfZnJvbDMzQGV4YW1wbGUub3JnIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.ejx7jHwyU_NEypCK7SoETupO8SG8mWktJ9YTGqX9qJw' \
+-H 'Content-Length: 394' \
+-d '{"rating": 3, "text": "\u041c\u043e\u043d\u0435\u0442\u0430 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0432\u0442\u043e\u0440\u043e\u0439 \u0441\u043e\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0435\u043a\u0443\u043d\u0434\u0430. \u0410\u0436 \u043d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043a\u043e\u043b\u044c\u0446\u043e."}' 
+
+2026-08-04 00:25:45 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m409[0m
+DATA: [31m{
+    "message": "Вы уже оставляли отзыв к этому фильму",
+    "error": "Conflict",
+    "statusCode": 409
+}[0m
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66545' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.lGn2Nm8erZ56gMaK3mqh-4NEQ8WdcRkWdLq-fFB6JAw' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:45 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66545,
+    "name": "Полностью d2225b",
+    "price": 748,
+    "description": "Армейский выражение витрина передо засунуть человечек скрытый. Подземный что смелый видимо плод.",
+    "imageUrl": "https://dummyimage.com/899x532",
+    "location": "SPB",
+    "published": true,
+    "rating": 3,
+    "genreId": 4342,
+    "createdAt": "2026-08-03T19:25:45.264Z",
+    "reviews": [
+        {
+            "userId": "e96c8e87-6b3b-4d22-8d1b-dffc609ce51e",
+            "text": "Монета порядок второй социалистический секунда. Аж невозможно кольцо.",
+            "rating": 3,
+            "createdAt": "2026-08-03T19:25:45.548Z",
+            "user": {
+                "fullName": "Меркушева Маргарита Юльевна"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Скрытый ffeb18"
+    }
+}
+2026-08-04 00:25:45 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_duplicate_conflict (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4342' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ0LCJleHAiOjE3ODU3ODY5NDR9.lGn2Nm8erZ56gMaK3mqh-4NEQ8WdcRkWdLq-fFB6JAw' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:45 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:45 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4342,
+    "name": "Скрытый ffeb18"
+}

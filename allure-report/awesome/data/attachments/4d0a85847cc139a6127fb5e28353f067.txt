@@ -1,0 +1,167 @@
+2026-08-04 01:00:10 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_by_price_range[price_1-100][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=1&maxPrice=100&pageSize=10&page=1' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 01:00:10 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:10 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 589,
+            "name": "Movie another name",
+            "description": "Movie description",
+            "genreId": 1,
+            "imageUrl": "https://image.url",
+            "price": 100,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-20T20:59:56.997Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1721,
+            "name": "Eddie",
+            "description": "Описание фильма",
+            "genreId": 9,
+            "imageUrl": "https://example.com/image.png",
+            "price": 28,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T07:18:41.697Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 1731,
+            "name": "Seth",
+            "description": "8wiubbw5",
+            "genreId": 1,
+            "imageUrl": "https://example.com/image.png",
+            "price": 4,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T07:38:38.852Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1735,
+            "name": "Scott",
+            "description": "loeyq7qj",
+            "genreId": 1,
+            "imageUrl": "https://example.com/image.png",
+            "price": 5,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-29T08:04:22.559Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1742,
+            "name": "Ruth",
+            "description": "btvg9q8o",
+            "genreId": 8,
+            "imageUrl": "https://example.com/image.png",
+            "price": 46,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T09:01:39.227Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1743,
+            "name": "Jonathan",
+            "description": "jhxmjm1n",
+            "genreId": 1,
+            "imageUrl": "https://example.com/image.png",
+            "price": 50,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-29T09:01:47.738Z",
+            "genre": {
+                "name": "Криминал"
+            }
+        },
+        {
+            "id": 1753,
+            "name": "Sonya",
+            "description": "k70ov0er",
+            "genreId": 9,
+            "imageUrl": "https://example.com/image.png",
+            "price": 35,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-29T09:19:54.771Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 1982,
+            "name": "Robert",
+            "description": "f0j0uy2o",
+            "genreId": 10,
+            "imageUrl": "https://example.com/image.png",
+            "price": 89,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-30T10:14:01.513Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 1995,
+            "name": "Jeffrey",
+            "description": "06iecc6x",
+            "genreId": 8,
+            "imageUrl": "https://example.com/image.png",
+            "price": 84,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-30T10:23:45.917Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1996,
+            "name": "Christina",
+            "description": "ur70iaqc",
+            "genreId": 8,
+            "imageUrl": "https://example.com/image.png",
+            "price": 54,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-30T10:24:01.311Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        }
+    ],
+    "count": 354,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 36
+}

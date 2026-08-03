@@ -1,0 +1,111 @@
+2026-08-04 00:25:56 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_super_admin_can_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:56 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:56 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTU2LCJleHAiOjE3ODU3ODY5NTZ9.K94IcFwEA393BiHwzV6JNm3In5Vo-WmdhyzuEm9eTfk",
+    "refreshToken": "4a4a75ad-6355-42e4-bdb9-df57329dc297",
+    "expiresIn": 1785786956613
+}
+2026-08-04 00:25:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_super_admin_can_create_movie (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTU2LCJleHAiOjE3ODU3ODY5NTZ9.K94IcFwEA393BiHwzV6JNm3In5Vo-WmdhyzuEm9eTfk' \
+-H 'Content-Length: 73' \
+-d '{"name": "\u041d\u0430\u0441\u0442\u0443\u043f\u0430\u0442\u044c 1e56ce"}' 
+
+2026-08-04 00:25:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:57 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4348,
+    "name": "Наступать 1e56ce"
+}
+2026-08-04 00:25:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_super_admin_can_create_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTU2LCJleHAiOjE3ODU3ODY5NTZ9.K94IcFwEA393BiHwzV6JNm3In5Vo-WmdhyzuEm9eTfk' \
+-H 'Content-Length: 1077' \
+-d '{"name": "\u0422\u043e\u0447\u043d\u043e 1c4bbb", "price": 289, "description": "\u042d\u0444\u0444\u0435\u043a\u0442 \u0442\u0440\u0438\u0441\u0442\u0430 \u043e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043f\u0440\u043e\u043f\u0430\u0434\u0430\u0442\u044c \u0431\u0435\u0433\u0430\u0442\u044c \u0444\u043e\u043d\u0430\u0440\u0438\u043a \u043d\u0435\u0440\u0432\u043d\u043e.\n\u0412\u0438\u0434\u0438\u043c\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u0442\u044c \u0431\u043e\u0447\u043e\u043a \u0440\u0443\u0447\u0435\u0439 \u043f\u0440\u043e\u0431\u043e\u0432\u0430\u0442\u044c \u043f\u043e\u0439\u043c\u0430\u0442\u044c. \u041f\u043e\u0434\u0437\u0435\u043c\u043d\u044b\u0439 \u0440\u0435\u043c\u0435\u043d\u044c \u044f\u0433\u043e\u0434\u0430 \u0432\u043e\u0437\u043d\u0438\u043a\u043d\u043e\u0432\u0435\u043d\u0438\u0435. \u0423\u0440\u043e\u043d\u0438\u0442\u044c \u043f\u043e\u0434\u0437\u0435\u043c\u043d\u044b\u0439 \u0433\u0440\u0443\u0441\u0442\u043d\u044b\u0439.", "location": "SPB", "published": true, "genreId": 4348, "imageUrl": "https://dummyimage.com/679x476"}' 
+
+2026-08-04 00:25:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:57 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66549,
+    "name": "Точно 1c4bbb",
+    "price": 289,
+    "description": "Эффект триста отметить пропадать бегать фонарик нервно.\nВидимо означать бочок ручей пробовать поймать. Подземный ремень ягода возникновение. Уронить подземный грустный.",
+    "imageUrl": "https://dummyimage.com/679x476",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4348,
+    "createdAt": "2026-08-03T19:25:57.061Z",
+    "genre": {
+        "name": "Наступать 1e56ce"
+    }
+}
+2026-08-04 00:25:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_super_admin_can_create_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66549' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTU2LCJleHAiOjE3ODU3ODY5NTZ9.K94IcFwEA393BiHwzV6JNm3In5Vo-WmdhyzuEm9eTfk' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:57 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66549,
+    "name": "Точно 1c4bbb",
+    "price": 289,
+    "description": "Эффект триста отметить пропадать бегать фонарик нервно.\nВидимо означать бочок ручей пробовать поймать. Подземный ремень ягода возникновение. Уронить подземный грустный.",
+    "imageUrl": "https://dummyimage.com/679x476",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4348,
+    "createdAt": "2026-08-03T19:25:57.061Z",
+    "reviews": [],
+    "genre": {
+        "name": "Наступать 1e56ce"
+    }
+}
+2026-08-04 00:25:57 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesRoles::test_super_admin_can_create_movie (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4348' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTU2LCJleHAiOjE3ODU3ODY5NTZ9.K94IcFwEA393BiHwzV6JNm3In5Vo-WmdhyzuEm9eTfk' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:57 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:57 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4348,
+    "name": "Наступать 1e56ce"
+}

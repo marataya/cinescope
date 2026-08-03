@@ -1,0 +1,197 @@
+2026-08-04 00:25:48 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 293' \
+-d '{"email": "8b2536d9_belozerovsavva@example.net", "fullName": "\u0412\u043b\u0430\u0434\u043b\u0435\u043d \u0413\u0440\u0438\u0433\u043e\u0440\u044c\u0435\u0432\u0438\u0447 \u0421\u043e\u0431\u043e\u043b\u0435\u0432", "password": "OV9#fG2,cl", "passwordRepeat": "OV9#fG2,cl", "roles": ["USER"]}' 
+
+2026-08-04 00:25:48 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:48 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "0ee8410a-e809-4be5-baac-9b81d6d4e41a",
+    "email": "8b2536d9_belozerovsavva@example.net",
+    "fullName": "Владлен Григорьевич Соболев",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:48.617Z"
+}
+2026-08-04 00:25:49 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 74' \
+-d '{"email": "8b2536d9_belozerovsavva@example.net", "password": "OV9#fG2,cl"}' 
+
+2026-08-04 00:25:49 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:49 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "0ee8410a-e809-4be5-baac-9b81d6d4e41a",
+        "email": "8b2536d9_belozerovsavva@example.net",
+        "fullName": "Владлен Григорьевич Соболев",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlZTg0MTBhLWU4MDktNGJlNS1iYWFjLTliODFkNmQ0ZTQxYSIsImVtYWlsIjoiOGIyNTM2ZDlfYmVsb3plcm92c2F2dmFAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODUxNDgsImV4cCI6MTc4NTc4Njk0OH0.0uooZuJ_GRkkaYy0WRxRtzBJF-9OYKimwMxpeZ7s-qo",
+    "refreshToken": "caf9ba8d-4c97-4bb9-bbbb-3a0dc58370e8",
+    "expiresIn": 1785786948927
+}
+2026-08-04 00:25:49 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:49 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:49 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ5LCJleHAiOjE3ODU3ODY5NDl9.LJo95KjvGLqqIyY4XBdAOqjMcmeaOE97aanhsbsSR9Y",
+    "refreshToken": "e6b92da5-6967-4b7a-ada8-7a79831c3b95",
+    "expiresIn": 1785786949458
+}
+2026-08-04 00:25:49 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ5LCJleHAiOjE3ODU3ODY5NDl9.LJo95KjvGLqqIyY4XBdAOqjMcmeaOE97aanhsbsSR9Y' \
+-H 'Content-Length: 61' \
+-d '{"name": "\u0423\u043c\u0438\u0440\u0430\u0442\u044c 5f98c4"}' 
+
+2026-08-04 00:25:49 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:49 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4344,
+    "name": "Умирать 5f98c4"
+}
+2026-08-04 00:25:49 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ5LCJleHAiOjE3ODU3ODY5NDl9.LJo95KjvGLqqIyY4XBdAOqjMcmeaOE97aanhsbsSR9Y' \
+-H 'Content-Length: 1012' \
+-d '{"name": "\u0427\u0435\u0440\u0435\u0437 41709f", "price": 507, "description": "\u0414\u043e\u0441\u0442\u043e\u0438\u043d\u0441\u0442\u0432\u043e \u044f\u0433\u043e\u0434\u0430 \u043f\u043e\u043a\u0438\u0434\u0430\u0442\u044c \u043a\u043e\u0440\u043e\u0431\u043a\u0430. \u041f\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0444\u0444\u0435\u043a\u0442 \u043d\u0430\u043f\u0440\u0430\u0432\u043e.\n\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442 \u043c\u0440\u0430\u0447\u043d\u043e \u043f\u0440\u043e\u0442\u044f\u0433\u0438\u0432\u0430\u0442\u044c. \u0414\u043e\u0441\u0442\u043e\u0438\u043d\u0441\u0442\u0432\u043e \u043f\u043e\u0435\u0437\u0434 \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439.\n\u0420\u0430\u0439\u043a\u043e\u043c \u043d\u0430\u0437\u043d\u0430\u0447\u0438\u0442\u044c \u0441\u043c\u0435\u044f\u0442\u044c\u0441\u044f.", "location": "SPB", "published": true, "genreId": 4344, "imageUrl": "https://placekittens.com/258/121"}' 
+
+2026-08-04 00:25:49 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:49 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66547,
+    "name": "Через 41709f",
+    "price": 507,
+    "description": "Достоинство ягода покидать коробка. Поставить покинуть эффект направо.\nИнтернет мрачно протягивать. Достоинство поезд указанный.\nРайком назначить смеяться.",
+    "imageUrl": "https://placekittens.com/258/121",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4344,
+    "createdAt": "2026-08-03T19:25:49.869Z",
+    "genre": {
+        "name": "Умирать 5f98c4"
+    }
+}
+2026-08-04 00:25:50 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66547/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlZTg0MTBhLWU4MDktNGJlNS1iYWFjLTliODFkNmQ0ZTQxYSIsImVtYWlsIjoiOGIyNTM2ZDlfYmVsb3plcm92c2F2dmFAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODUxNDgsImV4cCI6MTc4NTc4Njk0OH0.0uooZuJ_GRkkaYy0WRxRtzBJF-9OYKimwMxpeZ7s-qo' \
+-H 'Content-Length: 34' \
+-d '{"rating": 3, "text": "To delete"}' 
+
+2026-08-04 00:25:50 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:50 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "0ee8410a-e809-4be5-baac-9b81d6d4e41a",
+    "text": "To delete",
+    "rating": 3,
+    "createdAt": "2026-08-03T19:25:50.165Z",
+    "user": {
+        "fullName": "Владлен Григорьевич Соболев"
+    }
+}
+2026-08-04 00:25:50 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66547/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlZTg0MTBhLWU4MDktNGJlNS1iYWFjLTliODFkNmQ0ZTQxYSIsImVtYWlsIjoiOGIyNTM2ZDlfYmVsb3plcm92c2F2dmFAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODUxNDgsImV4cCI6MTc4NTc4Njk0OH0.0uooZuJ_GRkkaYy0WRxRtzBJF-9OYKimwMxpeZ7s-qo' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:50 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:50 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "userId": "0ee8410a-e809-4be5-baac-9b81d6d4e41a",
+    "text": "To delete",
+    "rating": 3,
+    "createdAt": "2026-08-03T19:25:50.165Z",
+    "user": {
+        "fullName": "Владлен Григорьевич Соболев"
+    }
+}
+2026-08-04 00:25:50 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66547' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ5LCJleHAiOjE3ODU3ODY5NDl9.LJo95KjvGLqqIyY4XBdAOqjMcmeaOE97aanhsbsSR9Y' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:50 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:50 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66547,
+    "name": "Через 41709f",
+    "price": 507,
+    "description": "Достоинство ягода покидать коробка. Поставить покинуть эффект направо.\nИнтернет мрачно протягивать. Достоинство поезд указанный.\nРайком назначить смеяться.",
+    "imageUrl": "https://placekittens.com/258/121",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4344,
+    "createdAt": "2026-08-03T19:25:49.869Z",
+    "reviews": [],
+    "genre": {
+        "name": "Умирать 5f98c4"
+    }
+}
+2026-08-04 00:25:50 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_delete_review (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4344' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQ5LCJleHAiOjE3ODU3ODY5NDl9.LJo95KjvGLqqIyY4XBdAOqjMcmeaOE97aanhsbsSR9Y' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:50 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:50 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4344,
+    "name": "Умирать 5f98c4"
+}

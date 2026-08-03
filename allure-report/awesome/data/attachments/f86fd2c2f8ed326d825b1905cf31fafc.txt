@@ -1,0 +1,21 @@
+2026-08-04 00:59:34 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 299' \
+-d '{"email": "c0b03890_galinagerasimova@example.com", "fullName": "\u0414\u0435\u043c\u044c\u044f\u043d \u0418\u043b\u0430\u0440\u0438\u043e\u043d\u043e\u0432\u0438\u0447 \u0410\u0444\u0430\u043d\u0430\u0441\u044c\u0435\u0432", "password": "yO;jBK\"0", "passwordRepeat": "yO;jBK\"0", "roles": ["USER"]}' 
+
+2026-08-04 00:59:34 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:34 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "021e8c69-1f22-4b24-a855-f3cb45ea179c",
+    "email": "c0b03890_galinagerasimova@example.com",
+    "fullName": "Демьян Иларионович Афанасьев",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:34.427Z"
+}

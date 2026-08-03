@@ -1,0 +1,1 @@
+{"id":"e962e36f64d1dcb29bbdad70e5a90746","fullName":"tests.api.test_movies_api.TestMoviesRoles#test_super_admin_can_create_movie","name":"SUPER_ADMIN может создавать фильмы - 201","status":"passed","testResultsByEnv":{"default":"56455a74a9c33e2253f5599ec8ee0096"}}

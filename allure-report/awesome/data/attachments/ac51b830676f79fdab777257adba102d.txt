@@ -1,0 +1,21 @@
+2026-08-04 01:00:21 [32mINFO[0m [32mpytest tests/db/test_db.py::TestDB::test_registered_user_in_db (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 275' \
+-d '{"email": "46d15d83_jakov_1981@example.org", "fullName": "\u0410\u0433\u0430\u0442\u0430 \u0422\u0438\u043c\u0443\u0440\u043e\u0432\u043d\u0430 \u0421\u043e\u043a\u043e\u043b\u043e\u0432\u0430", "password": ".$c$7-NnBs19", "passwordRepeat": ".$c$7-NnBs19", "roles": ["USER"]}' 
+
+2026-08-04 01:00:21 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:21 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "45dd0ff3-ee6c-4612-9fa4-3260048455c2",
+    "email": "46d15d83_jakov_1981@example.org",
+    "fullName": "Агата Тимуровна Соколова",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T20:00:21.620Z"
+}

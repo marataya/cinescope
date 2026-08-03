@@ -1,0 +1,1 @@
+{"id":"f498fbd23383441de5fb2faf5739385a","fullName":"tests.api.test_auth_api.TestAuthLogin#test_login_user_not_found","name":"Логин несуществующего пользователя","status":"passed","testResultsByEnv":{"default":"3f349f303c420ac872be95995cc0db75"}}

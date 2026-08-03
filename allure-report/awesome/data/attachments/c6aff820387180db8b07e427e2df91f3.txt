@@ -1,0 +1,18 @@
+2026-08-04 00:59:37 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_short_password[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 239' \
+-d '{"email": "6869dc25_zatsevjakov@example.org", "password": "123", "passwordRepeat": "123", "fullName": "\u0424\u043e\u043c\u0438\u043d\u0430 \u0410\u043d\u0436\u0435\u043b\u0430 \u0420\u043e\u0431\u0435\u0440\u0442\u043e\u0432\u043d\u0430"}' 
+
+2026-08-04 00:59:37 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{
+    "message": [
+        "Минимальная длина пароля 8 символов",
+        "password must match /^(?=.*[a-zA-Zа-яА-Я])(?=.*\\d)[a-zA-Zа-яА-Я\\d?@#$%^&*_\\-+()\\[\\]{}><\\\\/\\\\|\"'.,:;]{8,20}$/ regular expression",
+        "Минимальная длина пароля 8 символов"
+    ],
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m

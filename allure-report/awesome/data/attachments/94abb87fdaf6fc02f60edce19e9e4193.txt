@@ -1,0 +1,187 @@
+2026-08-04 00:25:41 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 291' \
+-d '{"email": "5a8e4a8c_vissarionribakov@example.org", "fullName": "\u041b\u043e\u0431\u0430\u043d\u043e\u0432 \u0415\u043c\u0435\u043b\u044c\u044f\u043d \u0410\u043b\u0435\u043a\u0441\u0435\u0435\u0432\u0438\u0447", "password": "WGrrfO\\&44", "passwordRepeat": "WGrrfO\\&44", "roles": ["USER"]}' 
+
+2026-08-04 00:25:41 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:41 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "9c0b5fa3-9c6d-428c-90ac-c8037563dba1",
+    "email": "5a8e4a8c_vissarionribakov@example.org",
+    "fullName": "Лобанов Емельян Алексеевич",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:41.620Z"
+}
+2026-08-04 00:25:42 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 77' \
+-d '{"email": "5a8e4a8c_vissarionribakov@example.org", "password": "WGrrfO\\&44"}' 
+
+2026-08-04 00:25:42 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:42 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "9c0b5fa3-9c6d-428c-90ac-c8037563dba1",
+        "email": "5a8e4a8c_vissarionribakov@example.org",
+        "fullName": "Лобанов Емельян Алексеевич",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljMGI1ZmEzLTljNmQtNDI4Yy05MGFjLWM4MDM3NTYzZGJhMSIsImVtYWlsIjoiNWE4ZTRhOGNfdmlzc2FyaW9ucmliYWtvdkBleGFtcGxlLm9yZyIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NTE0MSwiZXhwIjoxNzg1Nzg2OTQxfQ.7EGylCohgK3Ug-Pt4QhSy82viIYOYBgTv-Scuu7ZNvw",
+    "refreshToken": "bd1342e9-8cb9-44f5-8942-6ed93d0daa07",
+    "expiresIn": 1785786942018
+}
+2026-08-04 00:25:42 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:42 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:42 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQyLCJleHAiOjE3ODU3ODY5NDJ9.7b_ZxIHqsu-I5cChbhyjWiSgpSKOt3Rkmi3XnN2r58I",
+    "refreshToken": "83635915-33b1-4612-ac20-0d0b5f8f0901",
+    "expiresIn": 1785786942534
+}
+2026-08-04 00:25:42 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQyLCJleHAiOjE3ODU3ODY5NDJ9.7b_ZxIHqsu-I5cChbhyjWiSgpSKOt3Rkmi3XnN2r58I' \
+-H 'Content-Length: 55' \
+-d '{"name": "\u0421\u0443\u0441\u0442\u0430\u0432 9b987e"}' 
+
+2026-08-04 00:25:42 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:42 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4341,
+    "name": "Сустав 9b987e"
+}
+2026-08-04 00:25:43 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQyLCJleHAiOjE3ODU3ODY5NDJ9.7b_ZxIHqsu-I5cChbhyjWiSgpSKOt3Rkmi3XnN2r58I' \
+-H 'Content-Length: 550' \
+-d '{"name": "\u0421\u043b\u0438\u0448\u043a\u043e\u043c 6a6d28", "price": 874, "description": "\u041c\u0435\u0442\u0430\u043b\u043b \u0441\u043e\u0431\u0435\u0441\u0435\u0434\u043d\u0438\u043a \u0437\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0435. \u0422\u0440\u0435\u0432\u043e\u0433\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0430 \u0437\u0430\u043f\u043b\u0430\u043a\u0430\u0442\u044c.", "location": "SPB", "published": true, "genreId": 4341, "imageUrl": "https://picsum.photos/485/223"}' 
+
+2026-08-04 00:25:43 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:43 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66544,
+    "name": "Слишком 6a6d28",
+    "price": 874,
+    "description": "Металл собеседник заведение. Тревога результат медицина заплакать.",
+    "imageUrl": "https://picsum.photos/485/223",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4341,
+    "createdAt": "2026-08-03T19:25:43.017Z",
+    "genre": {
+        "name": "Сустав 9b987e"
+    }
+}
+2026-08-04 00:25:43 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66544/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljMGI1ZmEzLTljNmQtNDI4Yy05MGFjLWM4MDM3NTYzZGJhMSIsImVtYWlsIjoiNWE4ZTRhOGNfdmlzc2FyaW9ucmliYWtvdkBleGFtcGxlLm9yZyIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NTE0MSwiZXhwIjoxNzg1Nzg2OTQxfQ.7EGylCohgK3Ug-Pt4QhSy82viIYOYBgTv-Scuu7ZNvw' \
+-H 'Content-Length: 13' \
+-d '{"rating": 3}' 
+
+2026-08-04 00:25:43 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:43 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "9c0b5fa3-9c6d-428c-90ac-c8037563dba1",
+    "text": null,
+    "rating": 3,
+    "createdAt": "2026-08-03T19:25:43.296Z",
+    "user": {
+        "fullName": "Лобанов Емельян Алексеевич"
+    }
+}
+2026-08-04 00:25:43 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66544' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQyLCJleHAiOjE3ODU3ODY5NDJ9.7b_ZxIHqsu-I5cChbhyjWiSgpSKOt3Rkmi3XnN2r58I' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:43 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:43 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66544,
+    "name": "Слишком 6a6d28",
+    "price": 874,
+    "description": "Металл собеседник заведение. Тревога результат медицина заплакать.",
+    "imageUrl": "https://picsum.photos/485/223",
+    "location": "SPB",
+    "published": true,
+    "rating": 3,
+    "genreId": 4341,
+    "createdAt": "2026-08-03T19:25:43.017Z",
+    "reviews": [
+        {
+            "userId": "9c0b5fa3-9c6d-428c-90ac-c8037563dba1",
+            "text": null,
+            "rating": 3,
+            "createdAt": "2026-08-03T19:25:43.296Z",
+            "user": {
+                "fullName": "Лобанов Емельян Алексеевич"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Сустав 9b987e"
+    }
+}
+2026-08-04 00:25:43 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_without_text_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4341' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTQyLCJleHAiOjE3ODU3ODY5NDJ9.7b_ZxIHqsu-I5cChbhyjWiSgpSKOt3Rkmi3XnN2r58I' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:43 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:43 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4341,
+    "name": "Сустав 9b987e"
+}

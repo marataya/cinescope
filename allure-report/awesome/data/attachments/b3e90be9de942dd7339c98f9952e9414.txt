@@ -1,0 +1,167 @@
+2026-08-04 01:00:10 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_by_price_range[price_500-1000][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=500&maxPrice=1000&pageSize=10&page=1' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 01:00:10 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:10 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 621,
+            "name": "Explain stand.",
+            "description": "Computer although fine address. Its expert ok minute and.\nRequire near poor you of. Not five mother later picture deal.",
+            "genreId": 7,
+            "imageUrl": "https://placekitten.com/383/274",
+            "price": 786,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-21T09:53:03.004Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 770,
+            "name": "Action.",
+            "description": "Material light whether fly bring. Doctor magazine data culture same.\nRecord put choose stuff care money full. Ahead kid by discussion prepare nothing. Energy specific spend young foreign five.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/382x811",
+            "price": 678,
+            "rating": 10,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-21T21:53:18.471Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 810,
+            "name": "Address agent.",
+            "description": "Less room hear. Camera certainly road wish number nor board.\nDecision against somebody these. Trial nothing ask onto. Learn between across food institution.",
+            "genreId": 9,
+            "imageUrl": "https://picsum.photos/963/489",
+            "price": 648,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-22T09:34:50.771Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 839,
+            "name": "Общедоступная и третичная матрица",
+            "description": "Снимать полюбить свежий житель темнеть. Недостаток сверкающий банк крутой порядок развернуться.",
+            "genreId": 9,
+            "imageUrl": "http://oao.net/",
+            "price": 558,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-22T19:47:43.639Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 885,
+            "name": "Information course.",
+            "description": "How product able. Today perhaps product however onto PM anything.\nGun result per. Who affect feel once per away. Easy second something who.",
+            "genreId": 8,
+            "imageUrl": "https://placekitten.com/905/911",
+            "price": 713,
+            "rating": 1,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T11:38:15.515Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 897,
+            "name": "Автономный и логистический интерфейс",
+            "description": "Тесно дружно мелочь солнце функция задержать. Пропаганда подземный мальчишка решение провинция боец.\nПодземный снимать основание успокоиться. Какой металл миллиард советовать.",
+            "genreId": 10,
+            "imageUrl": "https://oktoblu.com/",
+            "price": 746,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T12:31:07.292Z",
+            "genre": {
+                "name": "Военный"
+            }
+        },
+        {
+            "id": 997,
+            "name": "Фильм xinaamufkf",
+            "description": "Описание vycdjiyusamgozhqpgdlczngtwpoby",
+            "genreId": 7,
+            "imageUrl": "https://munoz-williams.info/postsabout.jsp",
+            "price": 685,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-23T20:33:39.566Z",
+            "genre": {
+                "name": "Мюзикл"
+            }
+        },
+        {
+            "id": 1051,
+            "name": "Act.",
+            "description": "Wonder act as care.\nAble camera miss form interview American. Local student night result find. Outside when table record relationship us.",
+            "genreId": 8,
+            "imageUrl": "https://dummyimage.com/288x3",
+            "price": 727,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-26T10:56:29.972Z",
+            "genre": {
+                "name": "Фэнтези"
+            }
+        },
+        {
+            "id": 1135,
+            "name": "Best hand.",
+            "description": "Plan general space help only mean marriage. Read chair would success week fear care like.\nAny must phone attention quality. Positive water pay clearly.\nMarriage marriage trip could.",
+            "genreId": 9,
+            "imageUrl": "https://dummyimage.com/114x458",
+            "price": 770,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2025-05-26T14:54:00.560Z",
+            "genre": {
+                "name": "Анимация"
+            }
+        },
+        {
+            "id": 1211,
+            "name": "Democratic friend.",
+            "description": "Care although human up. Hair away group return beautiful. Beat surface evening table consider religious.",
+            "genreId": 10,
+            "imageUrl": "https://dummyimage.com/258x387",
+            "price": 723,
+            "rating": 0,
+            "location": "MSK",
+            "published": true,
+            "createdAt": "2025-05-27T10:24:47.756Z",
+            "genre": {
+                "name": "Военный"
+            }
+        }
+    ],
+    "count": 890,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 89
+}

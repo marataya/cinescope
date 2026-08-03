@@ -1,0 +1,21 @@
+2026-08-04 00:26:08 [32mINFO[0m [32mpytest tests/db/test_db.py::TestDB::test_registered_user_in_db (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 281' \
+-d '{"email": "8e8699a6_litkinamarfa@example.net", "fullName": "\u0411\u043e\u0431\u044b\u043b\u0435\u0432 \u042d\u0434\u0443\u0430\u0440\u0434 \u0413\u0440\u0438\u0433\u043e\u0440\u044c\u0435\u0432\u0438\u0447", "password": "BWqHq6s9", "passwordRepeat": "BWqHq6s9", "roles": ["USER"]}' 
+
+2026-08-04 00:26:08 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:26:08 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "1be2a43c-75e2-492d-940e-935d401d699f",
+    "email": "8e8699a6_litkinamarfa@example.net",
+    "fullName": "Бобылев Эдуард Григорьевич",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:26:08.521Z"
+}

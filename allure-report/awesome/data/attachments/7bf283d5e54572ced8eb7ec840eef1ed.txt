@@ -1,0 +1,136 @@
+2026-08-04 00:25:31 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:31 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:31 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTMxLCJleHAiOjE3ODU3ODY5MzF9.Ec6ZZoMhJa5uGlGTHp9KUYeSe9NK5u7FRV2dyF3IGvc",
+    "refreshToken": "cd7b3ece-63e5-4b69-b09b-db077e4b9718",
+    "expiresIn": 1785786931444
+}
+2026-08-04 00:25:31 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTMxLCJleHAiOjE3ODU3ODY5MzF9.Ec6ZZoMhJa5uGlGTHp9KUYeSe9NK5u7FRV2dyF3IGvc' \
+-H 'Content-Length: 55' \
+-d '{"name": "\u041f\u043e\u0440\u043e\u0434\u0430 114252"}' 
+
+2026-08-04 00:25:31 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:31 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4336,
+    "name": "Порода 114252"
+}
+2026-08-04 00:25:31 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTMxLCJleHAiOjE3ODU3ODY5MzF9.Ec6ZZoMhJa5uGlGTHp9KUYeSe9NK5u7FRV2dyF3IGvc' \
+-H 'Content-Length: 1148' \
+-d '{"name": "\u0414\u043e\u0431\u0438\u0442\u044c\u0441\u044f 8974bb", "price": 430, "description": "\u0421\u043a\u0440\u044b\u0442\u044b\u0439 \u0430\u043a\u0430\u0434\u0435\u043c\u0438\u043a \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c. \u041d\u0430\u0441\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u0435 \u043e\u0447\u043a\u043e \u043f\u0440\u043e\u043c\u043e\u043b\u0447\u0430\u0442\u044c \u043e\u0447\u0443\u0442\u0438\u0442\u044c\u0441\u044f.\n\u0423\u0433\u0440\u043e\u0437\u0430 \u0447\u0443\u0432\u0441\u0442\u0432\u043e \u0441\u044b\u043d\u043e\u043a \u0442\u044b\u0441\u044f\u0447\u0430. \u041f\u043e\u0440\u0442 \u043a\u0430\u044e\u0442\u0430 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u0434\u0430\u043b\u044c\u043d\u0438\u0439 \u0443\u043c\u0438\u0440\u0430\u0442\u044c \u0438\u0437\u0434\u0430\u043b\u0438. \u0411\u0430\u043d\u043a \u0440\u0430\u0432\u043d\u043e\u0434\u0443\u0448\u043d\u044b\u0439 \u043f\u0440\u043e\u043f\u0430\u0434\u0430\u0442\u044c \u0430\u0436.", "location": "MSK", "published": true, "genreId": 4336, "imageUrl": "https://placekittens.com/499/978"}' 
+
+2026-08-04 00:25:31 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:31 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66539,
+    "name": "Добиться 8974bb",
+    "price": 430,
+    "description": "Скрытый академик изменение построить. Наслаждение очко промолчать очутиться.\nУгроза чувство сынок тысяча. Порт каюта слишком дальний умирать издали. Банк равнодушный пропадать аж.",
+    "imageUrl": "https://placekittens.com/499/978",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4336,
+    "createdAt": "2026-08-03T19:25:31.871Z",
+    "genre": {
+        "name": "Порода 114252"
+    }
+}
+2026-08-04 00:25:32 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/66539' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:25:32 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:32 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66539,
+    "name": "Добиться 8974bb",
+    "price": 430,
+    "description": "Скрытый академик изменение построить. Наслаждение очко промолчать очутиться.\nУгроза чувство сынок тысяча. Порт каюта слишком дальний умирать издали. Банк равнодушный пропадать аж.",
+    "imageUrl": "https://placekittens.com/499/978",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4336,
+    "createdAt": "2026-08-03T19:25:31.871Z",
+    "reviews": [],
+    "genre": {
+        "name": "Порода 114252"
+    }
+}
+2026-08-04 00:25:32 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66539' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTMxLCJleHAiOjE3ODU3ODY5MzF9.Ec6ZZoMhJa5uGlGTHp9KUYeSe9NK5u7FRV2dyF3IGvc' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:32 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:32 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66539,
+    "name": "Добиться 8974bb",
+    "price": 430,
+    "description": "Скрытый академик изменение построить. Наслаждение очко промолчать очутиться.\nУгроза чувство сынок тысяча. Порт каюта слишком дальний умирать издали. Банк равнодушный пропадать аж.",
+    "imageUrl": "https://placekittens.com/499/978",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4336,
+    "createdAt": "2026-08-03T19:25:31.871Z",
+    "reviews": [],
+    "genre": {
+        "name": "Порода 114252"
+    }
+}
+2026-08-04 00:25:32 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesPublic::test_get_movie_by_id (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4336' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTMxLCJleHAiOjE3ODU3ODY5MzF9.Ec6ZZoMhJa5uGlGTHp9KUYeSe9NK5u7FRV2dyF3IGvc' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:32 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:32 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4336,
+    "name": "Порода 114252"
+}

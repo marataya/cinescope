@@ -1,0 +1,35 @@
+2026-08-04 00:25:28 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthLogin::test_login_wrong_password (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 269' \
+-d '{"email": "6cbd4f40_aggekonstantinov@example.org", "fullName": "\u0411\u0438\u0440\u044e\u043a\u043e\u0432 \u0414\u0430\u043d\u0438\u043b\u0430 \u0410\u0432\u0434\u0435\u0435\u0432\u0438\u0447", "password": "9P;X\"_e1", "passwordRepeat": "9P;X\"_e1", "roles": ["USER"]}' 
+
+2026-08-04 00:25:28 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:28 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "70b92798-56ac-44eb-9fdd-d2b5516fceef",
+    "email": "6cbd4f40_aggekonstantinov@example.org",
+    "fullName": "Бирюков Данила Авдеевич",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:28.523Z"
+}
+2026-08-04 00:25:28 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthLogin::test_login_wrong_password[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 83' \
+-d '{"email": "6cbd4f40_aggekonstantinov@example.org", "password": "wrong_password123"}' 
+
+2026-08-04 00:25:28 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{
+    "message": "Неверный логин или пароль",
+    "error": "Unauthorized",
+    "statusCode": 401
+}[0m

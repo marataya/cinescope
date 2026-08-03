@@ -1,0 +1,1 @@
+{"id":"d944daa806ddb31389bac480cb6b132c","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_short_password","name":"Регистрация с коротким паролем","status":"passed","testResultsByEnv":{"default":"45baec8859cd9494b96a89a44b7f5a00"}}

@@ -1,0 +1,1 @@
+{"id":"1fda65a2f084e0404c49a08612b34ba8","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_duplicate_email_conflict","name":"Регистрация с существующим email","status":"passed","testResultsByEnv":{"default":"16530590305f349a98d2e51acfccc87f"}}

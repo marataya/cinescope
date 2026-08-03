@@ -1,0 +1,187 @@
+2026-08-04 00:59:51 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 308' \
+-d '{"email": "7886bcb9_aleksandrajakusheva@example.com", "fullName": "\u0421\u0438\u043b\u0430\u043d\u0442\u0438\u0439 \u0414\u0438\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447 \u041c\u0438\u0445\u0430\u0439\u043b\u043e\u0432", "password": "HBO)8bSrl", "passwordRepeat": "HBO)8bSrl", "roles": ["USER"]}' 
+
+2026-08-04 00:59:51 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:51 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "c932c620-99a5-45bf-b8b9-f86b6752a435",
+    "email": "7886bcb9_aleksandrajakusheva@example.com",
+    "fullName": "Силантий Димитриевич Михайлов",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:51.028Z"
+}
+2026-08-04 00:59:51 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 78' \
+-d '{"email": "7886bcb9_aleksandrajakusheva@example.com", "password": "HBO)8bSrl"}' 
+
+2026-08-04 00:59:51 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:51 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "c932c620-99a5-45bf-b8b9-f86b6752a435",
+        "email": "7886bcb9_aleksandrajakusheva@example.com",
+        "fullName": "Силантий Димитриевич Михайлов",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5MzJjNjIwLTk5YTUtNDViZi1iOGI5LWY4NmI2NzUyYTQzNSIsImVtYWlsIjoiNzg4NmJjYjlfYWxla3NhbmRyYWpha3VzaGV2YUBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NzE5MSwiZXhwIjoxNzg1Nzg4OTkxfQ.J8zaO6vqt2R3IAF4pcaJQCEVfZKOCwvMeVmUScjFYpM",
+    "refreshToken": "567d05b4-9e13-414d-9754-fa28b5910d05",
+    "expiresIn": 1785788991326
+}
+2026-08-04 00:59:51 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:51 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:51 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkxLCJleHAiOjE3ODU3ODg5OTF9.HqqU5gVH5XXPNXWl_pbp8LhVWe1cGpsJQwFPXiv5eIA",
+    "refreshToken": "a431737d-3277-48ad-b7b9-96180e6cf670",
+    "expiresIn": 1785788991829
+}
+2026-08-04 00:59:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkxLCJleHAiOjE3ODU3ODg5OTF9.HqqU5gVH5XXPNXWl_pbp8LhVWe1cGpsJQwFPXiv5eIA' \
+-H 'Content-Length: 49' \
+-d '{"name": "\u041a\u0430\u0437\u043d\u044c 34d3ac"}' 
+
+2026-08-04 00:59:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:52 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4359,
+    "name": "Казнь 34d3ac"
+}
+2026-08-04 00:59:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkxLCJleHAiOjE3ODU3ODg5OTF9.HqqU5gVH5XXPNXWl_pbp8LhVWe1cGpsJQwFPXiv5eIA' \
+-H 'Content-Length: 702' \
+-d '{"name": "\u0427\u0435\u043b\u043e\u0432\u0435\u0447\u0435\u043a 6549b6", "price": 144, "description": "\u0410 \u0440\u043e\u0441\u043a\u043e\u0448\u043d\u044b\u0439 \u044e\u043d\u044b\u0439 \u0432\u044b\u0440\u0430\u0437\u0438\u0442\u044c. \u0411\u043e\u0442\u0438\u043d\u043e\u043a \u043f\u043e\u043b\u0435\u0432\u043e\u0439 \u043c\u0435\u0440\u0430 \u0431\u0430\u0433\u0440\u043e\u0432\u044b\u0439 \u043d\u0430\u043c\u0435\u0440\u0435\u043d\u0438\u0435 \u0433\u043e\u0440\u044c\u043a\u0438\u0439 \u043d\u043e\u0447\u044c \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c.", "location": "SPB", "published": true, "genreId": 4359, "imageUrl": "https://placekittens.com/541/749"}' 
+
+2026-08-04 00:59:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:52 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66557,
+    "name": "Человечек 6549b6",
+    "price": 144,
+    "description": "А роскошный юный выразить. Ботинок полевой мера багровый намерение горький ночь предоставить.",
+    "imageUrl": "https://placekittens.com/541/749",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4359,
+    "createdAt": "2026-08-03T19:59:52.211Z",
+    "genre": {
+        "name": "Казнь 34d3ac"
+    }
+}
+2026-08-04 00:59:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66557/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5MzJjNjIwLTk5YTUtNDViZi1iOGI5LWY4NmI2NzUyYTQzNSIsImVtYWlsIjoiNzg4NmJjYjlfYWxla3NhbmRyYWpha3VzaGV2YUBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwidmVyaWZpZWQiOnRydWUsImlhdCI6MTc4NTc4NzE5MSwiZXhwIjoxNzg1Nzg4OTkxfQ.J8zaO6vqt2R3IAF4pcaJQCEVfZKOCwvMeVmUScjFYpM' \
+-H 'Content-Length: 424' \
+-d '{"rating": 6, "text": "\u0421\u043e\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043b\u0435\u0432\u044b\u0439 \u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0440\u0430\u0439\u043a\u043e\u043c. \u041a\u043d\u044f\u0437\u044c \u0432\u043e\u0435\u043d\u043d\u044b\u0439 \u043e\u0447\u0435\u0440\u0435\u0434\u043d\u043e\u0439 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b."}' 
+
+2026-08-04 00:59:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:52 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "c932c620-99a5-45bf-b8b9-f86b6752a435",
+    "text": "Социалистический левый правление райком. Князь военный очередной мотоцикл.",
+    "rating": 6,
+    "createdAt": "2026-08-03T19:59:52.493Z",
+    "user": {
+        "fullName": "Силантий Димитриевич Михайлов"
+    }
+}
+2026-08-04 00:59:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66557' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkxLCJleHAiOjE3ODU3ODg5OTF9.HqqU5gVH5XXPNXWl_pbp8LhVWe1cGpsJQwFPXiv5eIA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:52 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66557,
+    "name": "Человечек 6549b6",
+    "price": 144,
+    "description": "А роскошный юный выразить. Ботинок полевой мера багровый намерение горький ночь предоставить.",
+    "imageUrl": "https://placekittens.com/541/749",
+    "location": "SPB",
+    "published": true,
+    "rating": 6,
+    "genreId": 4359,
+    "createdAt": "2026-08-03T19:59:52.211Z",
+    "reviews": [
+        {
+            "userId": "c932c620-99a5-45bf-b8b9-f86b6752a435",
+            "text": "Социалистический левый правление райком. Князь военный очередной мотоцикл.",
+            "rating": 6,
+            "createdAt": "2026-08-03T19:59:52.493Z",
+            "user": {
+                "fullName": "Силантий Димитриевич Михайлов"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Казнь 34d3ac"
+    }
+}
+2026-08-04 00:59:52 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_rating_above_max_accepted (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4359' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTkxLCJleHAiOjE3ODU3ODg5OTF9.HqqU5gVH5XXPNXWl_pbp8LhVWe1cGpsJQwFPXiv5eIA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:52 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:52 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4359,
+    "name": "Казнь 34d3ac"
+}

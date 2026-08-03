@@ -1,0 +1,73 @@
+2026-08-04 01:00:13 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[all_filters] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:13 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:13 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjEzLCJleHAiOjE3ODU3ODkwMTN9.ZySdzSRkJw4u8SxGA7xlf6y9RikODljtqi5tvy1df0g",
+    "refreshToken": "1c2b3127-c391-4e0d-a1f4-2e6e7d83e42e",
+    "expiresIn": 1785789013518
+}
+2026-08-04 01:00:13 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[all_filters] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjEzLCJleHAiOjE3ODU3ODkwMTN9.ZySdzSRkJw4u8SxGA7xlf6y9RikODljtqi5tvy1df0g' \
+-H 'Content-Length: 49' \
+-d '{"name": "\u041f\u043e\u0440\u043e\u0433 061372"}' 
+
+2026-08-04 01:00:13 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:13 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4369,
+    "name": "Порог 061372"
+}
+2026-08-04 01:00:14 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[all_filters][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=1&maxPrice=1000&locations=MSK&genreId=4369&pageSize=10&page=1' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 01:00:14 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:14 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [],
+    "count": 0,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 0
+}
+2026-08-04 01:00:14 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestMoviesFilters::test_filter_combined_parametrized[all_filters] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4369' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjEzLCJleHAiOjE3ODU3ODkwMTN9.ZySdzSRkJw4u8SxGA7xlf6y9RikODljtqi5tvy1df0g' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:14 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:14 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4369,
+    "name": "Порог 061372"
+}

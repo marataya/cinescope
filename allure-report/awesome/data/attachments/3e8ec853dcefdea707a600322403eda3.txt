@@ -1,0 +1,16 @@
+2026-08-04 00:59:37 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_password_mismatch[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 285' \
+-d '{"email": "58ff3214_jegorova@example.net", "password": "vzx-6&#*ZjT", "passwordRepeat": "vzx-6&#*ZjT123", "fullName": "\u041a\u0443\u043b\u0438\u043a\u043e\u0432\u0430 \u041e\u043a\u0441\u0430\u043d\u0430 \u0421\u0442\u0430\u043d\u0438\u0441\u043b\u0430\u0432\u043e\u0432\u043d\u0430"}' 
+
+2026-08-04 00:59:37 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{
+    "message": [
+        "Пароли не совпадают"
+    ],
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m

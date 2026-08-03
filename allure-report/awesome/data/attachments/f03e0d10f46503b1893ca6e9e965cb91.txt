@@ -1,0 +1,12 @@
+2026-08-04 00:59:40 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRefresh::test_refresh_token_unauthorized[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/refresh-tokens' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+
+2026-08-04 00:59:40 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{
+    "message": "Пользователь не авторизован",
+    "error": "Unauthorized",
+    "statusCode": 401
+}[0m

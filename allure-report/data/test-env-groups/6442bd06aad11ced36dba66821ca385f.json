@@ -1,0 +1,1 @@
+{"id":"6442bd06aad11ced36dba66821ca385f","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_password_mismatch","name":"Регистрация с несовпадающими паролями","status":"passed","testResultsByEnv":{"default":"51143765e6a09c58b95e960139a03f5d"}}

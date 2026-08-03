@@ -1,0 +1,1 @@
+{"id":"a4b6f17550abbdf64530529f7db6e11f","fullName":"tests.api.test_movies_api.TestMoviesPublic#test_get_movie_not_found","name":"Получение фильма по несуществующему ID","status":"passed","testResultsByEnv":{"default":"3e60f940b6d46fb1aa0f0b6f56567110"}}

@@ -1,0 +1,49 @@
+2026-08-04 01:00:17 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_create_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:17 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:17 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE3LCJleHAiOjE3ODU3ODkwMTd9.myQaH6iWnAjKh1XDIyQwfoLZGx_-8tiet2FDPZvCDBc",
+    "refreshToken": "26bde895-8d70-4a13-b4be-5eb0605dd6fe",
+    "expiresIn": 1785789017139
+}
+2026-08-04 01:00:17 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_create_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE3LCJleHAiOjE3ODU3ODkwMTd9.myQaH6iWnAjKh1XDIyQwfoLZGx_-8tiet2FDPZvCDBc' \
+-H 'Cookie: refresh_token=26bde895-8d70-4a13-b4be-5eb0605dd6fe' \
+-H 'Content-Length: 328' \
+-d '{"email": "964b8dae_veronikaknjazeva@example.org", "fullName": "\u0411\u0435\u043b\u043e\u0437\u0435\u0440\u043e\u0432\u0430 \u0418\u0432\u0430\u043d\u043d\u0430 \u0420\u043e\u043c\u0430\u043d\u043e\u0432\u043d\u0430", "password": "*yx8VQXr,", "passwordRepeat": "*yx8VQXr,", "roles": ["USER"], "verified": true, "banned": false}' 
+
+2026-08-04 01:00:17 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:17 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "5edea9e5-abdc-4d64-8934-13e742c17a06",
+    "email": "964b8dae_veronikaknjazeva@example.org",
+    "fullName": "Белозерова Иванна Романовна",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T20:00:17.431Z"
+}

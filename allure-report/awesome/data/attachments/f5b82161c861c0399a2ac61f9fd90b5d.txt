@@ -1,0 +1,61 @@
+2026-08-04 01:00:18 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_super_admin (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:18 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:18 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE3LCJleHAiOjE3ODU3ODkwMTd9.myQaH6iWnAjKh1XDIyQwfoLZGx_-8tiet2FDPZvCDBc",
+    "refreshToken": "54caaae2-b3d3-4a1d-ae7a-326eef650824",
+    "expiresIn": 1785789017949
+}
+2026-08-04 01:00:18 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_super_admin[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE3LCJleHAiOjE3ODU3ODkwMTd9.myQaH6iWnAjKh1XDIyQwfoLZGx_-8tiet2FDPZvCDBc' \
+-H 'Cookie: refresh_token=54caaae2-b3d3-4a1d-ae7a-326eef650824' \
+-H 'Content-Length: 317' \
+-d '{"email": "528b5061_stepan_2020@example.com", "password": "WpdQ66g}<", "passwordRepeat": "WpdQ66g}<", "fullName": "\u0413\u0443\u043b\u044f\u0435\u0432\u0430 \u0424\u0435\u0432\u0440\u043e\u043d\u0438\u044f \u0422\u0430\u0440\u0430\u0441\u043e\u0432\u043d\u0430", "verified": true, "banned": false, "roles": ["USER"]}' 
+
+2026-08-04 01:00:18 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:18 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "f135d4e0-552c-4616-b3b0-0292e2a77fda",
+    "email": "528b5061_stepan_2020@example.com",
+    "fullName": "Гуляева Феврония Тарасовна",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T20:00:18.236Z"
+}
+2026-08-04 01:00:18 [32mINFO[0m [32mpytest tests/api/test_user_roles.py::TestUserRoles::test_super_admin[0m
+curl -X DELETE 'https://auth.dev-cinescope.coconutqa.ru/user/f135d4e0-552c-4616-b3b0-0292e2a77fda' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjE3LCJleHAiOjE3ODU3ODkwMTd9.myQaH6iWnAjKh1XDIyQwfoLZGx_-8tiet2FDPZvCDBc' \
+-H 'Cookie: refresh_token=54caaae2-b3d3-4a1d-ae7a-326eef650824' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:18 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:18 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:

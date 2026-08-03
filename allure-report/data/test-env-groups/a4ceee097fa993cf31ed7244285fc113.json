@@ -1,0 +1,1 @@
+{"id":"a4ceee097fa993cf31ed7244285fc113","fullName":"tests.api.test_auth_api.TestAuthLogin#test_login_wrong_password","name":"Логин с неверным паролем","status":"passed","testResultsByEnv":{"default":"be204602ffbb0935403928fa3d54f78c"}}

@@ -1,0 +1,1 @@
+{"id":"e4a9ff1e608a4c83afd01dbf7ab0c1ff","fullName":"tests.db.test_transaction.TestTransaction#test_accounts_transaction_rollback_on_error","name":"Откат транзакции при недостатке средств - атомарность","status":"passed","testResultsByEnv":{"default":"9a22464531e51248b069bc9d734298de"}}

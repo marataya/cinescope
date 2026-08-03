@@ -1,0 +1,1 @@
+{"id":"bbd4726aa4a791c1db89df9df39579c3","fullName":"tests.api.test_user_roles.TestUserRoles#test_create_user","name":"Создание пользователя через SUPER_ADMIN - проверка полей","status":"passed","testResultsByEnv":{"default":"8d169a60c9936e461d51b430f6e66e99"}}

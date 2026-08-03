@@ -1,0 +1,207 @@
+2026-08-04 00:59:58 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 280' \
+-d '{"email": "c4a3e19b_lavrenti_98@example.net", "fullName": "\u041b\u0443\u043a\u0438\u044f \u041c\u0438\u0445\u0430\u0439\u043b\u043e\u0432\u043d\u0430 \u0414\u0435\u043d\u0438\u0441\u043e\u0432\u0430", "password": "\\XD@#6:Jqd", "passwordRepeat": "\\XD@#6:Jqd", "roles": ["USER"]}' 
+
+2026-08-04 00:59:58 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:58 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "b6c8c4f0-7eb4-489f-8cdb-ca10ca20a3d1",
+    "email": "c4a3e19b_lavrenti_98@example.net",
+    "fullName": "Лукия Михайловна Денисова",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:59:58.026Z"
+}
+2026-08-04 00:59:58 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 72' \
+-d '{"email": "c4a3e19b_lavrenti_98@example.net", "password": "\\XD@#6:Jqd"}' 
+
+2026-08-04 00:59:58 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:58 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "b6c8c4f0-7eb4-489f-8cdb-ca10ca20a3d1",
+        "email": "c4a3e19b_lavrenti_98@example.net",
+        "fullName": "Лукия Михайловна Денисова",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI2YzhjNGYwLTdlYjQtNDg5Zi04Y2RiLWNhMTBjYTIwYTNkMSIsImVtYWlsIjoiYzRhM2UxOWJfbGF2cmVudGlfOThAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODcxOTgsImV4cCI6MTc4NTc4ODk5OH0.rmxVdKpSzRdZHOrF2tahGPuJeXnW_LPU6OtFfJ6cJs4",
+    "refreshToken": "739fc6a3-727f-4c59-9c6f-424351c60b6b",
+    "expiresIn": 1785788998435
+}
+2026-08-04 00:59:58 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:59:58 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:58 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk4LCJleHAiOjE3ODU3ODg5OTh9.V1iA_9nDj_gf7DOL49KJkyBhqdjI8YbPR2HjyQvjnBA",
+    "refreshToken": "2f7e938a-3dda-4908-a8af-26f17463cfb8",
+    "expiresIn": 1785788998945
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk4LCJleHAiOjE3ODU3ODg5OTh9.V1iA_9nDj_gf7DOL49KJkyBhqdjI8YbPR2HjyQvjnBA' \
+-H 'Content-Length: 67' \
+-d '{"name": "\u0417\u0430\u043b\u043e\u0436\u0438\u0442\u044c 7b9708"}' 
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4362,
+    "name": "Заложить 7b9708"
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk4LCJleHAiOjE3ODU3ODg5OTh9.V1iA_9nDj_gf7DOL49KJkyBhqdjI8YbPR2HjyQvjnBA' \
+-H 'Content-Length: 699' \
+-d '{"name": "\u0422\u043e\u0432\u0430\u0440 a25c41", "price": 345, "description": "\u0417\u0430\u043f\u0440\u0435\u0442\u0438\u0442\u044c \u0436\u0435\u043b\u0430\u043d\u0438\u0435 \u0442\u0440\u044f\u0441\u0442\u0438. \u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c \u043d\u0438\u0437\u043a\u0438\u0439 \u043a\u0430\u0440\u0430\u043d\u0434\u0430\u0448 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0442\u044b\u0441\u044f\u0447\u0430 \u0440\u0430\u0437\u043d\u043e\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u0439 \u0440\u0430\u0437\u0432\u0438\u0442\u044b\u0439 \u0434\u0440\u0443\u0436\u043d\u043e.", "location": "SPB", "published": true, "genreId": 4362, "imageUrl": "https://dummyimage.com/665x514"}' 
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66560,
+    "name": "Товар a25c41",
+    "price": 345,
+    "description": "Запретить желание трясти. Написать низкий карандаш функция тысяча разнообразный развитый дружно.",
+    "imageUrl": "https://dummyimage.com/665x514",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4362,
+    "createdAt": "2026-08-03T19:59:59.323Z",
+    "genre": {
+        "name": "Заложить 7b9708"
+    }
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66560/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI2YzhjNGYwLTdlYjQtNDg5Zi04Y2RiLWNhMTBjYTIwYTNkMSIsImVtYWlsIjoiYzRhM2UxOWJfbGF2cmVudGlfOThAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODcxOTgsImV4cCI6MTc4NTc4ODk5OH0.rmxVdKpSzRdZHOrF2tahGPuJeXnW_LPU6OtFfJ6cJs4' \
+-H 'Content-Length: 28' \
+-d '{"rating": 3, "text": "Old"}' 
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "b6c8c4f0-7eb4-489f-8cdb-ca10ca20a3d1",
+    "text": "Old",
+    "rating": 3,
+    "createdAt": "2026-08-03T19:59:59.643Z",
+    "user": {
+        "fullName": "Лукия Михайловна Денисова"
+    }
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review[0m
+curl -X PUT 'https://api.dev-cinescope.coconutqa.ru/movies/66560/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI2YzhjNGYwLTdlYjQtNDg5Zi04Y2RiLWNhMTBjYTIwYTNkMSIsImVtYWlsIjoiYzRhM2UxOWJfbGF2cmVudGlfOThAZXhhbXBsZS5uZXQiLCJyb2xlcyI6WyJVU0VSIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODU3ODcxOTgsImV4cCI6MTc4NTc4ODk5OH0.rmxVdKpSzRdZHOrF2tahGPuJeXnW_LPU6OtFfJ6cJs4' \
+-H 'Content-Length: 32' \
+-d '{"rating": 5, "text": "Updated"}' 
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movieId": 66560,
+    "userId": "b6c8c4f0-7eb4-489f-8cdb-ca10ca20a3d1",
+    "hidden": false,
+    "text": "Updated",
+    "rating": 5,
+    "createdAt": "2026-08-03T19:59:59.643Z"
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66560' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk4LCJleHAiOjE3ODU3ODg5OTh9.V1iA_9nDj_gf7DOL49KJkyBhqdjI8YbPR2HjyQvjnBA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66560,
+    "name": "Товар a25c41",
+    "price": 345,
+    "description": "Запретить желание трясти. Написать низкий карандаш функция тысяча разнообразный развитый дружно.",
+    "imageUrl": "https://dummyimage.com/665x514",
+    "location": "SPB",
+    "published": true,
+    "rating": 5,
+    "genreId": 4362,
+    "createdAt": "2026-08-03T19:59:59.323Z",
+    "reviews": [
+        {
+            "userId": "b6c8c4f0-7eb4-489f-8cdb-ca10ca20a3d1",
+            "text": "Updated",
+            "rating": 5,
+            "createdAt": "2026-08-03T19:59:59.643Z",
+            "user": {
+                "fullName": "Лукия Михайловна Денисова"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Заложить 7b9708"
+    }
+}
+2026-08-04 00:59:59 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_edit_review (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4362' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MTk4LCJleHAiOjE3ODU3ODg5OTh9.V1iA_9nDj_gf7DOL49KJkyBhqdjI8YbPR2HjyQvjnBA' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:59:59 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:59:59 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4362,
+    "name": "Заложить 7b9708"
+}

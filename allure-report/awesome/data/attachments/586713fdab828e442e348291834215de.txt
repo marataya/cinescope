@@ -1,0 +1,111 @@
+2026-08-04 01:00:24 [32mINFO[0m [32mpytest tests/db/test_movies_db_sync.py::TestMovieDbSync::test_movie_lifecycle_db_sync (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:24 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:24 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI0LCJleHAiOjE3ODU3ODkwMjR9.JLmAK-Ntk7yTSd4PpQHnLeuXRI2AGkUGU3mpj8BA7P4",
+    "refreshToken": "64d5ddc9-4928-498c-952b-3fd09b2a2cab",
+    "expiresIn": 1785789024543
+}
+2026-08-04 01:00:24 [32mINFO[0m [32mpytest tests/db/test_movies_db_sync.py::TestMovieDbSync::test_movie_lifecycle_db_sync (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI0LCJleHAiOjE3ODU3ODkwMjR9.JLmAK-Ntk7yTSd4PpQHnLeuXRI2AGkUGU3mpj8BA7P4' \
+-H 'Content-Length: 67' \
+-d '{"name": "\u041f\u043e\u0441\u0438\u0434\u0435\u0442\u044c 5d246f"}' 
+
+2026-08-04 01:00:24 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:24 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4372,
+    "name": "Посидеть 5d246f"
+}
+2026-08-04 01:00:25 [32mINFO[0m [32mpytest tests/db/test_movies_db_sync.py::TestMovieDbSync::test_movie_lifecycle_db_sync[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI0LCJleHAiOjE3ODU3ODkwMjR9.JLmAK-Ntk7yTSd4PpQHnLeuXRI2AGkUGU3mpj8BA7P4' \
+-H 'Content-Length: 1056' \
+-d '{"name": "\u041a\u0430\u043a\u043e\u0439 5631cd", "price": 863, "description": "\u0412\u043e\u0437\u0431\u0443\u0436\u0434\u0435\u043d\u0438\u0435 \u0443\u0433\u0440\u043e\u0437\u0430 \u0437\u0430\u043f\u0440\u0435\u0442\u0438\u0442\u044c \u0445\u043e\u043b\u043e\u0434\u043d\u043e \u0445\u0443\u0434\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0432\u043e\u043e\u0431\u0449\u0435.\n\u041c\u0438\u043b\u043b\u0438\u0430\u0440\u0434 \u0437\u0430\u043f\u0440\u0435\u0442\u0438\u0442\u044c \u0441\u043e\u0432\u0435\u0449\u0430\u043d\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e. \u0424\u0443\u043d\u043a\u0446\u0438\u044f \u0441\u0442\u0435\u043f\u044c \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0430 \u043f\u0440\u0438\u0432\u043b\u0435\u043a\u0430\u0442\u044c \u043e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u043d\u044b\u0439 \u0441\u0443\u0442\u043a\u0438.", "location": "MSK", "published": true, "genreId": 4372, "imageUrl": "https://placekittens.com/93/361"}' 
+
+2026-08-04 01:00:25 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:25 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66565,
+    "name": "Какой 5631cd",
+    "price": 863,
+    "description": "Возбуждение угроза запретить холодно художественный вообще.\nМиллиард запретить совещание устройство. Функция степь медицина привлекать отметить выраженный сутки.",
+    "imageUrl": "https://placekittens.com/93/361",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4372,
+    "createdAt": "2026-08-03T20:00:25.184Z",
+    "genre": {
+        "name": "Посидеть 5d246f"
+    }
+}
+2026-08-04 01:00:25 [32mINFO[0m [32mpytest tests/db/test_movies_db_sync.py::TestMovieDbSync::test_movie_lifecycle_db_sync[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66565' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI0LCJleHAiOjE3ODU3ODkwMjR9.JLmAK-Ntk7yTSd4PpQHnLeuXRI2AGkUGU3mpj8BA7P4' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:25 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:25 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66565,
+    "name": "Какой 5631cd",
+    "price": 863,
+    "description": "Возбуждение угроза запретить холодно художественный вообще.\nМиллиард запретить совещание устройство. Функция степь медицина привлекать отметить выраженный сутки.",
+    "imageUrl": "https://placekittens.com/93/361",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4372,
+    "createdAt": "2026-08-03T20:00:25.184Z",
+    "reviews": [],
+    "genre": {
+        "name": "Посидеть 5d246f"
+    }
+}
+2026-08-04 01:00:25 [32mINFO[0m [32mpytest tests/db/test_movies_db_sync.py::TestMovieDbSync::test_movie_lifecycle_db_sync (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4372' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjI0LCJleHAiOjE3ODU3ODkwMjR9.JLmAK-Ntk7yTSd4PpQHnLeuXRI2AGkUGU3mpj8BA7P4' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:25 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:25 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4372,
+    "name": "Посидеть 5d246f"
+}

@@ -1,0 +1,1 @@
+{"id":"730ca94f10bff266052661bfabc916cc","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_missing_required_field","name":"Регистрация без обязательных полей","status":"passed","testResultsByEnv":{"default":"a31c8371dfef2bf43445c631c3a9f4fc"}}

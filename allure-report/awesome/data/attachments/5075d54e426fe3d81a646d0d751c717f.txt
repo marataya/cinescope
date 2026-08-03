@@ -1,0 +1,1 @@
+Created user: {'id': 'f135d4e0-552c-4616-b3b0-0292e2a77fda', 'email': '528b5061_stepan_2020@example.com', 'fullName': 'Гуляева Феврония Тарасовна', 'verified': True, 'roles': ['USER'], 'createdAt': '2026-08-03T20:00:18.236Z'}

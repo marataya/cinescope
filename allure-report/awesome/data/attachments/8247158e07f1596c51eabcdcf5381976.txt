@@ -1,0 +1,124 @@
+2026-08-04 01:00:03 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 01:00:03 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:03 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjAzLCJleHAiOjE3ODU3ODkwMDN9.I-Edazmu1mbfH54o5ZHmx9_7K8tQoc66t3193c6ZE64",
+    "refreshToken": "76d3d4a5-de10-4900-9fbc-08ff6415185e",
+    "expiresIn": 1785789003166
+}
+2026-08-04 01:00:03 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjAzLCJleHAiOjE3ODU3ODkwMDN9.I-Edazmu1mbfH54o5ZHmx9_7K8tQoc66t3193c6ZE64' \
+-H 'Content-Length: 61' \
+-d '{"name": "\u0412\u0438\u0442\u0440\u0438\u043d\u0430 5a08a3"}' 
+
+2026-08-04 01:00:03 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:03 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4364,
+    "name": "Витрина 5a08a3"
+}
+2026-08-04 01:00:03 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjAzLCJleHAiOjE3ODU3ODkwMDN9.I-Edazmu1mbfH54o5ZHmx9_7K8tQoc66t3193c6ZE64' \
+-H 'Content-Length: 1115' \
+-d '{"name": "\u0417\u0430\u0447\u0435\u043c 4f2f94", "price": 735, "description": "\u041b\u043e\u043c\u0430\u0442\u044c \u0434\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u044f \u043f\u043e\u043d\u044f\u0442\u043d\u044b\u0439 \u0442\u0440\u044f\u0441\u0442\u0438 \u043f\u0440\u0435\u0436\u043d\u0438\u0439 \u0437\u0430\u043f\u0435\u0442\u044c. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e \u0440\u0443\u0447\u0435\u0439 \u0438\u0437\u0431\u0435\u0433\u0430\u0442\u044c \u0441\u043b\u0438\u0448\u043a\u043e\u043c.\n\u041b\u0435\u043d\u0438\u043d\u0433\u0440\u0430\u0434 \u0441\u0431\u0440\u043e\u0441\u0438\u0442\u044c \u043a\u043e\u0440\u0438\u0447\u043d\u0435\u0432\u044b\u0439 \u0440\u043e\u0441\u0430. \u0423\u043f\u043e\u0440\u043d\u043e \u043e\u0431\u0438\u0434\u0430 \u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c \u0441\u043e\u0432\u0435\u0449\u0430\u043d\u0438\u0435.", "location": "MSK", "published": true, "genreId": 4364, "imageUrl": "https://placekittens.com/863/771"}' 
+
+2026-08-04 01:00:03 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:03 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66562,
+    "name": "Зачем 4f2f94",
+    "price": 735,
+    "description": "Ломать демократия понятный трясти прежний запеть. Возможно самостоятельно ручей избегать слишком.\nЛенинград сбросить коричневый роса. Упорно обида ставить находить совещание.",
+    "imageUrl": "https://placekittens.com/863/771",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4364,
+    "createdAt": "2026-08-03T20:00:03.664Z",
+    "genre": {
+        "name": "Витрина 5a08a3"
+    }
+}
+2026-08-04 01:00:03 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66562/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 472' \
+-d '{"rating": 0, "text": "\u041d\u0430\u0443\u0447\u0438\u0442\u044c \u043f\u0430\u043b\u0430\u0442\u0430 \u0431\u043e\u043b\u0435\u0435 \u043b\u0435\u0432\u044b\u0439. \u041d\u0430\u0431\u043e\u0440 \u0441\u0430\u043b\u043e\u043d \u0442\u0435\u0441\u043d\u043e \u0442\u0435\u0441\u043d\u043e \u0441\u043e\u0432\u0435\u0442. \u041b\u0435\u0433\u043a\u043e \u043f\u0440\u0438\u043b\u0438\u0447\u043d\u044b\u0439 \u0436\u0438\u0442\u044c \u0432\u043f\u0435\u0440\u0435\u0434."}' 
+
+2026-08-04 01:00:03 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{
+    "message": "Unauthorized",
+    "statusCode": 401
+}[0m
+2026-08-04 01:00:04 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66562' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjAzLCJleHAiOjE3ODU3ODkwMDN9.I-Edazmu1mbfH54o5ZHmx9_7K8tQoc66t3193c6ZE64' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:04 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:04 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66562,
+    "name": "Зачем 4f2f94",
+    "price": 735,
+    "description": "Ломать демократия понятный трясти прежний запеть. Возможно самостоятельно ручей избегать слишком.\nЛенинград сбросить коричневый роса. Упорно обида ставить находить совещание.",
+    "imageUrl": "https://placekittens.com/863/771",
+    "location": "MSK",
+    "published": true,
+    "rating": 0,
+    "genreId": 4364,
+    "createdAt": "2026-08-03T20:00:03.664Z",
+    "reviews": [],
+    "genre": {
+        "name": "Витрина 5a08a3"
+    }
+}
+2026-08-04 01:00:04 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_unauthorized (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4364' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg3MjAzLCJleHAiOjE3ODU3ODkwMDN9.I-Edazmu1mbfH54o5ZHmx9_7K8tQoc66t3193c6ZE64' \
+-H 'Content-Length: 0' \
+
+2026-08-04 01:00:04 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 01:00:04 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4364,
+    "name": "Витрина 5a08a3"
+}

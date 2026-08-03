@@ -1,0 +1,20 @@
+2026-08-04 00:25:26 [32mINFO[0m [32mpytest tests/api/test_auth_api.py::TestAuthRegister::test_register_missing_required_field[password][0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 228' \
+-d '{"email": "6771026a_pankrati_1971@example.net", "passwordRepeat": "\"leV4'DW", "fullName": "\u0421\u043c\u0438\u0440\u043d\u043e\u0432 \u0410\u0433\u0430\u0444\u043e\u043d \u0418\u043e\u0441\u0438\u043f\u043e\u0432\u0438\u0447"}' 
+
+2026-08-04 00:25:26 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{
+    "message": [
+        "Максимальная длина пароля 32 символа",
+        "Минимальная длина пароля 8 символов",
+        "Пароль должен быть строкой",
+        "password must match /^(?=.*[a-zA-Zа-яА-Я])(?=.*\\d)[a-zA-Zа-яА-Я\\d?@#$%^&*_\\-+()\\[\\]{}><\\\\/\\\\|\"'.,:;]{8,20}$/ regular expression",
+        "Пароли не совпадают"
+    ],
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m

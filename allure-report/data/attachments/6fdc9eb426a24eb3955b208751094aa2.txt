@@ -1,0 +1,187 @@
+2026-08-04 00:25:35 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 274' \
+-d '{"email": "a0a860c9_vadim2024@example.net", "fullName": "\u0413\u043b\u0435\u0431 \u0415\u043b\u0438\u0441\u0435\u0435\u0432\u0438\u0447 \u041a\u043e\u043d\u0434\u0440\u0430\u0442\u044c\u0435\u0432", "password": "W;&J2#0Sg", "passwordRepeat": "W;&J2#0Sg", "roles": ["USER"]}' 
+
+2026-08-04 00:25:35 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:35 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "908a8b5b-547b-4d12-bbfa-725b05bcc252",
+    "email": "a0a860c9_vadim2024@example.net",
+    "fullName": "Глеб Елисеевич Кондратьев",
+    "verified": true,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-03T19:25:34.912Z"
+}
+2026-08-04 00:25:35 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 68' \
+-d '{"email": "a0a860c9_vadim2024@example.net", "password": "W;&J2#0Sg"}' 
+
+2026-08-04 00:25:35 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:35 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "908a8b5b-547b-4d12-bbfa-725b05bcc252",
+        "email": "a0a860c9_vadim2024@example.net",
+        "fullName": "Глеб Елисеевич Кондратьев",
+        "roles": [
+            "USER"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwOGE4YjViLTU0N2ItNGQxMi1iYmZhLTcyNWIwNWJjYzI1MiIsImVtYWlsIjoiYTBhODYwYzlfdmFkaW0yMDI0QGV4YW1wbGUubmV0Iiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9.9wQJy0aaMMNYQo_pVIEdVvfWShExopFu4NnetOu960Q",
+    "refreshToken": "0b87752d-e733-4829-803f-c388d3db2e5b",
+    "expiresIn": 1785786935230
+}
+2026-08-04 00:25:35 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-08-04 00:25:35 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:35 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Tiffany Huang",
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9._Bd5QRZs71XnF_OlTWRlx0DtcVPzTdYnHxZod-kPdgc",
+    "refreshToken": "8e79ddb8-9cc7-43f1-9f22-7b23afe380d7",
+    "expiresIn": 1785786935729
+}
+2026-08-04 00:25:36 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/genres' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9._Bd5QRZs71XnF_OlTWRlx0DtcVPzTdYnHxZod-kPdgc' \
+-H 'Content-Length: 55' \
+-d '{"name": "\u041b\u043e\u043c\u0430\u0442\u044c 9a7418"}' 
+
+2026-08-04 00:25:36 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:36 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 4338,
+    "name": "Ломать 9a7418"
+}
+2026-08-04 00:25:36 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9._Bd5QRZs71XnF_OlTWRlx0DtcVPzTdYnHxZod-kPdgc' \
+-H 'Content-Length: 1208' \
+-d '{"name": "\u0422\u0435\u0441\u043d\u043e a2767f", "price": 850, "description": "\u041f\u0430\u043b\u0435\u0446 \u0445\u043e\u043b\u043e\u0434\u043d\u043e \u043f\u0440\u043e\u043c\u043e\u043b\u0447\u0430\u0442\u044c \u043e\u0434\u0438\u043d. \u041f\u0430\u0440\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043b\u0435\u0432\u044b\u0439 \u0432\u0447\u0435\u0440\u0430. \u041f\u0440\u043e\u0449\u0435\u043d\u0438\u0435 \u0431\u0435\u043b\u044c\u0435 \u043f\u0440\u0438\u0441\u0435\u0441\u0442\u044c \u0440\u0430\u0437\u0432\u0438\u0442\u044b\u0439 \u0431\u043e\u0435\u0446 \u043f\u0430\u0434\u0430\u043b\u044c.\n\u0412\u044b\u0434\u0435\u0440\u0436\u0430\u0442\u044c \u0434\u0430 \u0430\u0434\u0432\u043e\u043a\u0430\u0442 \u043d\u0438\u0437\u043a\u0438\u0439 \u043a\u0443\u0447\u0430 \u0441\u0442\u0430\u043a\u0430\u043d. \u0421\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u0441\u043f\u0430\u0441\u0442\u044c \u043e\u0447\u043a\u043e \u044d\u043f\u043e\u0445\u0430.", "location": "SPB", "published": true, "genreId": 4338, "imageUrl": "https://picsum.photos/641/838"}' 
+
+2026-08-04 00:25:36 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:36 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 66541,
+    "name": "Тесно a2767f",
+    "price": 850,
+    "description": "Палец холодно промолчать один. Парень предоставить левый вчера. Прощение белье присесть развитый боец падаль.\nВыдержать да адвокат низкий куча стакан. Следовательно подробность спасть очко эпоха.",
+    "imageUrl": "https://picsum.photos/641/838",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 4338,
+    "createdAt": "2026-08-03T19:25:36.126Z",
+    "genre": {
+        "name": "Ломать 9a7418"
+    }
+}
+2026-08-04 00:25:36 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies/66541/reviews' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwOGE4YjViLTU0N2ItNGQxMi1iYmZhLTcyNWIwNWJjYzI1MiIsImVtYWlsIjoiYTBhODYwYzlfdmFkaW0yMDI0QGV4YW1wbGUubmV0Iiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9.9wQJy0aaMMNYQo_pVIEdVvfWShExopFu4NnetOu960Q' \
+-H 'Content-Length: 252' \
+-d '{"rating": 2, "text": "\u041a\u0443\u0447\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440 \u043f\u0440\u0438\u044f\u0442\u0435\u043b\u044c \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u0442\u044c \u0434\u043e\u0431\u0438\u0442\u044c\u0441\u044f."}' 
+
+2026-08-04 00:25:36 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:36 [32mINFO[0m 	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "userId": "908a8b5b-547b-4d12-bbfa-725b05bcc252",
+    "text": "Куча командир приятель сохранять добиться.",
+    "rating": 2,
+    "createdAt": "2026-08-03T19:25:36.414Z",
+    "user": {
+        "fullName": "Глеб Елисеевич Кондратьев"
+    }
+}
+2026-08-04 00:25:36 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/66541' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9._Bd5QRZs71XnF_OlTWRlx0DtcVPzTdYnHxZod-kPdgc' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:36 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:36 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 66541,
+    "name": "Тесно a2767f",
+    "price": 850,
+    "description": "Палец холодно промолчать один. Парень предоставить левый вчера. Прощение белье присесть развитый боец падаль.\nВыдержать да адвокат низкий куча стакан. Следовательно подробность спасть очко эпоха.",
+    "imageUrl": "https://picsum.photos/641/838",
+    "location": "SPB",
+    "published": true,
+    "rating": 2,
+    "genreId": 4338,
+    "createdAt": "2026-08-03T19:25:36.126Z",
+    "reviews": [
+        {
+            "userId": "908a8b5b-547b-4d12-bbfa-725b05bcc252",
+            "text": "Куча командир приятель сохранять добиться.",
+            "rating": 2,
+            "createdAt": "2026-08-03T19:25:36.414Z",
+            "user": {
+                "fullName": "Глеб Елисеевич Кондратьев"
+            }
+        }
+    ],
+    "genre": {
+        "name": "Ломать 9a7418"
+    }
+}
+2026-08-04 00:25:36 [32mINFO[0m [32mpytest tests/api/test_movies_api.py::TestReviewsUser::test_create_review_success (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/genres/4338' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg1Nzg1MTM1LCJleHAiOjE3ODU3ODY5MzV9._Bd5QRZs71XnF_OlTWRlx0DtcVPzTdYnHxZod-kPdgc' \
+-H 'Content-Length: 0' \
+
+2026-08-04 00:25:36 [32mINFO[0m 
+======================================== RESPONSE ========================================
+2026-08-04 00:25:36 [32mINFO[0m 	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 4338,
+    "name": "Ломать 9a7418"
+}

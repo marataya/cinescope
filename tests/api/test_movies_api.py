@@ -153,6 +153,7 @@ class TestMoviesRoles:
 @allure.epic("Movies API - Filters")
 class TestMoviesFilters:
 
+    @allure.title("Фильтрация фильмов по ценам")
     @pytest.mark.parametrize("min_price, max_price", [
         (1, 100), (100, 500), (500, 1000),
     ], ids=["price_1-100", "price_100-500", "price_500-1000"])
@@ -163,6 +164,7 @@ class TestMoviesFilters:
         for movie in data["movies"]:
             assert min_price <= movie["price"] <= max_price
 
+    @allure.title("Фильтрация фильмов по локациям")
     @pytest.mark.parametrize("location", ["MSK", "SPB"], ids=["location_MSK", "location_SPB"])
     def test_filter_by_locations(self, api_manager, location):
         data = api_manager.movies_api.get_movies(
@@ -174,6 +176,7 @@ class TestMoviesFilters:
                 movie_loc = [movie_loc]
             assert location in movie_loc
 
+    @allure.title("Фильтрация фильмов по жанрам")
     def test_filter_by_genreId(self, api_manager, super_admin):
         genre_payload = DataGenerator.generate_genre_payload()
         genre_resp = super_admin.api.movies_api.send_request("POST", "/genres", data=genre_payload, expected_status=201)
@@ -188,6 +191,7 @@ class TestMoviesFilters:
             super_admin.api.movies_api.send_request("DELETE", f"/movies/{movie_id}", expected_status=200)
             super_admin.api.movies_api.send_request("DELETE", f"/genres/{genre_id}", expected_status=200)
 
+    @allure.title("Фильтрация фильмов по нескольким параметрам")
     @pytest.mark.parametrize("params", [
         {"minPrice": 1, "maxPrice": 1000, "locations": "MSK", "genreId": 1},
         {"minPrice": 1, "maxPrice": 200, "locations": "SPB"},

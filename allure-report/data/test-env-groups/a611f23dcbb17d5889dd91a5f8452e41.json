@@ -1,0 +1,1 @@
+{"id":"a611f23dcbb17d5889dd91a5f8452e41","fullName":"tests.api.test_movies_api.TestReviewsUser#test_create_review_without_text_accepted","name":"Создание отзыва без текста","status":"passed","testResultsByEnv":{"default":"34afb0187e12de34265d73b8c3412778"}}

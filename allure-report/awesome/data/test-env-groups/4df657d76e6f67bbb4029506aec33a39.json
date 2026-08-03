@@ -1,0 +1,1 @@
+{"id":"4df657d76e6f67bbb4029506aec33a39","fullName":"tests.api.test_auth_api.TestAuthRefresh#test_refresh_token_unauthorized","name":"Обновление токена без куки","status":"passed","testResultsByEnv":{"default":"add84dbddc6496bd0522eb4664aecd7a"}}

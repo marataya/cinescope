@@ -1,0 +1,1 @@
+{"id":"1f0852c45cb7c1ce5d706218c5c6d0ff","fullName":"tests.api.test_auth_api.TestAuthRegister#test_register_user","name":"Успешная регистрация пользователя - с Pydantic моделью","status":"passed","testResultsByEnv":{"default":"00b58b02ce32da28a77c7c32d87e009f"}}
