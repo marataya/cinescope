@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from utils.data_generator import DataGenerator
 
@@ -6,6 +7,8 @@ from utils.data_generator import DataGenerator
 class TestUserRoles:
 
     @allure.title("Создание пользователя через SUPER_ADMIN - проверка полей")
+    @pytest.mark.smoke
+    @pytest.mark.regression
     def test_create_user(self, super_admin, creation_user_data):
         response = super_admin.api.user_api.create_user(creation_user_data)
 
@@ -16,6 +19,8 @@ class TestUserRoles:
         assert response.get('verified') is True
 
     @allure.title("SUPER_ADMIN создает и удаляет пользователя")
+    @pytest.mark.smoke
+    @pytest.mark.regression
     def test_super_admin(self, super_admin):
         payload = DataGenerator.generate_user_payload(is_admin_create=True)
         user_resp = super_admin.api.user_api.create_user(payload)
@@ -25,6 +30,7 @@ class TestUserRoles:
         super_admin.api.user_api.delete_user(user_id)
 
     @allure.title("Получение пользователя по ID и по email - ответы идентичны")
+    @pytest.mark.regression
     def test_get_user_by_locator(self, super_admin, creation_user_data):
         created_user_response = super_admin.api.user_api.create_user(creation_user_data)
         response_by_id = super_admin.api.user_api.get_user(created_user_response['id'])
@@ -38,6 +44,8 @@ class TestUserRoles:
         assert response_by_id.get('verified') is True
 
     @allure.title("USER не может получать других пользователей - 403")
+    @pytest.mark.smoke
+    @pytest.mark.regression
     def test_get_user_by_id_common_user(self, common_user):
         common_user.api.user_api.get_user(common_user.email, expected_status=403)
 

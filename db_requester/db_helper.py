@@ -26,10 +26,6 @@ class DBHelper:
         """Получает пользователя по email"""
         return self.db_session.query(UserDBModel).filter(UserDBModel.email == email).first()
 
-    def get_movie_by_name(self, name: str):
-        """Получает фильм по названию"""
-        return self.db_session.query(MovieDBModel).filter(MovieDBModel.name == name).first()
-
     def user_exists_by_email(self, email: str) -> bool:
         """Проверяет существование пользователя по email"""
         return self.db_session.query(UserDBModel).filter(UserDBModel.email == email).count() > 0
@@ -39,6 +35,10 @@ class DBHelper:
         self.db_session.delete(user)
         self.db_session.commit()
 
+    def get_movie_by_name(self, name: str) -> MovieDBModel | None:
+        """Получает фильм по названию"""
+        return self.db_session.query(MovieDBModel).filter(MovieDBModel.name == name).first()
+
     def cleanup_test_data(self, objects_to_delete: list):
         """Очищает тестовые данные"""
         for obj in objects_to_delete:
@@ -46,12 +46,8 @@ class DBHelper:
                 self.db_session.delete(obj)
         self.db_session.commit()
 
-    # helpers for movies
     def get_movie_by_id(self, movie_id: int) -> MovieDBModel | None:
         return self.db_session.query(MovieDBModel).filter(MovieDBModel.id == movie_id).first()
-
-    def get_movie_by_name(self, name: str) -> MovieDBModel | None:
-        return self.db_session.query(MovieDBModel).filter(MovieDBModel.name == name).first()
 
     def movie_exists(self, movie_id: int) -> bool:
         return self.get_movie_by_id(movie_id) is not None
