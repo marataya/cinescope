@@ -1,6 +1,8 @@
 import allure
 import pytest
 
+from models.movie_list_response import MoviesListResponse
+from models.movie_response import MovieResponse
 from utils.data_generator import DataGenerator
 
 
@@ -10,12 +12,16 @@ class TestMoviesPublic:
     @pytest.mark.smoke
     @pytest.mark.regression
     def test_get_movies_default_pagination(self, api_manager):
-        data = api_manager.movies_api.get_movies()
-
-        assert "movies" in data
-        assert "count" in data
-        assert len(data["movies"]) <= 10
-        assert data["page"] == 1
+        raw = api_manager.movies_api.get_movies()
+        # assert "movies" in data
+        # assert "count" in data
+        # assert len(data["movies"]) <= 10
+        # assert data["page"] == 1
+        data = MoviesListResponse(**raw)
+        assert len(data.movies) <= 10
+        assert data.page == 1
+        for m in data.movies:
+            assert isinstance(m, MovieResponse)
 
     @allure.title("Фильтрация фильмов по цене и локации")
     @pytest.mark.regression
@@ -31,23 +37,24 @@ class TestMoviesPublic:
             "locations": locations,
             "pageSize": 20
         }
-        data = api_manager.movies_api.get_movies(params=params)
-        movies = data["movies"]
+        raw = api_manager.movies_api.get_movies(params=params)
+        data = MoviesListResponse(**raw)
 
-        for movie in movies:
-            assert min_price <= movie["price"] <= max_price
-            assert movie["location"] in locations
-            assert movie["published"] is True
+        for movie in data.movies:
+            assert min_price <= movie.price <= max_price
+            assert movie.location in locations
+            assert movie.published is True
 
     @allure.title("Получение фильма по ID")
     @pytest.mark.smoke
     @pytest.mark.regression
     def test_get_movie_by_id(self, api_manager, created_movie):
-        data = api_manager.movies_api.get_movie(created_movie)
-
-        assert data["id"] == created_movie
-        assert "reviews" in data
-        assert "genre" in data
+        raw = api_manager.movies_api.get_movie(created_movie)
+        movie = MovieResponse(**raw)
+        assert movie.id == created_movie
+        assert movie.rating >= 0
+        assert movie.reviews is not None
+        assert movie.genre is not None
 
     @allure.title("Получение фильма по несуществующему ID")
     @pytest.mark.regression

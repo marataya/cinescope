@@ -1,5 +1,6 @@
 import allure
 
+from models.movie_response import MovieResponse
 from utils.data_generator import DataGenerator
 
 @allure.epic("Movies DB Sync")
@@ -12,16 +13,18 @@ class TestMovieDbSync:
         movie_name = payload["name"]
 
         # 1. ДО - в базе отсутствует фильм
-        assert db_helper.get_movie_by_name(movie_name) is None, \
-            f"Фильм {movie_name} уже есть в БД до теста"
+        assert db_helper.get_movie_by_name(movie_name) is None, f"Фильм {movie_name} уже есть в БД до теста"
         assert db_helper.movie_exists_by_name(movie_name) is False
 
         # 2. Создание через API
         resp = super_admin.api.movies_api.send_request(
             "POST", "/movies", data=payload, expected_status=201
         )
-        movie_id = resp.json()["id"]
-        created_movie_name = resp.json()["name"]
+        # movie_id = resp.json()["id"]
+        # created_movie_name = resp.json()["name"]
+        movie_response = MovieResponse(**resp.json())
+        movie_id = movie_response.id
+        created_movie_name = movie_response.name
 
         try:
             # 3. ПОСЛЕ СОЗДАНИЯ - в базе появился фильм
