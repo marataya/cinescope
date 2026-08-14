@@ -1,6 +1,7 @@
 # models/movies_list_response.py
-from pydantic import BaseModel, ConfigDict
 from typing import List
+
+from pydantic import BaseModel, ConfigDict
 
 from models.movie_response import MovieResponse
 

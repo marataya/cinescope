@@ -2,14 +2,9 @@ from constants.endpoints import Endpoints
 from constants.urls import AUTH_BASE_URL
 from custom_requester.custom_requester import CustomRequester
 
-try:
-    from resources.user_creds import SuperAdminCreds
-    def _default_creds():
-        return SuperAdminCreds.USERNAME, SuperAdminCreds.PASSWORD
-except:
-    from utils.data import USERNAME, PASSWORD
-    def _default_creds():
-        return (USERNAME, PASSWORD)
+from resources.user_creds import SuperAdminCreds
+def _default_creds():
+    return SuperAdminCreds.USERNAME, SuperAdminCreds.PASSWORD
 
 class AuthApi(CustomRequester):
     def __init__(self, session):

@@ -1,7 +1,9 @@
 # models/movie_response.py
 import datetime
 from typing import Literal, Any
+
 from pydantic import BaseModel, Field, ConfigDict, field_validator
+
 
 class MovieResponse(BaseModel):
     model_config = ConfigDict(

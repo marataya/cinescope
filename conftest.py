@@ -1,5 +1,8 @@
+from pathlib import Path
+
 import pytest
 import requests
+from playwright.sync_api import Page
 
 from api.api_manager import ApiManager
 from constants.roles import Roles
@@ -7,8 +10,12 @@ from db_requester.db_client import get_db_session
 from db_requester.db_helper import DBHelper
 from entities.user import User
 from models.test_user import TestUser
+from pages.login_page import CinescopeLoginPage
+from pages.register_page import CinescopeRegisterPage
 from resources.user_creds import SuperAdminCreds
+from utils.data import DEFAULT_UI_TIMEOUT
 from utils.data_generator import DataGenerator
+from utils.tools import Tools
 
 
 @pytest.fixture
@@ -206,3 +213,118 @@ def db_helper(db_session) -> DBHelper:
     """
     db_helper = DBHelper(db_session)
     return db_helper
+
+
+# PLAYWRIGHT
+
+@pytest.fixture(scope="session", autouse=True)
+def configure_playwright_selectors(playwright):
+    # Change the default test ID selector prefix to match your HTML data schema
+    playwright.selectors.set_test_id_attribute("data-qa-id")
+
+@pytest.fixture(scope="session")
+def browser(playwright, browser_type_launch_args):
+    browser = playwright.chromium.launch(**browser_type_launch_args)
+    yield browser
+    browser.close()
+
+
+@pytest.fixture(scope="function")
+def context(browser, browser_context_args):
+    context = browser.new_context(**browser_context_args)
+    yield context
+    context.close()
+
+
+@pytest.fixture(scope="function")
+def page(context):
+    page = context.new_page()
+    yield page
+    page.close()  # ИСПРАВЛЕНО: Скрытый мусор "іәіңіің" полностью удален
+
+@pytest.fixture
+def register_page(page: Page) -> CinescopeRegisterPage:
+    register_page = CinescopeRegisterPage(page)
+    register_page.open()
+    return register_page
+
+@pytest.fixture
+def login_page(page: Page) -> CinescopeLoginPage:
+    login_page = CinescopeLoginPage(page)
+    login_page.open()
+    return login_page
+
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    extra_args = browser_type_launch_args.get("args", [])
+    if "--start-fullscreen" not in extra_args:
+        extra_args.append("--start-fullscreen")
+
+    return {
+        **browser_type_launch_args,
+        "headless": False,
+        "slow_mo": 500,
+        "args": extra_args
+    }
+
+
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    return {
+        **browser_context_args,
+        "no_viewport": True,
+    }
+
+
+# --- Логика автоматического сохранения Трейс-файла при падении теста ---
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, f"rep_{rep.when}", rep)
+
+
+@pytest.fixture(scope="function", autouse=True)
+def configure_context_and_trace(context, request):
+    context.tracing.start(screenshots=True, snapshots=True, sources=True)
+    context.set_default_timeout(DEFAULT_UI_TIMEOUT)
+
+    yield
+
+    failed = False
+    for phase in ["setup", "call", "teardown"]:
+        rep = getattr(request.node, f"rep_{phase}", None)
+        if rep and rep.failed:
+            failed = True
+            break
+
+    if failed:
+        try:
+            # ИСПРАВЛЕНО: Добавлены скобки к Path.cwd() чтобы избежать TypeError
+            output_dir = Path.cwd() / "failures"
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            raw_test_name = request.node.name
+            safe_test_name = (
+                raw_test_name.replace("[", "_")
+                .replace("]", "_")
+                .replace(":", "_")
+                .replace("/", "_")
+                .replace("\\", "_")
+            )
+
+            log_name = f"{safe_test_name}_{Tools.get_timestamp()}_trace.zip"
+            trace_path = output_dir / log_name
+
+            context.tracing.stop(path=str(trace_path))
+            print(f"\n[TRACE SUCCESS] Trace written to project root failures dir: {trace_path.resolve()}")
+
+        except Exception as err:
+            print(f"\n[TRACE ERROR] Failed to save trace block: {err}")
+            try:
+                context.tracing.stop(path=f"fallback_trace.zip")
+            except Exception:
+                context.tracing.stop()
+    else:
+        context.tracing.stop()

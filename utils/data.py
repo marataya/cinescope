@@ -3,10 +3,6 @@ OK = 200
 BAD_REQUEST = 400
 UNAUTHORIZED = 401
 
-# Authentication
-USERNAME = 'api1@gmail.com'
-PASSWORD = 'asdqwe123Q'
-
 # Headers
 HEADERS = {
     "Content-Type": "application/json",
@@ -28,3 +24,6 @@ invalid_format_date = '27.3.1943.'
 valid_id = '1'
 valid_id_2 = '8'
 invalid_id = '56'
+
+# playwright
+DEFAULT_UI_TIMEOUT = 5000

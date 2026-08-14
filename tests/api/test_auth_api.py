@@ -40,7 +40,7 @@ class TestAuthRegister:
 
         api_manager.auth_api.register_user(user_data=payload, expected_status=409)
 
-    @allure.title("Регистрация с невалидным email")
+    @allure.title("Регистрация с невалидным email, invalid email: {email}")
     @pytest.mark.regression
     @pytest.mark.parametrize("email", ["invalid", "test@", "@test.com", "test.com"])
     def test_register_invalid_email(self, api_manager, email):
@@ -109,7 +109,7 @@ class TestAuthLogin:
                 "email": "notexist@test.com",
                 "password": "password123"
             },
-            expected_status=500 # status should be 401, but set 500 to make green
+            expected_status=401
         )
 
     @allure.title("Логин с невалидным email")
@@ -120,7 +120,7 @@ class TestAuthLogin:
                 "email": "invalid_email",
                 "password": "password123"
             },
-            expected_status=500 # should be 401 but alas
+            expected_status=401
         )
 
 @allure.epic("Auth API")

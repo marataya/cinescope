@@ -1,7 +1,9 @@
+from datetime import datetime
+
 import allure
 import pytest
 from sqlalchemy.orm import Session
-from datetime import datetime
+
 from models.db_models.account_transaction_template import AccountTransactionTemplate
 from models.db_models.movie import MovieDBModel
 from utils.data_generator import DataGenerator

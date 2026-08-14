@@ -3,6 +3,7 @@ import allure
 from models.movie_response import MovieResponse
 from utils.data_generator import DataGenerator
 
+
 @allure.epic("Movies DB Sync")
 class TestMovieDbSync:
 

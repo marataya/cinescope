@@ -3,6 +3,7 @@ import pytest
 
 from utils.data_generator import DataGenerator
 
+
 @allure.epic("Test User Roles")
 class TestUserRoles:
 
