@@ -5,12 +5,10 @@ from pages.movie_page import CinescopeMoviePage
 
 @allure.title("UI: Создание и удаление отзыва")
 @pytest.mark.slow
-def test_add_and_delete_movie_review(page: Page, common_user, created_movie):
-    login_page = CinescopeLoginPage(page)
-    login_page.open()
+def test_add_and_delete_movie_review(login_page, movie_page, page: Page, common_user, created_movie):
+
     login_page.login(common_user.email, common_user.password)
 
-    movie_page = CinescopeMoviePage(page)
     movie_page.open(created_movie)
 
     review_text = f"review_{random.randint(1000,9999)} awesome movie!"

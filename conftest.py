@@ -255,7 +255,6 @@ def login_page(page: Page) -> CinescopeLoginPage:
     login_page.open()
     return login_page
 
-
 @pytest.fixture
 def movie_page(page: Page) -> CinescopeMoviePage:
     return CinescopeMoviePage(page)
