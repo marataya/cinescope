@@ -5,7 +5,6 @@ import pytest
 from playwright.sync_api import Page, expect
 
 from constants.urls import UI_BASE_URL
-from pages.login_page import CinescopeLoginPage
 
 
 @allure.title("UI тест логина")

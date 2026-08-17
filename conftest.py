@@ -11,6 +11,7 @@ from db_requester.db_helper import DBHelper
 from entities.user import User
 from models.test_user import TestUser
 from pages.login_page import CinescopeLoginPage
+from pages.movie_page import CinescopeMoviePage
 from pages.register_page import CinescopeRegisterPage
 from resources.user_creds import SuperAdminCreds
 from utils.data import DEFAULT_UI_TIMEOUT
@@ -253,6 +254,11 @@ def login_page(page: Page) -> CinescopeLoginPage:
     login_page = CinescopeLoginPage(page)
     login_page.open()
     return login_page
+
+
+@pytest.fixture
+def movie_page(page: Page) -> CinescopeMoviePage:
+    return CinescopeMoviePage(page)
 
 @pytest.fixture(scope="session")
 def browser_type_launch_args(browser_type_launch_args):

@@ -16,6 +16,10 @@ class PageAction:
     def enter_text(self, locator: Locator, text: str):
         locator.fill(text)
 
+    # @allure.step("Select a dropdown option")
+    # def select_dropdown(self, locator: Locator):
+    #
+
     @allure.step("Клик по элементу: {locator}")
     def click(self, locator: Locator):
         locator.click()
