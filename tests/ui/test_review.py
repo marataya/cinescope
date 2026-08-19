@@ -1,7 +1,9 @@
-import allure, random, pytest
+import random
+
+import allure
+import pytest
 from playwright.sync_api import Page, expect
-from pages.login_page import CinescopeLoginPage
-from pages.movie_page import CinescopeMoviePage
+
 
 @allure.title("UI: Создание и удаление отзыва")
 @pytest.mark.slow
