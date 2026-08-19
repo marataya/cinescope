@@ -25,7 +25,7 @@ class AuthApi(CustomRequester):
             **kwargs
         )
 
-    def login_user(self, credentials=None, expected_status=201, **kwargs):
+    def login_user(self, credentials=None, expected_status=200, **kwargs):
         # поддержка всех вариантов вызова:
         # login_user(data), login_user(credentials=data), login_user(creds=data), login_user(data=...)
 
@@ -48,7 +48,7 @@ class AuthApi(CustomRequester):
             **kwargs
         )
 
-    def login(self, creds=None, expected_status=201, **kwargs):
+    def login(self, creds=None, expected_status=200, **kwargs):
         if creds is None:
             creds = kwargs.pop("credentials", None) or kwargs.pop("creds", None) or kwargs.pop("data", None)
 
@@ -61,5 +61,5 @@ class AuthApi(CustomRequester):
             data = creds
         return self.login_user(data, expected_status=expected_status, **kwargs)
 
-    def authenticate(self, creds=None, expected_status=201, **kwargs):
+    def authenticate(self, creds=None, expected_status=200, **kwargs):
         return self.login(creds, expected_status=expected_status, **kwargs)

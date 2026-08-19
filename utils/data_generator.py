@@ -1,4 +1,5 @@
 import random
+import re
 import string
 import uuid
 
@@ -10,37 +11,50 @@ class DataGenerator:
 
     @staticmethod
     def generate_valid_password():
-        letters = string.ascii_letters
-        digits = string.digits
-        special = "?@#$%^&*_+-()[]{}><\\|\"'.,:;"
+        # гарантируем: 1 заглавная, 1 строчная, 1 цифра, 1 спецсимвол
+        upper = random.choice(string.ascii_uppercase)
+        lower = random.choice(string.ascii_lowercase)
+        digit = random.choice(string.digits)
+        special = random.choice("?@#$%^&*_+-")
 
-        password = [
-            random.choice(letters),
-            random.choice(digits)
-        ]
         length = random.randint(8, 12)
-        all_chars = letters + digits + special
-        password += [random.choice(all_chars) for _ in range(length - 2)]
+        all_chars = string.ascii_letters + string.digits + "?@#$%^&*_+-()[]{}><"
+        rest = [random.choice(all_chars) for _ in range(length - 4)]
+
+        password = [upper, lower, digit, special] + rest
         random.shuffle(password)
         return ''.join(password)
 
-    # ========== NEW METHODS FOR TestUser model ==========
+    # @staticmethod
+    # def generate_valid_password():
+    #     letters = string.ascii_letters
+    #     digits = string.digits
+    #     special = "?@#$%^&*_+-()[]{}><"
+    #     password = [random.choice(letters), random.choice(digits)]
+    #     length = random.randint(8, 12)
+    #     all_chars = letters + digits + special
+    #     password += [random.choice(all_chars) for _ in range(length - 2)]
+    #     random.shuffle(password)
+    #     return ''.join(password)
 
     @staticmethod
     def generate_random_email():
-        # уникальность через uuid
-        return f"{uuid.uuid4().hex[:8]}_{fake.email()}"
+        # Только валидный формат, без подчеркивания перед @ и без двойных @
+        return f"{uuid.uuid4().hex[:8].lower()}@test.com"
 
     @staticmethod
     def generate_random_name():
-        return fake.name()
+        # Берем first + last и вычищаем все кроме букв
+        first = re.sub(r'[^A-Za-zА-Яа-яЁё]', '', fake.first_name())
+        last = re.sub(r'[^A-Za-zА-Яа-яЁё]', '', fake.last_name())
+        # на случай если faker вернул пустое после очистки
+        if not first: first = "Ivan"
+        if not last: last = "Ivanov"
+        return f"{first} {last}"
 
-    # alias который ты использовал раньше
     @staticmethod
     def generate_random_password():
         return DataGenerator.generate_valid_password()
-
-    # ========== EXISTING METHODS ==========
 
     @staticmethod
     def generate_user_payload(is_admin_create=False):
@@ -58,7 +72,6 @@ class DataGenerator:
             payload.pop("verified", None)
             payload.pop("banned", None)
             payload.pop("roles", None)
-
         return payload
 
     @staticmethod
@@ -74,19 +87,18 @@ class DataGenerator:
             "location": fake.random_element(elements=["MSK", "SPB"]),
             "published": True,
             "genreId": genre_id,
-            "imageUrl": fake.image_url()
+            "imageUrl": "https://example.com/poster.jpg" # fake.image_url() иногда дает невалидный url для бэка
         }
 
     @staticmethod
     def generate_review_payload(rating=None):
         return {
-            "rating": rating if rating is not None else fake.random_int(min=0, max=5),
+            "rating": rating if rating is not None else fake.random_int(min=1, max=5), # 0 нельзя
             "text": fake.text(max_nb_chars=100)
         }
 
     @staticmethod
     def generate_movie_filter_payload():
-        """Для параметризованных тестов фильтров"""
         return {
             "minPrice": fake.random_int(min=1, max=400),
             "maxPrice": fake.random_int(min=500, max=1000),
@@ -96,7 +108,6 @@ class DataGenerator:
             "page": 1
         }
 
-    # ======== TRANSACTIONAL TESTS ===============
     @staticmethod
     def generate_random_int(max_val: int = 10000):
         return random.randint(1, max_val)

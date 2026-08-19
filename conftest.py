@@ -112,7 +112,7 @@ def logged_in_user(api_manager, registered_user):
             "email": registered_user["email"],
             "password": registered_user["password"]
         },
-        expected_status=201
+        expected_status=200
     )
     tokens = resp.json()
     tokens["user"] = registered_user

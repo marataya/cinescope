@@ -83,7 +83,7 @@ class TestAuthLogin:
                 "email": registered_user["email"],
                 "password": registered_user["password"]
             },
-            expected_status=201
+            expected_status=200
         )
         data = resp.json()
         assert "accessToken" in data
@@ -96,7 +96,7 @@ class TestAuthLogin:
         api_manager.auth_api.login(
             credentials={
                 "email": registered_user["email"],
-                "password": "wrong_password123"
+                "password": "WrongPassword123!"
             },
             expected_status=401
         )
@@ -107,7 +107,7 @@ class TestAuthLogin:
         api_manager.auth_api.login(
             credentials={
                 "email": "notexist@test.com",
-                "password": "password123"
+                "password": "Password123!"
             },
             expected_status=401
         )
@@ -118,7 +118,7 @@ class TestAuthLogin:
         api_manager.auth_api.login(
             credentials={
                 "email": "invalid_email",
-                "password": "password123"
+                "password": "Password123!"
             },
             expected_status=401
         )
